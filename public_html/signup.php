@@ -48,6 +48,157 @@ function check()
   }
   
 </script>
+
+    <script>
+    
+        
+      $(document).ready(function () {
+   $("#lid").keyup(checarExpediente);
+});
+ 
+ 
+     $(document).ready(function () {
+   $("#lid").change(checarExpediente);
+});
+
+$(document).ready(function () {
+   $("#name").keyup(checarUsuarios);
+});
+ 
+ 
+     $(document).ready(function () {
+   $("#name").change(checarUsuarios);
+});
+
+     $(document).ready(function () {
+   $("#email").keyup(checarEmails);
+});
+ 
+ 
+     $(document).ready(function () {
+   $("#email").change(checarEmails);
+});
+
+function checarExpediente() {
+    
+var lid= document.getElementById('lid').value;
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+document.getElementById("checkexp").innerHTML = xhttp.responseText;
+expresponsed = document.getElementById('expchecker').value;
+
+
+
+if (expresponsed=="1")
+{
+   
+   if (emailresponsed)
+   {
+      emailresponsed=document.getElementById('emailchecker').value;
+      if (emailresponsed=="1"){
+          if (usernameresponsed)
+            {
+               usernameresponsed=document.getElementById('usernamechecker').value;
+               if (usernameresponsed=="1"){
+                   document.getElementById("thesubmitBoton").disabled = false; 
+                             }
+            } 
+       }
+   }
+}
+
+
+else if (expresponsed=="0")
+{
+    document.getElementById("thesubmitBoton").disabled = true;
+}
+}
+};
+
+}
+
+
+function checarUsuarios() {
+    
+var name= document.getElementById('name').value;
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+document.getElementById("checkusername").innerHTML = xhttp.responseText;
+usernameresponsed = document.getElementById('usernamechecker').value;
+
+
+
+if (usernameresponsed=="1")
+{
+   
+   if (emailresponsed)
+   {
+      emailresponsed=document.getElementById('emailchecker').value;
+      if (emailresponsed=="1"){
+          if (expresponsed)
+            {
+               expresponsed=document.getElementById('expchecker').value;
+               if (expchecker=="1"){
+                   document.getElementById("thesubmitBoton").disabled = false; 
+                             }
+            } 
+       }
+   }
+}
+
+
+else if (usernameresponsed=="0")
+{
+    document.getElementById("thesubmitBoton").disabled = true;
+}
+}
+};
+
+}
+function checarEmails() {
+    
+var email= document.getElementById('email').value;
+
+
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (xhttp.readyState == 4 && xhttp.status == 200) {
+document.getElementById("checkemailresponse").innerHTML = xhttp.responseText;
+emailresponsed = document.getElementById('emailchecker').value;
+if (emailresponsed=="1")
+{
+   
+   if (usernameresponsed)
+   {
+      emailresponsed=document.getElementById('usernamechecker').value;
+      if (usernameresponsed=="1"){
+          if (expresponsed)
+            {
+               expresponsed=document.getElementById('expchecker').value;
+               if (expchecker=="1"){
+                   document.getElementById("thesubmitBoton").disabled = false; 
+                             }
+            } 
+       }
+   }
+}
+else if (emailresponsed=="0")
+{
+    document.getElementById("thesubmitBoton").disabled = true;
+}
+}
+};
+
+
+}
+
+</script>
+
 <link href="quiz.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -63,21 +214,25 @@ function check()
        <table width="301" border="0" align="left">
          <tr>
            <td><div align="left" class="style7">Expediente </div></td>
-           <td><input type="text" name="lid"></td>
+           <td><input required="" type="text" name="lid" id="lid"></td>
+            <div id="checkexp" class=""></div>
          </tr>
          
          
          <tr>
            <td class="style7">Nombre</td>
-           <td><input name="name" type="text" id="name"></td>
+           <td><input required="" name="name" type="text" id="name"></td>
+            <div id="checkusername" class=""></div>
          </tr>
          
            <td valign="top" class="style7">Email</td>
-           <td><input name="email" type="text" id="email"></td>
+           <td><input required="" name="email" type="email" id="email"></td>
+           <div id="checkemailresponse"></div>
          </tr>
          <tr>
            <td>&nbsp;</td>
-           <td><input type="submit" name="Submit" value="Signup">
+           
+           <td><input type="submit" name="Submit" value="Registrar" id="thesubmitBoton">
            </td>
          </tr>
        </table>
