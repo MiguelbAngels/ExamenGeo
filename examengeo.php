@@ -25,7 +25,7 @@ $incisos = array(
 
 /* `examengeo`.`inscripcion` */
 $inscripcion = array(
-  array('ID Alumno' => '217202294','ID Examen' => '300419','ID Maestro' => '197202294','Fecha Aplicada' => '2019-04-30','ID Respuestas' => '1')
+  array('ID Inscripcion' => '19191919','ID Alumno' => '217202294','ID Examen' => '300419','ID Maestro' => '197202294','Fecha Aplicada' => '2019-04-30','ID Respuestas' => '20193004')
 );
 
 /* `examengeo`.`reactivos` */
