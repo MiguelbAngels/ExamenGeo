@@ -32,24 +32,44 @@ if(isset($submit))
 {
 
 	
-      $sql = "SELECT * FROM alumno WHERE Expediente='$loginid'";
-	  $sql = "SELECT * FROM passw WHERE password='$pass'";
+      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1'";
+	  $sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1'" ;
+	  $sql3 = "SELECT * FROM usuarios WHERE Password='$pass'";
+
 	  
 	$rs=mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+	$row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+	$rs2=mysqli_query($con,$sql2);
+	$rs3=mysqli_query($con,$sql3);
+	$row3 = mysqli_fetch_array($rs3,MYSQLI_ASSOC);
+	$row2 = mysqli_fetch_array($rs2,MYSQLI_ASSOC);
     $count = mysqli_num_rows($rs);
-	if($count<1)
+	$count2 = mysqli_num_rows($rs2);
+	$count3 = mysqli_num_rows($rs3);
+	if($count<1 && $count2 < 1 && $count3 < 1)
 	{
 		$found="N";
 	}
-	else
+	else 
 	{
-		$_SESSION[login]=$loginid;
+		if ($count < 1 && $count3 >= 1 && $count2 >= 1){
+			$_SESSION[login]=$loginid;
+		}
+		else{
+			if ($count >=1)$_SESSION['alogin']="true";
+			else{
+			    $found="N";
+			}
+	
+		}
+		
+		
 		
 	}
 }
-if (isset($_SESSION[login]))
+if (isset($_SESSION[login]) )
 {
+	header("Cache-Control: no-cache, must-revalidate");
 	if(isset($_SESSION['login']))
 	{
 	 echo "<div align=\"right\"><strong><a href=\"index.php\"> Casa </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
@@ -58,15 +78,16 @@ if (isset($_SESSION[login]))
 	 {
 	 	echo "&nbsp;";
 	 }
-echo "<h1 class='style8' align=center>Bienvenido al examen en línea</h1>";
+
+echo "<h1 class='style8' align=center>Bien venido al examen en línea</h1>";
 		echo '<table width="28%"  border="0" align="center">
   <tr>
     <td  width="7%" height="65" valign="bottom"><img src="image/HLPBUTT2.JPG" width="50" height="50" align="middle"></td>
-    <td width="93%" valign="bottom" bordercolor="#0000FF"> <a href="sublist.php" class="alert alert-danger">Entrar a un examen</a></td>
+    <td width="93%" valign="bottom" bordercolor="#0000FF"> <a href="sublist.php" class="alert alert-danger">Sujeto para el cuestionario </a></td>
   </tr>
   <tr>
     <td height="58" valign="bottom"><img src="image/DEGREE.JPG" width="43" height="43" align="absmiddle"></td>
-    <td valign="bottom"> <a href="result.php" class="alert alert-danger">Resultados </a></td>
+    <td valign="bottom"> <a href="result.php" class="alert alert-danger">Resultado </a></td>
   </tr>
 </table>';
    
@@ -74,6 +95,14 @@ echo "<h1 class='style8' align=center>Bienvenido al examen en línea</h1>";
 		
 
 }
+if (isset($_SESSION[alogin]) ){
+	if(isset($_SESSION['alogin']))
+	echo "<script>location.href='admin/login.php?removido=true';</script>";
+    die();
+}
+	
+
+
 
 
 ?>
@@ -81,7 +110,7 @@ echo "<h1 class='style8' align=center>Bienvenido al examen en línea</h1>";
   <tr>
     <td width="70%" height="25">&nbsp;</td>
     
-    <td width="29%" bgcolor="#1d91d0"><div align="center" class="style1">Inicio de sesión de usuario</div></td>
+    <td width="29%" bgcolor="#1d91d0"><div align="center" class="style1">Inicio de1 sesión de usuario</div></td>
   </tr>
   <tr>
     <td height="296" valign="top"><div align="center">
@@ -94,7 +123,8 @@ echo "<h1 class='style8' align=center>Bienvenido al examen en línea</h1>";
         <param name="BGCOLOR" value="#FFFFFF">
 <p align="left" class="style5">&nbsp;</p>
       <blockquote>
-          <p align="left" class="style5"><span class="style7">Examen prueba...</span></p>
+          <p align="left" class="style5"><span class="style7">Bienvenido. Este tutorial proporcionará el examen en línea para diversos temas de interés. 
+            Necesita iniciar sesión para tomar el examen en línea.</span></p>
       </blockquote>
     </div></td>
     <td valign="top"><form name="form1" method="post" action="">
@@ -122,7 +152,7 @@ echo "<h1 class='style8' align=center>Bienvenido al examen en línea</h1>";
 		  <input name="submit" type="submit" id="submit" value="Login">		  </td>
         </tr>
         <tr>
-          
+          <td colspan="2" bgcolor="#1d91d0"><div align="center"><span class="style4">New User ? <a href="signup.php">Signup Free</a></span></div></td>
           </tr>
       </table>
       

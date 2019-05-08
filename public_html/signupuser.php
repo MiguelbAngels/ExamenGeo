@@ -11,27 +11,27 @@
 include("header.php");
 extract($_POST);
 include("database.php");
-
-      $sql = "SELECT * FROM alumno where Expediente='$lid'";
+	
+      $sql = "SELECT * FROM usuarios where ID='$lid'";
 	$rs=mysqli_query($con,$sql);
   $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
     $count = mysqli_num_rows($rs);
 	if($count>0)
 	{
+	
 	echo "<br><br><br><div class=head1>Expediente ingresado ya existe</div>";
 	exit;
 	}
 
  
-   $pass = password_hash($pass,PASSWORD_BCRYPT);
-   $pass = password_hash($pass,PASSWORD_DEFAULT);
+  
    
  
-$query="insert into alumno(Expediente,Nombre,Correo) values('$lid','$name','$email')";
+$query="insert into usuarios(ID,Nombre,Correo,Password,Clase,IDExamen,Estado) values('$lid','$name','$email','$pass','0','12','0')";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
-echo "<br><br><br><div class=head1>Your Login ID  $lid Created Sucessfully</div>";
-echo "<br><div class=head1>Inicie sesión usando su ID de inicio de sesión para tomar Quiz</div>";
-echo "<br><div class=head1><a href=index.php>Login</a></div>";
+echo "<br><br><br><div class=head1>Tu cuenta ha sido creada exitosamente.</div>";
+echo "<br><div class=head1>Para concluir su registro, algun administrador debera confirmar su registro</div>";
+echo "<br><div class=head1><a href=index.php>Inicio</a></div>";
 
 
 ?>
