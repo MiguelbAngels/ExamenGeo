@@ -43,7 +43,7 @@
   <div class="form">
     <h2>Crear una cuenta</h2>
     <form method="POST" action="signupuser.php">
-      <input required="" pattern="[A-Za-z]+" name="name" id="name" type="text" placeholder="Nombre"/>
+      <input required="" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre"/>
         <input minlength="9" pattern="[0-9]+" required="" type="text" placeholder="Expediente" name="username" id="username"/>
    <div id="checkusername" class=""></div>
    <input required="" name="pass" id="password" type="password" placeholder="Contraseña"/>
