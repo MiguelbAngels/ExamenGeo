@@ -11,23 +11,23 @@
 include("header.php");
 extract($_POST);
 include("database.php");
-	
-      $sql = "SELECT * FROM usuarios where ID='$lid'";
+
+      $sql = "SELECT * FROM usuarios where ID='$username'";
 	$rs=mysqli_query($con,$sql);
   $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
     $count = mysqli_num_rows($rs);
 	if($count>0)
 	{
-	
+
 	echo "<br><br><br><div class=head1>Expediente ingresado ya existe</div>";
 	exit;
 	}
 
- 
-  
-   
- 
-$query="insert into usuarios(ID,Nombre,Correo,Password,Clase,IDExamen,Estado) values('$lid','$name','$email','$pass','0','12','0')";
+
+
+
+
+$query="insert into usuarios(ID,Nombre,Correo,Password,Clase,IDExamen,Estado) values('$username','$name','$email','$pass','0','12','0')";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Tu cuenta ha sido creada exitosamente.</div>";
 echo "<br><div class=head1>Para concluir su registro, algun administrador debera confirmar su registro</div>";
