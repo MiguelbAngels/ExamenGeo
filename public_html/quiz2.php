@@ -31,26 +31,8 @@ body {
   <tr>
     <td width="90%" valign="top">
 <!--You can modify the text, color, size, number of loops and more on the flash header by editing the text file (fence.txt) included in the zip file.-->
-<div align="left"><object classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000
-codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,2,0
-width=500
-height=68>
-<param name=movie value=image/fence.swf>
-<param name=quality value=high>
-<param name=BGCOLOR value=#000000>
-<param name=SCALE value=showall>
-<param name=wmode value=transparent> 
-<embed src=image/fence.swf
-quality=high
-pluginspage=http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash type=application/x-shockwave-flash
-width=500
-height=68
-bgcolor=#000000
-scale= showall>
-</embed>
-</object></div></td>
-    <td width="10%">
-     <img border="0" src="image/topright.jpg" width="203" height="68" align="right"></td>
+<div align="left"></div></td>
+    <td width="10%">&nbsp;</td>
   </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#000000" background="img/blackbar.jpg">
@@ -60,46 +42,218 @@ scale= showall>
 </table>
 <table width="100%"  border="0">
   <tr>
-    <td width="89%"><span class="style9">Welcome tusolutionweb</span></td>
-    <td width="11%"><span class="style10">Signout</span></td>
+    <td width="89%"><span class="style9">Examen en linea</span></td>
+    <td width="11%">&nbsp;</td>
   </tr>
+
+<?php
+include("header.php");
+	extract($_GET);
+	
+include("database.php");
+$query = "SELECT * FROM reactivos WHERE IDExamen = $testid";
+$preguntas=mysqli_query($con,$query) or die(mysqli_error());
+	mysqli_data_seek($preguntas,0);
+$Q_1= mysqli_fetch_row($preguntas);
+	mysqli_data_seek($preguntas,1);
+$Q_2= mysqli_fetch_row($preguntas);
+	mysqli_data_seek($preguntas,2);
+$Q_3= mysqli_fetch_row($preguntas);
+
+	
+	
+$query = "SELECT * FROM incisos WHERE IDReactivo = $Q_1[0]";
+$resp1=mysqli_query($con,$query) or die(mysqli_error());
+	mysqli_data_seek($resp1,0);
+$R1_1= mysqli_fetch_row($resp1);
+	mysqli_data_seek($resp1,1);
+$R1_2= mysqli_fetch_row($resp1);
+	
+
+
+$query = "SELECT * FROM incisos WHERE IDReactivo = $Q_2[0]";
+$resp2=mysqli_query($con,$query) or die(mysqli_error());
+	mysqli_data_seek($resp2,0);
+$R2_1= mysqli_fetch_row($resp2);
+	mysqli_data_seek($resp2,1);
+$R2_2= mysqli_fetch_row($resp2);
+	
+	
+	
+$query = "SELECT * FROM incisos WHERE IDReactivo = $Q_3[0]";
+$resp3=mysqli_query($con,$query) or die(mysqli_error());
+	mysqli_data_seek($resp3,0);
+$R3_1= mysqli_fetch_row($resp3);
+	mysqli_data_seek($resp3,1);
+$R3_2= mysqli_fetch_row($resp3);	
+
+	$Respuesta1 = false;
+	$Respuesta2 = false;
+	$Respuesta3 = false;
+	
+
+if (isset($_POST['submit'])) {
+	if(isset($_POST['ans1']) && isset($_POST['ans2']) && isset($_POST['ans3']))
+	{
+		if($_POST['ans1']==1){
+		$_POST['ans1']=$R1_1[0];
+	}else{
+		$_POST['ans1']=$R1_2[0];
+	}
+	
+	if($_POST['ans2']==1){
+		$_POST['ans2']=$R2_1[0];
+	}else{
+		$_POST['ans2']=$R2_2[0];
+	}
+	
+	if($_POST['ans3']==1){
+		$_POST['ans3']=$R3_1[0];
+	}else{
+		$_POST['ans3']=$R3_2[0];
+	}
+		if($_POST['ans1']==$Q_1[2]){
+			$Respuesta1=true;
+		}else{
+			$Respuesta1=false;
+		}
+		
+		if($_POST['ans2']==$Q_2[2]){
+			$Respuesta2=true;
+		}else{
+			$Respuesta2=false;
+		}
+		
+		if($_POST['ans3']==$Q_3[2]){
+			$Respuesta3=true;
+		}else{
+			$Respuesta3=false;
+		}
+		
+		echo "||".$_POST['ans1']."==$Q_1[2]||  ";
+		echo "||".$_POST['ans2']."==$Q_2[2]||  ";
+		echo "||".$_POST['ans3']."==$Q_3[2]||  ";
+		$query="SELECT * FROM `respuestas` WHERE 1";
+		$rss=mysqli_query($con,$query)or die("Could Not Perform the Query");
+		$roww = mysqli_fetch_array($rss,MYSQLI_ASSOC);
+		$idrespuestas = mysqli_num_rows($rss) + 1;
+		
+		$query="INSERT INTO respuestas(IDRes, nPreguntas, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`) VALUES('$idrespuestas',3,'$Respuesta1','$Respuesta2','$Respuesta3',0,0,0,0,0,0,0)";
+		$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
+		
+		$query="SELECT * FROM `inscripcion` WHERE 1";
+		$rsss=mysqli_query($con,$query)or die("Could Not Perform the Query");
+		$rowww = mysqli_fetch_array($rsss,MYSQLI_ASSOC);
+		$idreporte = mysqli_num_rows($rsss) + 1;
+		
+		$query = "SELECT AdminID FROM examen WHERE IDExamen = $testid";
+		$admin=mysqli_query($con,$query) or die(mysqli_error());
+		mysqli_data_seek($admin,0);
+		$idadmin= mysqli_fetch_row($admin);
+		$aux = getdate();
+		$fecha = $aux[mday]."-".$aux[mon]."-".$aux[year];
+		echo "Reporte: $idreporte \\";
+		echo "Alumno: $user \\";
+		echo "Examen: $testid  \\";
+		echo "Maestro: $idadmin[0]  \\";
+		echo "Fecha: $fecha  \\";
+		echo "Respuestas: $idrespuestas  \\";
+		echo "Primera : $Respuesta1\\";
+		echo "Primera : $Respuesta2\\";
+		echo "Primera : $Respuesta3\\";
+		$query="INSERT INTO inscripcion(IDInscripcion, IDAlumno, IDExamen, AdminID, Fecha, IDRespuestas) VALUES ('$idreporte','$user','$testid','$idadmin[0]','$fecha','$idrespuestas')";
+		$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
+		
+		
+	}
+}
+$_POST['ans1']=NULL;
+$_POST['ans2']=NULL;
+$_POST['ans3']=NULL;
+	
+
+
+	
+
+?>	
+
 </table>
-<strong>PHP Test
-</strong>
 <table width="304"  border="0" align="center">
   <tr>
-    <td width="298"><div align="left"><strong> Q-1</strong> <strong>: Lo que no es elemento Php?</strong></div></td>
+    <td width="298"><div align="left"><strong> 1.- 
+		<?php 
+		echo $Q_1[1];
+		?></strong> </div></td>
   </tr>
   <tr>
     <td>
       <div align="left">
-        <input type=radio name=ans value=1>
-    <strong> Enviar</strong></div></td>
+		  <form method="post" action="">
+        <input type=radio name=ans1 value=1>
+			 
+			  
+    <?php echo $R1_1[1] ?> </div></td>
+		
   </tr>
   <tr>
     <td>
       <div align="left">
-        <input type=radio name=ans value=2>
-    <strong> Obtener    </strong></div></td>
-  </tr>
-  <tr>
-    <td>
-      <div align="left">
-        <input type=radio name=ans value=3>
-    <strong>Sesión</strong></div></td>
-  </tr>
-  <tr>
-    <td>
-      <div align="left">
-        <input type=radio name=ans value=4>
-    <strong> Cookie    </strong></div></td>
-  </tr>
-  <tr>
-    <td>
-      <div align="center">
-        <input type=submit name=submit value='Próxima pregunta'>
-        </div></td>
+        <input type=radio name=ans1 value=2>
+    <?php echo $R1_2[1] ?>
+		</div></td>
+	  
   </tr>
 </table>
+<p>&nbsp;</p>
+<table width="304"  border="0" align="center">
+  <tr>
+    <td width="298"><div align="left"><strong> 2.- 
+		<?php 
+		echo $Q_2[1];
+		?></strong> </div></td>
+  </tr>
+  <tr>
+    <td>
+      <div align="left">
+        <input type=radio name=ans2 value=1>
+    <?php echo $R2_1[1] ?> </div></td>
+  </tr>
+  <tr>
+    <td>
+      <div align="left">
+        <input type=radio name=ans2 value=2>
+    <?php echo $R2_2[1] ?></div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="304"  border="0" align="center">
+  <tr>
+    <td width="298"><div align="left"><strong> 3.-
+		<?php 
+		echo $Q_3[1];
+		?></strong></div></td>
+  </tr>
+  <tr>
+    <td>
+      <div align="left">
+        <input type=radio name=ans3 value=1>
+    <?php echo $R3_1[1] ?> </div></td>
+  </tr>
+  <tr>
+    <td>
+      <div align="left">
+        <input type=radio name=ans3 value=2>
+    <?php echo $R3_2[1] ?></div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<td><div align="center">
+	
+  		<input type=submit  name=submit value='Terminar'>
+	
+	</form>
+</div></td>
+</p>
+
 </body>
 </html>

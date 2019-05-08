@@ -21,18 +21,22 @@ session_start();
 <body>
 <?php
 include("header.php");
+	
 include("database.php");
 echo "<h2 class=head1> Seleccione Asunto para dar cuestionario</h2>";
 
-      $sql = "SELECT * FROM mst_subject";
+      $sql = "SELECT * FROM examen";
 	$rs=mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+  $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
     $count = mysqli_num_rows($rs);
 
 echo "<table align=center class='table'>";
+	
+	
+	
 while($row=mysqli_fetch_row($rs))
 {
-	echo "<tr class='success'><td align=center class='text-danger'><a  href=showtest.php?subid=$row[0]><font class='text-warning' size=6>$row[1]</font></a>";
+	echo "<tr class='success'><td align=center class='text-danger'><a  href=showtest.php?subid=$row[0]&user=$_SESSION[login]><font class='text-warning' size=6>$row[1]</font></a>";
 }
 echo "</table>";
 ?>

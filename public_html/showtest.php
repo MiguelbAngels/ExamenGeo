@@ -24,10 +24,10 @@ session_start();
 include("header.php");
 include("database.php");
 extract($_GET);
-$rs1=mysqli_query($con,"select * from mst_subject where sub_id=$subid");
+$rs1=mysqli_query($con,"select * from examen where IDExamen=$subid");
 $row1=mysqli_fetch_array($rs1);
 echo "<h1 align=center><font color=blue> $row1[1]</font></h1>";
-$rs=mysqli_query($con,"select * from mst_test where sub_id=$subid");
+$rs=mysqli_query($con,"select * from examen where IDExamen=$subid");
 if(mysqli_num_rows($rs)<1)
 {
 	echo "<br><br><h2 class=head1>Sin cuestionario para este tema</h2>";
@@ -38,7 +38,7 @@ echo "<table align=center class='table'>";
 
 while($row=mysqli_fetch_row($rs))
 {
-	echo "<tr class='success'><td class='text-danger' align=center ><a href=quiz.php?testid=$row[0]&subid=$subid><font  class='text-warning' size=6>$row[2]</font></a>";
+	echo "<tr class='success'><td class='text-danger' align=center ><a href=quiz2.php?testid=$row[0]&subid=$subid&user=$user><font  class='text-warning' size=6>$row[2]</font></a>";
 }
 echo "</table>";
 ?>
