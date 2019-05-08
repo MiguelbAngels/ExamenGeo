@@ -19,7 +19,10 @@ error_reporting(1);
 </head>
 
 <body>
+
+	
 <?php
+$con = mysqli_connect("localhost","u442507923_udaq","1q2w3e","u442507923_udaq") or die(mysql_error());
 include("header.php");
 extract($_POST);
 
@@ -28,15 +31,56 @@ if(!isset($_SESSION[alogin]))
 	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
 		exit;
 }
-?>
 
-<p class="head1">Bienvenido al área administrativa </p>
+$sql = "SELECT * From usuarios WHERE Clase='0' and Estado = '0'";
+$result = mysqli_query($con,$sql);
+
+		?>
+	
+  <script type="text/javascript">
+   
+   function confirmar_eliminar(){ 
+   if(confirm("¿Esta seguro que desea rechazar esta solicitud?")){
+           
+   }else{
+    window.location.href='alumnosp_gestion.php';
+   }
+  }
+  </script> 
+	
+
+<p class="head1">Solicitudes: </p>
 <div style="margin:auto;width:90%;height:500px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
 <div style="margin-left:20%;padding-top:5%">
-
-<p class="style7"><a href="alumnos_gestion.php"><font  class='text-danger' size=6>Alumnos registrados</font></a></p>
-<p class="style7"><a href="alumnosp_gestion.php"><font  class='text-danger' size=6>Solicitudes de registro</font></a></p>
-<p class="style7"><a href="gestion_examen.php"><font  class='text-danger' size=6>Examenes</font></a></p>
+<table border = "1">
+<tr>
+		
+		<br><br>
+		<td>Id</td>
+		<td> Nombre</td>
+		<td> Correo</td>
+		<td COLSPAN = "2"><center>Operaciones</center></td>
+		<br>
+		
+	</tr>
+<?php
+	while($mostrar=(mysqli_fetch_array($result))){
+		?>
+		
+	<tr>
+		<td><?php echo $mostrar['ID']?></td>
+		<td><?php echo $mostrar['Nombre']?></td>
+		<td><?php echo $mostrar['Correo']?></td>
+		<td><a href= "aceptar_soli.php?id=<?php echo $mostrar['ID']?>"> Aceptar</a></td>
+		<td><a onclick= "confirmar_eliminar(location='deleteuser.php?id=<?php echo $mostrar['ID'];?>')"> Rechazar</a></td>
+		
+		
+	</tr>
+	
+	<?php
+	}
+	?>
+</table>
 
 <p align="center" class="head1">&nbsp;</p>
 </div>

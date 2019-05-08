@@ -11,8 +11,8 @@
 include("header.php");
 extract($_POST);
 require("../database.php");
-$query3="insert into mst_test(sub_id,test_name,total_que) values ('$subid','$testname','$totque'";
-$rs3=mysqli_query($con,$query3)or die(mysqli_error());
+$query3="insert into examen(IDExamen,TestName,AdminID,Lugar,Fecha,HInicio,HFinal,PassExamen)values ('14','$testname','3','$lugar','$fecha','$hinicio','$hfin','$passex')";
+$rs3=mysqli_query($con,$query3)or die("no se registro error error");
 echo "<p align=center>Test <b>\"$testname\"</b> Added Successfully.</p>";
 
 unset($_POST);

@@ -16,15 +16,7 @@ include("header.php");
 
 
 echo "<br><h2><div  class=head1>Agregar prueba</div></h2>";
-if($_POST[submit]=='Save' || strlen($_POST['subid'])>0 )
-{
-extract($_POST);
-$query3="insert into mst_test(sub_id,test_name,total_que) values ('$subid','$testname','$totque')";
-$rs3=mysqli_query($con,$query3)or die("no se registro error error");
-echo "<p align=center>Test <b>\"$testname\"</b> Agregado exitosamente.</p>";
 
-unset($_POST);
-}
 ?>
 <SCRIPT LANGUAGE="JavaScript">
 function check() {
@@ -40,32 +32,43 @@ alert("Por favor ingrese la pregunta total");
 document.form1.totque.value;
 return false;
 }
+lug=document.form1.lugar.value;
+if(lug.length<1) {
+alert("Por favor ingrese el lugar");
+document.form1.lug.value;
+return false;
+}
+date=document.form1.fecha.value;
+if(date.length<1) {
+alert("Por favor ingrese la fecha");
+document.form1.fecha.value;
+return false;
+}
+hi=document.form1.hinicio.value;
+if(hi.length<1) {
+alert("Por favor ingrese la hora de inicio");
+document.form1.hinicio.value;
+return false;
+}
+hf=document.form1.hfin.value;
+if(hf.length<1) {
+alert("Por favor ingrese la hora de fin");
+document.form1.hfin.value;
+return false;
+}
+psw=document.form1.passex.value;
+if(psw.length<1) {
+alert("Por favor ingrese la contraseñal");
+document.form1.passex.value;
+return false;
+}
 return true;
 }
 </script>
-<form name="form1" method="post"  onSubmit="return check();">
+<form name="form1" method="post" action= "addTest.php"  onSubmit="return check();">
   <table width="58%"  border="0" align="center">
     <tr>
-      <td width="49%" height="32"><div align="left"><strong>Ingrese la ID del sujeto</strong></div></td>
-      <td width="3%" height="5">  
-      <td width="48%" height="32"><select name="subid">
-<?php
-
-$query2="SELECT * FROM mst_subject order by  sub_name";
-$rs2=mysqli_query($con,$query2)or die("Could Not Perform the Query");
-
-	  while($row=mysqlI_fetch_array($rs2))
-{
-if($row[0]==$subid)
-{
-echo "<option value='$row[0]' selected>$row[1]</option>";
-}
-else
-{
-echo "<option value='$row[0]'>$row[1]</option>";
-}
-}
-?>
+      
       </select>
         
     <tr>
@@ -77,6 +80,32 @@ echo "<option value='$row[0]'>$row[1]</option>";
       <td height="26"><div align="left"><strong>Ingrese la pregunta total </strong></div></td>
       <td>&nbsp;</td>
       <td><input name="totque" type="text" id="totque"></td>
+    </tr>
+    
+    <tr>
+      <td height="26"><div align="left"><strong>Ingrese el lugar del examen </strong></div></td>
+      <td>&nbsp;</td>
+      <td><input name="lugar" type="text" id="lugar"></td>
+    </tr>
+    <tr>
+      <td height="26"><div align="left"><strong>Ingrese la fecha </strong></div></td>
+      <td>&nbsp;</td>
+      <td><input name="fecha" type="date" id="fecha"></td>
+    </tr>
+    <tr>
+      <td height="26"><div align="left"><strong>Ingrese la hora de inicio </strong></div></td>
+      <td>&nbsp;</td>
+      <td><input name="hinicio" type="text" id="hinicio"></td>
+    </tr>
+    <tr>
+      <td height="26"><div align="left"><strong>Ingrese la hora final del examen </strong></div></td>
+      <td>&nbsp;</td>
+      <td><input name="hfin" type="text" id="hfin"></td>
+    </tr>
+    <tr>
+      <td height="26"><div align="left"><strong>Ingrese una contraseña para el examen </strong></div></td>
+      <td>&nbsp;</td>
+      <td><input name="passex" type="text" id="passex"></td>
     </tr>
     <tr>
       <td height="26"></td>
