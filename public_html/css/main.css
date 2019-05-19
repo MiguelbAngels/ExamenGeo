@@ -35,8 +35,6 @@
 }
 
 body, html {
-	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
   background: #22584e;/* Old Browsers */
   background: -moz-linear-gradient(-45deg, #22584e 0%, #2a8445 0%, #379292 19%, #3a96a6 24%, #26f2a4 47%, #2fe7a6 50%, #6ba0b3 70%, #91b35d 100%); /* FF3.6+ */
   background: -webkit-gradient(left top, right bottom, color-stop(0%, #22584e), color-stop(0%, #2a8445), color-stop(19%, #379292), color-stop(24%, #3a96a6), color-stop(47%, #26f2a4), color-stop(50%, #2fe7a6), color-stop(70%, #6ba0b3), color-stop(100%, #91b35d));/* Chrome, Safari4+ */
@@ -45,8 +43,6 @@ body, html {
   background: -ms-linear-gradient(-45deg, #22584e 0%, #2a8445 0%, #379292 19%, #3a96a6 24%, #26f2a4 47%, #2fe7a6 50%, #6ba0b3 70%, #91b35d 100%); /* IE 10+ */
   background: linear-gradient(135deg, #22584e 0%, #2a8445 0%, #379292 19%, #3a96a6 24%, #26f2a4 47%, #2fe7a6 50%, #6ba0b3 70%, #91b35d 100%);/* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22584e', endColorstr='#91b35d', GradientType=1 );/* IE6-9 fallback on horizontal gradient */
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 /*---------------------------------------------*/
