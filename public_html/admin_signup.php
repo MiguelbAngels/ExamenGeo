@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html >
   <head>
     <link rel="shortcut icon" href="logo.ico">
@@ -17,6 +19,15 @@
 
     <link rel="stylesheet" href="css/style-form.css">
     <link rel="stylesheet" href="css/fondo.css">
+      <?php
+  session_start();
+error_reporting(1);
+if(!isset($_SESSION[alogin]))
+{
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Ingrese</a><div>";
+		exit;
+}
+?>
   </head>
 
   <body >
@@ -35,14 +46,14 @@
 
   <div  class="module form-module">
 
-      <center><div class=" "><i class="fa fa-times fa-pencil"></i>  Registrarme
+      <center><div class=" "><i class="fa fa-times fa-pencil"></i>  Registrar
 
           </div></center>
 
 
   <div class="form">
-    <h2>Crear una cuenta</h2>
-    <form method="POST" action="signupuser.php">
+    <h2>Crear una cuenta administrativa</h2>
+    <form method="POST" action="signupadmin.php">
       <input required="" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre"/>
         <input minlength="9" pattern="[0-9]+" required="" type="text" placeholder="Expediente" name="username" id="username"/>
    <div id="checkusername" class=""></div>

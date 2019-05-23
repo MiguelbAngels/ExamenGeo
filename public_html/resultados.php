@@ -32,26 +32,40 @@ if(!isset($_SESSION[login]))
 		exit;
 }
 
-$id = $_REQUEST['id'];
-$idex = $_REQUEST['idex'];
-$idr = $_REQUEST['idr'];
-$sql = "SELECT * From inscripcion WHERE IDAlumno='$id' and IDExamen = '$idex'";
+?>
+<p class="head1">Resultados de la prueba: </p>
+<div style="margin:auto;width:90%;height:500px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
+<div style="margin-left:20%;padding-top:5%">
+<br><td><a href= "index.php?id=<?php echo $id?>"> Regresar</a></td>
+<?php
+
+$id =$_SESSION[login];
+
+
+
+	    
+$sql = "SELECT * From inscripcion WHERE IDAlumno='$id' ";
 $result = mysqli_query($con,$sql);
+
+	while($mostrar=(mysqli_fetch_array($result))){
+	    $idex = $mostrar['IDExamen'];
+	    
+	    $sql0 = "SELECT * From inscripcion WHERE IDAlumno='$id' and IDExamen = '$idex'";
+$result0 = mysqli_query($con,$sql0);
+	    
 $sql2 = "SELECT * From examen WHERE IDExamen='$idex'";
 $result2 = mysqli_query($con,$sql2);
+$idr = $mostrar['IDRespuestas'];
 $sql3 = "SELECT * From respuestas WHERE IDRes ='$idr'";
 $result3 = mysqli_query($con,$sql3);
-$result4 = mysqli_query($con,$sql);
+$result4 = mysqli_query($con,$sql0);
 
 		?>
 	
 
 	
 
-<p class="head1">Resultados de la prueba: </p>
-<div style="margin:auto;width:90%;height:500px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
-<div style="margin-left:20%;padding-top:5%">
-<br><td><a href= "index.php?id=<?php echo $id?>"> Regresar</a></td>
+
 <table border = "1">
 <tr>
 		
@@ -79,12 +93,12 @@ $result4 = mysqli_query($con,$sql);
 	}
 	?>
 <?php
-	while($mostrar=(mysqli_fetch_array($result))){
+	while($mostrar0=(mysqli_fetch_array($result0))){
 		?>
 		
 
-		<td><?php echo $mostrar['Fecha']?></td>
-	
+		<td><?php echo $mostrar0['Fecha']?></td>
+	    
 		
 
 	
@@ -110,7 +124,6 @@ $result4 = mysqli_query($con,$sql);
 		<td><?php echo $mostrar4['RespCorrectas']?></td>
 		
 	
-		
 	
 		
 		
@@ -122,6 +135,10 @@ $result4 = mysqli_query($con,$sql);
 	
 		</tr>
 </table>
+	
+	<?php
+	}
+	?>
 
 <p align="center" class="head1">&nbsp;</p>
 </div>

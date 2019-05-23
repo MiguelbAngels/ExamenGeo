@@ -47,11 +47,52 @@ body {
   </tr>
 
 <?php
-include("header.php");
+
 	extract($_GET);
 	
 include("database.php");
-$query = "SELECT * FROM reactivos WHERE IDExamen = $testid";
+$contador = 0;
+$query = "SELECT * FROM reactivos WHERE IDExamen = $subid";
+$query2 = "SELECT * FROM examen WHERE IDExamen = $subid";
+
+$sql = "SELECT * From inscripcion WHERE IDAlumno='$user' and IDExamen = '$subid'";
+$result = mysqli_query($con,$sql);
+$result2 = mysqli_query($con,$query2);
+$contador2 = 0;
+
+
+	while($mostrar=(mysqli_fetch_array($result))){
+	
+	
+	
+		
+    $contador2 = $contador2 + 1;
+	
+	
+	}
+	
+	if ($contador2 >= 1){
+	    echo "ya realizo este examen, solo se puede realizar una vez.....";
+	    exit;
+	}
+	date_default_timezone_set('America/Hermosillo');
+	while($mostrar2=(mysqli_fetch_array($result2))){
+	$date = date("H:i:s");
+	$dateEx = $mostrar2['HInicio'];
+	$dateEx2 = $mostrar2['HFinal'];
+
+	if ($dateEx > $date || $dateEx2 < $date ){
+	     echo "aun no inicia este examen.... </br>";
+	     echo "Son las: $date </br>";
+	     echo "El examen inicia a las: $dateEx </br>";
+	    exit;
+	}
+	
+	}
+	
+
+
+
 $preguntas=mysqli_query($con,$query) or die(mysqli_error());
 	mysqli_data_seek($preguntas,0);
 $Q_1= mysqli_fetch_row($preguntas);
@@ -114,18 +155,21 @@ if (isset($_POST['submit'])) {
 	}
 		if($_POST['ans1']==$Q_1[2]){
 			$Respuesta1=true;
+			$contador = $contador + 1;
 		}else{
 			$Respuesta1=false;
 		}
 		
 		if($_POST['ans2']==$Q_2[2]){
 			$Respuesta2=true;
+			$contador = $contador + 1;
 		}else{
 			$Respuesta2=false;
 		}
 		
 		if($_POST['ans3']==$Q_3[2]){
 			$Respuesta3=true;
+			$contador = $contador + 1;
 		}else{
 			$Respuesta3=false;
 		}
@@ -146,7 +190,7 @@ if (isset($_POST['submit'])) {
 		$rowww = mysqli_fetch_array($rsss,MYSQLI_ASSOC);
 		$idreporte = mysqli_num_rows($rsss) + 1;
 		
-		$query = "SELECT AdminID FROM examen WHERE IDExamen = $testid";
+		$query = "SELECT AdminID FROM examen WHERE IDExamen = $subid";
 		$admin=mysqli_query($con,$query) or die(mysqli_error());
 		mysqli_data_seek($admin,0);
 		$idadmin= mysqli_fetch_row($admin);
@@ -161,9 +205,12 @@ if (isset($_POST['submit'])) {
 		echo "Primera : $Respuesta1\\";
 		echo "Primera : $Respuesta2\\";
 		echo "Primera : $Respuesta3\\";
-		$query="INSERT INTO inscripcion(IDInscripcion, IDAlumno, IDExamen, AdminID, Fecha, IDRespuestas) VALUES ('$idreporte','$user','$testid','$idadmin[0]','$fecha','$idrespuestas')";
+		echo "Totales : $contador\\";
+		$query="INSERT INTO inscripcion(IDInscripcion, IDAlumno, IDExamen, AdminID, Fecha, IDRespuestas,RespCorrectas) VALUES ('$idreporte','$user','$subid','$idadmin[0]','$fecha','$idrespuestas','$contador')";
 		$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 		
+		header("Location: result.php?id=$user&idex=$subid&idr=$idrespuestas");
+		exit;
 		
 	}
 }

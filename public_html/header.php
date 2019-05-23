@@ -1,3 +1,29 @@
+<html>
+    	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+ <a href="https://time.is/Hermosillo" id="time_is_link" rel="nofollow" style="font-size:36px">Hora local en Hermosillo:</a>
+<span id="Hermosillo_z13d" style="font-size:36px"></span>
+<script src="//widget.time.is/t.js"></script>
+<script>
+time_is_widget.init({Hermosillo_z13d:{}});
+</script>
+</html>
 
 <style type="text/css">
 <!--
@@ -8,32 +34,7 @@ body {
 -->
 </style>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0" background="image/topbkg.jpg">
-  <tr>
-    <td width="90%" valign="top">
-<!--You can modify the text, color, size, number of loops and more on the flash header by editing the text file (fence.txt) included in the zip file.-->
-<div align="left"><object classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000
-codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,2,0
-width=500
-height=68>
-<param name=movie value=image/fence.swf>
-<param name=quality value=high>
-<param name=BGCOLOR value=#000000>
-<param name=SCALE value=showall>
-<param name=wmode value=transparent> 
-<embed src=image/fence.swf
-quality=high
-pluginspage=http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash type=application/x-shockwave-flash
-width=1365
-height=68
-bgcolor=#1d91d0;
-scale= showall>
-</embed>
-</object></div></td>
-    <td width="100%">
-     
-  </tr>
-</table>
+
 
   <Table width="100%">
   <tr>

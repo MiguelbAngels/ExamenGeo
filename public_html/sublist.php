@@ -23,20 +23,21 @@ session_start();
 include("header.php");
 	
 include("database.php");
-echo "<h2 class=head1> Seleccione Asunto para dar cuestionario</h2>";
+echo "<h2 class=head1> Seleccione un exámen para comenzar:</h2>";
+echo "</br></br>"; 
 
       $sql = "SELECT * FROM examen";
 	$rs=mysqli_query($con,$sql);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
     $count = mysqli_num_rows($rs);
 
-echo "<table align=center class='table'>";
+echo "<table align=center class='table' border='2'>";
 	
 	
 	
 while($row=mysqli_fetch_row($rs))
 {
-	echo "<tr class='success'><td align=center class='text-danger'><a  href=showtest.php?subid=$row[0]&user=$_SESSION[login]><font class='text-warning' size=6>$row[1]</font></a>";
+	echo "<tr class='success' ><td align=center class='text-danger'><a  href=quiz2.php?subid=$row[0]&user=$_SESSION[login]><font  size=4 >$row[1]</font></a>";
 }
 echo "</table>";
 ?>
