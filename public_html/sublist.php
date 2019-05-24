@@ -23,23 +23,39 @@ session_start();
 include("header.php");
 	
 include("database.php");
-echo "<h2 class=head1> Seleccione un exámen para comenzar:</h2>";
-echo "</br></br>"; 
 
-      $sql = "SELECT * FROM examen";
-	$rs=mysqli_query($con,$sql);
+
+  $sql1 = "SELECT IDExamen from usuarios where ID=$_SESSION[login]";
+  $rs = mysqli_query($con,$sql1);
+  $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
+  $row=mysqli_fetch_row($rs);
+
+
+  $sql2 = "SELECT * FROM examen where IDExamen=$row[0]";
+	$rs=mysqli_query($con,$sql2);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
     $count = mysqli_num_rows($rs);
 
-echo "<table align=center class='table' border='2'>";
-	
-	
-	
-while($row=mysqli_fetch_row($rs))
-{
-	echo "<tr class='success' ><td align=center class='text-danger'><a  href=quiz2.php?subid=$row[0]&user=$_SESSION[login]><font  size=4 >$row[1]</font></a>";
+
+if($count==0){
+  echo "<h2 class=head1> Usuario actual no se encuentra inscrito a algun examen.</h2>";
+} else{
+  echo "<h2 class=head1> Seleccione un exámen para comenzar:</h2>";
+  echo "</br></br>"; 
+  echo "<table align=center class='table' border='2'>";
+    
+  
+    
+  while($row=mysqli_fetch_row($rs))
+  {
+    echo "<tr class='success' ><td align=center class='text-danger'><a  href=prequiz.php?subid=$row[0]><font  size=4 >$row[1]</font></a>";
+  }
+
+  echo "</table>";
 }
-echo "</table>";
+
+
+
 ?>
 </body>
 </html>
