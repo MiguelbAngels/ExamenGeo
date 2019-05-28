@@ -25,30 +25,6 @@ include("header.php");
   extract($_POST);
 include("database.php");
 
-
-if(isset($submit))
-  {
-      $sql = "SELECT * FROM examen WHERE IDExamen=$subid and PassExamen='$pass'";
-      
-
-    $rs=mysqli_query($con,$sql);
-    $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
-    
-
-
-    $count = mysqli_num_rows($rs);
-  
-  
-    if($count<1 )
-    {
-      $found="N";
-    }
-    else
-    {
-      header("Location:quiz2.php?subid=$subid");
-    }
-  }
-
   $sql1 = "SELECT IDExamen from usuarios where ID=$_SESSION[login]";
   $rs = mysqli_query($con,$sql1);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
@@ -56,10 +32,79 @@ if(isset($submit))
 
 
   $sql2 = "SELECT * FROM examen where IDExamen=$subid";
-	$rs=mysqli_query($con,$sql2);
+
+
+
+
+
+
+
+
+
+if(isset($submit))
+  {
+
+$sql3 = "SELECT * From inscripcion WHERE IDAlumno=$_SESSION[login] and IDExamen = '$subid'";
+$result = mysqli_query($con,$sql3);
+$result2 = mysqli_query($con,$sql2);
+$contador2 = 0;
+$permiso=0;
+  while($mostrar=(mysqli_fetch_array($result))){
+  
+  
+  
+    
+    $contador2 = $contador2 + 1;
+  
+  
+  }
+  
+  if ($contador2 >= 1){
+      $realizado="N";
+      $permiso = $permiso +1;
+  }
+
+  date_default_timezone_set('America/Hermosillo');
+  while($mostrar2=(mysqli_fetch_array($result2))){
+    $date = date("H:i:s");
+    $date2 = date("Y-m-d");
+    $dateEx = $mostrar2['HInicio'];
+    $dateEx2 = $mostrar2['HFinal'];
+    $dateEx3 = $mostrar2['Fecha'];
+
+    if ($dateEx > $date || $dateEx2 < $date || $date2!=$dateEx3){
+        $fuera_de_tiempo="N";
+        $permiso = $permiso +1;
+    }
+  
+  }
+
+      $sql = "SELECT * FROM examen WHERE IDExamen=$subid and PassExamen='$pass'";
+      
+
+    $rs=mysqli_query($con,$sql);
+    $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+    
+    $count = mysqli_num_rows($rs);
+  
+  
+    if($count<1 )
+    {
+      $found="N";
+      $permiso = $permiso +1;
+    }
+    if($permiso<1)
+    {
+      header("Location:quiz2.php?subid=$subid");
+    }
+  }
+
+  $rs=mysqli_query($con,$sql2);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
     $count = mysqli_num_rows($rs);
-    $row=mysqli_fetch_row($rs)
+    $row=mysqli_fetch_row($rs);
+
+   
 ?>
 
   <center>
@@ -85,10 +130,19 @@ if(isset($submit))
 
           <span class="errors">
                <?php
+               if(isset($fuera_de_tiempo))
+              {
+                echo '<center style="color:#eff502">Se encuentra fuera del tiempo definido</center>';
+              }
               if(isset($found))
               {
                 echo '<center style="color:#eff502">Contraseña invalida</center>';
               }
+              if(isset($realizado))
+              {
+                echo '<center style="color:#eff502">Examen ya realizado</center>';
+              }
+              
             ?>
           </span>
 
