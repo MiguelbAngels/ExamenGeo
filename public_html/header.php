@@ -47,7 +47,7 @@ body {
 	<?php
 	if(isset($_SESSION['login']))
 	{
-	 echo "<div align=\"right\"><strong><a href=\"index.php\"> Casa </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
+	 echo "<div align=\"right\"><strong><a href=\"nvo/perfil-alumno.php\"> Perfil </a>|<a href=\"index.php\"> Inicio </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
 	 }
 	 else
 	 {

@@ -24,26 +24,13 @@ include("header.php");
 	extract($_GET);
   extract($_POST);
 include("database.php");
-
   $sql1 = "SELECT IDExamen from usuarios where ID=$_SESSION[login]";
   $rs = mysqli_query($con,$sql1);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
   $row=mysqli_fetch_row($rs);
-
-
   $sql2 = "SELECT * FROM examen where IDExamen=$subid";
-
-
-
-
-
-
-
-
-
 if(isset($submit))
   {
-
 $sql3 = "SELECT * From inscripcion WHERE IDAlumno=$_SESSION[login] and IDExamen = '$subid'";
 $result = mysqli_query($con,$sql3);
 $result2 = mysqli_query($con,$sql2);
@@ -63,7 +50,6 @@ $permiso=0;
       $realizado="N";
       $permiso = $permiso +1;
   }
-
   date_default_timezone_set('America/Hermosillo');
   while($mostrar2=(mysqli_fetch_array($result2))){
     $date = date("H:i:s");
@@ -71,17 +57,14 @@ $permiso=0;
     $dateEx = $mostrar2['HInicio'];
     $dateEx2 = $mostrar2['HFinal'];
     $dateEx3 = $mostrar2['Fecha'];
-
     if ($dateEx > $date || $dateEx2 < $date || $date2!=$dateEx3){
         $fuera_de_tiempo="N";
         $permiso = $permiso +1;
     }
   
   }
-
       $sql = "SELECT * FROM examen WHERE IDExamen=$subid and PassExamen='$pass'";
       
-
     $rs=mysqli_query($con,$sql);
     $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
     
@@ -98,12 +81,10 @@ $permiso=0;
       header("Location:quiz2.php?subid=$subid");
     }
   }
-
   $rs=mysqli_query($con,$sql2);
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
     $count = mysqli_num_rows($rs);
     $row=mysqli_fetch_row($rs);
-
    
 ?>
 
@@ -115,9 +96,9 @@ $permiso=0;
         <form class="login100-form validate-form" name="form1" method="post" action="">
           <?php
           echo "<span class=login100-form-title> Examen: $row[1] </span>";
-          echo "<span align=right class=login100-form-title > Fecha del examen: $row[4] </span>";
-          echo "<span class=login100-form-title align=right> Hora de apertura: $row[5] </span>";
-          echo "<span class=login100-form-title align=right> Hora de cierre: $row[6] </span>";
+          echo "<span align=right class=login100-form-title > Fecha del examen: $row[5] </span>";
+          echo "<span class=login100-form-title align=right> Hora de apertura: $row[6] </span>";
+          echo "<span class=login100-form-title align=right> Hora de cierre: $row[7] </span>";
           echo "<span class=login100-form-title> Ingrese la clave del examen para comenzar. </span>";
           ?>
           <div class="wrap-input100 validate-input" data-validate = "Ingresar Contraseña">

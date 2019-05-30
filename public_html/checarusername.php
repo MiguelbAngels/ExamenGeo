@@ -12,8 +12,7 @@ if (isset($_POST))
     else {
  try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $stmt = $db->prepare('SELECT COUNT(*) username FROM usuarios WHERE ID = :username');
+    $stmt = $db->prepare('SELECT COUNT(*) username FROM usuarios WHERE ID =:username and Estado =1 ');
     $stmt->execute(array('username' => $usernameposted));
     $numdefilas = $stmt->fetchColumn();
 

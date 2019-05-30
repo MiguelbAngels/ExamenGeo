@@ -35,7 +35,7 @@ session_start();
 	{
 
 
-	      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1'";
+	      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
 		  $sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
 	
 
@@ -61,7 +61,10 @@ session_start();
                 $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
 			}
 			else{
-				if ($count >=1)$_SESSION['alogin']="true";
+				if ($count >=1){
+				    $_SESSION['alogin']="true";
+				$_SESSION[alogin]=$loginid;
+				}
 				else{
 				    $query0="UPDATE usuarios SET Conectado = '0' WHERE ID = '$loginid'";
                 $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
@@ -77,6 +80,8 @@ session_start();
 	if (isset($_SESSION[login]) )
 	
 	{
+	    echo "<script>location.href='nvo/alumno.php';</script>";
+	    die();
 	    $sql5 = "SELECT * FROM usuarios WHERE ID=' $_SESSION[login]'";
 	   $result5 = mysqli_query($con,$sql5);
 	   	$mostrar5=(mysqli_fetch_array($result5));
@@ -86,7 +91,7 @@ session_start();
 		header("Cache-Control: no-cache, must-revalidate");
 		if(isset($_SESSION['login']))
 		{
-		 echo "<div align=\"right\"><strong><a href=\"index.php\"> Inicio </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
+		 echo "<div align=\"right\"><strong><a href=\"perfil.php\"> Perfil </a>|<a href=\"index.php\"> Inicio </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
 		 }
 		 else
 		 {
@@ -94,6 +99,7 @@ session_start();
 		 }
     $nombre = $mostrar5['Nombre'];
     ?>
+    <iframe src="reloj.php"></iframe>
     <a href="https://time.is/Hermosillo" id="time_is_link" rel="nofollow" style="font-size:36px">Hora local en Hermosillo:</a>
     <span id="Hermosillo_z13d" style="font-size:36px"></span>
     <script src="//widget.time.is/t.js"></script>
@@ -131,7 +137,7 @@ session_start();
 	}
 	if (isset($_SESSION[alogin]) ){
 		if(isset($_SESSION['alogin']))
-		echo "<script>location.href='admin/login.php';</script>";
+		echo "<script>location.href='nvo/index.php';</script>";
 	    die();
 	}
 	?>
