@@ -31,7 +31,7 @@ $query="UPDATE usuarios SET Estado = '1' WHERE ID = '$id'";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 
-echo "<br><div class=head1><a href=alumnosp_gestion.php>Regresar</a></div>";
+echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
 
 
 ?>

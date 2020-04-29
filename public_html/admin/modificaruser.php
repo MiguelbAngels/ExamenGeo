@@ -10,8 +10,11 @@
 <?php
 
 extract($_POST);
+
 include("../database.php");
 	$id = $_REQUEST['id'];
+	$tipo = $_REQUEST['tipo'];
+	$idex = $_REQUEST['idex'];
       $sql = "SELECT * FROM usuarios where ID='$lid'";
 	$rs=mysqli_query($con,$sql);
   $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
@@ -31,10 +34,12 @@ $query="UPDATE usuarios SET ID = '$lid', Nombre = '$name', Correo = '$email' WHE
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 
-echo "<br><div class=head1><a href=alumnos_gestion.php>Regresar</a></div>";
-
-
+echo "<br><div class=head1><a href=../nvo/index.php>Regresar</a></div>";
+if($tipo == 2){
+    header("location: ../nvo/index.php?id=".$idex); 
+}
 ?>
+
 </body>
 </html>
 

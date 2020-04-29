@@ -22,14 +22,14 @@ error_reporting(1);
 
 	
 <?php
-$con = mysqli_connect("localhost","u442507923_udaq","1q2w3e","u442507923_udaq") or die(mysql_error());
+$con = mysqli_connect("127.0.0.1:3306","admin_dorito","dG5CmnDifX","admin_examendb") or die(mysql_error());
 
 include("header.php");
 extract($_POST);
 
 if(!isset($_SESSION[alogin]))
 {
-	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
 		exit;
 }
 

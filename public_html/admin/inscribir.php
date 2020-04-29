@@ -13,11 +13,8 @@ extract($_POST);
 include("../database.php");
 	$id = $_REQUEST['id'];
 	$ida = $_REQUEST['id1'];
-      $sql = "SELECT * FROM usuarios where ID='$lid'";
-	
+    
 
-  
- 
  
 $query="UPDATE usuarios SET IDExamen = '$ida' WHERE ID = '$id' ";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
@@ -25,6 +22,7 @@ echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 
 echo "<br><div class=head1><a href=alumnos_gestion.php>Regresar</a></div>";
 
+header("location: ../nvo/inscribir_examen.php?id=".$ida); 
 
 ?>
 </body>

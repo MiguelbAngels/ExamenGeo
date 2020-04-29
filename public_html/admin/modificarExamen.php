@@ -184,7 +184,7 @@ else if (emailresponsed=="0")
 
 if(!isset($_SESSION[alogin]))
 {
-	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
 		exit;
 }
 
@@ -193,42 +193,56 @@ if(!isset($_SESSION[alogin]))
 <?php
 		$con = mysqli_connect("localhost","u442507923_udaq","1q2w3e","u442507923_udaq") or die(mysql_error());
 
-		$id = $_REQUEST['id'];
-		$sql = "SELECT * From usuarios WHERE ID='$id'";
+		$idex = $_REQUEST['idex'];
+		$sql = "SELECT * From examen WHERE IDExamen='$idex'";
 		$result = mysqli_query($con,$sql);
-		$mostrar=(mysqli_fetch_array($result))
+		$mostrar=(mysqli_fetch_array($result));
+		
   ?>
 
  <table width="100%" border="0">
    <tr>
      <td width="132" rowspan="2" valign="top"><span class="style8"><img src="../images/connected_multiple_big.jpg" width="131" height="155"></span></td>
-     <td width="468" height="57"><h1 align="center"><span class="style8">Nuevo registro de usuario</span></h1></td>
+     <td width="468" height="57"><h1 align="center"><span class="style8">modificar examen</span></h1></td>
    </tr>
    <tr>
-     <td><form name="form1" method="post" action="modificaruser.php?id=<?php echo $mostrar['ID']?>" onSubmit="return check();">
+     <td><form name="form1" method="post" action="modificarExamen_conf.php?id=<?php echo $mostrar['IDExamen']?>" onSubmit="return check();">
 	 
        <table width="301" border="0" align="left">
          <tr>
-           <td><div align="left" class="style7">Expediente </div></td>
-           <td><input required="" type="text" name="lid" id="lid" value="<?php echo $mostrar['ID']?>"></td>
-            <div id="checkexp" class=""></div>
-         </tr>
-         
-         
-         <tr>
-           <td class="style7">Nombre</td>
-           <td><input required="" name="name" type="text" id="name" value="<?php echo $mostrar['Nombre']?> "></td>
+           <td><div align="left" class="style7">Nombre</div></td>
+           <td><input required="" type="text" name="name" id="name" value="<?php echo $mostrar['TestName']?>"></td>
             <div id="checkusername" class=""></div>
          </tr>
          
-           <td valign="top" class="style7">Email</td>
-           <td><input required="" name="email" type="email" id="email" value = "<?php echo $mostrar['Correo']?>"></td>
-           <div id="checkemailresponse"></div>
+         
+         <tr>
+           <td class="style7">Lugar</td>
+           <td><input required="" name="lugar" type="text" id="lugar" value="<?php echo $mostrar['Lugar']?> "></td>
+            
          </tr>
+         <tr>
+           <td valign="top" class="style7">Fecha</td>
+           <td><input required="" name="fecha" type="date" id="fecha" value = "<?php echo $mostrar['Fecha']?>"></td>
+           
+         </tr>
+         
+          <tr>
+           <td valign="top" class="style7">Hora inicio</td>
+           <td><input required="" name="h_inicio" type="time" id="h_inicio" value = "<?php echo $mostrar['HInicio']?>"></td>
+           
+         </tr>
+         
+          <tr>
+           <td valign="top" class="style7">Hora final</td>
+           <td><input required="" name="h_fin" type="time" id="h_fin" value = "<?php echo $mostrar['HFinal']?>"></td>
+           
+         </tr>
+       
          <tr>
            <td>&nbsp;</td>
            
-           <td><input type="submit" name="Submit" value="Registrar" id="thesubmitBoton">
+           <td><input type="submit" name="Submit" value="Actualizar" id="thesubmitBoton">
            </td>
          </tr>
        </table>

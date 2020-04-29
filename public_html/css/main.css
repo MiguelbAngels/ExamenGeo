@@ -43,6 +43,7 @@ body, html {
   background: -ms-linear-gradient(-45deg, #22584e 0%, #2a8445 0%, #379292 19%, #3a96a6 24%, #26f2a4 47%, #2fe7a6 50%, #6ba0b3 70%, #91b35d 100%); /* IE 10+ */
   background: linear-gradient(135deg, #22584e 0%, #2a8445 0%, #379292 19%, #3a96a6 24%, #26f2a4 47%, #2fe7a6 50%, #6ba0b3 70%, #91b35d 100%);/* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22584e', endColorstr='#91b35d', GradientType=1 );/* IE6-9 fallback on horizontal gradient */
+  background-attachment: fixed;
 }
 
 /*---------------------------------------------*/

@@ -5,38 +5,32 @@ error_reporting(1);
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Prueba en línea del área administrativa </title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="../quiz.css" rel="stylesheet" type="text/css">
-   <link href="http://localhost/exam/exam/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- INCLUYE AL BOSSTRAP ALA WEB -->
-    <link href="http://localhost/exam/exam/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-   <script src="http://localhost/exam/exam/datespicker/css/datepicker.css"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->      
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-<script type="text/javascript"></script>
+<title>Área administrativa </title>
+
 </head>
 
 <body>
 <?php
 include("header.php");
+
 extract($_POST);
 
 if(!isset($_SESSION[alogin]))
 {
-	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
 		exit;
 }
 ?>
 
-<p class="head1">Bienvenido al área administrativa </p>
-<div style="margin:auto;width:90%;height:500px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
+<center><p class="head1" > <font   size=5 color=black>Bienvenido al área administrativa</font></center></p>
+<div style="margin:auto;width:95%;height:600px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
 <div style="margin-left:20%;padding-top:5%">
 
-<p class="style7"><a href="alumnos_gestion.php"><font  class='text-danger' size=6>Alumnos registrados</font></a></p>
-<p class="style7"><a href="alumnosp_gestion.php"><font  class='text-danger' size=6>Solicitudes de registro</font></a></p>
-<p class="style7"><a href="gestion_examen.php"><font  class='text-danger' size=6>Examenes</font></a></p>
+<p class="style7"><a href="alumnos_gestion.php"><font  size=6>Alumnos registrados</font></a></p>
+<p class="style7"><a href="admins_gestion.php"><font  size=6>Administradores</font></a></p>
+<p class="style7"><a href="alumnosp_gestion.php"><font   size=6>Solicitudes de registro</font></a></p>
+<p class="style7"><a href="gestion_examen.php"><font   size=6>Gestión de examenes</font></a></p>
+<p class="style7"><a href="gestion_resultados.php"><font   size=6>Resultados (examenes)</font></a></p>
 
 <p align="center" class="head1">&nbsp;</p>
 </div>

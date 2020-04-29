@@ -4,7 +4,7 @@ error_reporting(1);
 if (!isset($_SESSION['alogin']))
 {
 	echo "<br><h2>No has iniciado sesión. Ingresa para acceder a esta página.</h2>";
-	echo "<a href=index.php><h3 align=center>Haga clic aquí para iniciar sesión</h3></a>";
+	echo "<a href=../index.php><h3 align=center>Haga clic aquí para iniciar sesión</h3></a>";
 	exit();
 }
 ?>

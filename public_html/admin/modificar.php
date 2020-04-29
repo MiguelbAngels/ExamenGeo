@@ -13,7 +13,7 @@ function check()
 {
  if(document.form1.lid.value=="")
   {
-    alert("Ingrese un expediente");
+    alert("Ingrese una contraseña");
 	document.form1.lid.focus();
 	return false;
   }
@@ -24,31 +24,40 @@ function check()
 	document.form1.name.focus();
 	return false;
   }
+  
  
-  if(document.form1.email.value=="")
-  {
-    alert("Por favor, introduzca su dirección de correo electrónico");
-	document.form1.email.focus();
-	return false;
-  }
-  e=document.form1.email.value;
-		f1=e.indexOf('@');
-		f2=e.indexOf('@',f1+1);
-		e1=e.indexOf('.');
-		e2=e.indexOf('.',e1+1);
-		n=e.length;
-		if(!(f1>0 && f2==-1 && e1>0 && e2==-1 && f1!=e1+1 && e1!=f1+1 && f1!=n-1 && e1!=n-1))
-		{
-			alert("Por favor introduzca un correo electrónico válido");
-			document.form1.email.focus();
-			return false;
-		}
+  
+ 
    <?php>
    $pass = password_hash($_POST[´pass´],PASSWORD_BCRYPT);
    ?>
   return true;
   }
   
+  function check2()
+{
+ if(document.form1.pass.value=="")
+  {
+    alert("Ingrese una contraseña");
+	document.form1.pass.focus();
+	return false;
+  }
+ 
+  if(document.form1.pass2.value=="")
+  {
+    alert("Por favor, escriba su nombre");
+	document.form1.pass2.focus();
+	return false;
+  }
+  
+ 
+  
+ 
+   <?php>
+   $pass = password_hash($_POST[´pass´],PASSWORD_BCRYPT);
+   ?>
+  return true;
+  }
 </script>
     <script>
     
@@ -184,16 +193,18 @@ else if (emailresponsed=="0")
 
 if(!isset($_SESSION[alogin]))
 {
-	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
 		exit;
 }
 
 ?>
 
 <?php
+        include("header.php");
 		$con = mysqli_connect("localhost","u442507923_udaq","1q2w3e","u442507923_udaq") or die(mysql_error());
-
+        $tipo = $_REQUEST['tipo'];
 		$id = $_REQUEST['id'];
+		$idex = $_REQUEST['idex'];
 		$sql = "SELECT * From usuarios WHERE ID='$id'";
 		$result = mysqli_query($con,$sql);
 		$mostrar=(mysqli_fetch_array($result))
@@ -201,13 +212,13 @@ if(!isset($_SESSION[alogin]))
 
  <table width="100%" border="0">
    <tr>
-     <td width="132" rowspan="2" valign="top"><span class="style8"><img src="../images/connected_multiple_big.jpg" width="131" height="155"></span></td>
-     <td width="468" height="57"><h1 align="center"><span class="style8">Nuevo registro de usuario</span></h1></td>
+     
+     <td width="468" height="57"><h1 align="center"><span class="style8">Modificar usuario</span></h1></td>
    </tr>
    <tr>
-     <td><form name="form1" method="post" action="modificaruser.php?id=<?php echo $mostrar['ID']?>" onSubmit="return check();">
+     <td><form name="form1" method="post" action="modificaruser.php?id=<?php echo $mostrar['ID']?>&tipo=<?php echo $tipo?>&idex=<?php echo $idex?>" onSubmit="return check();">
 	 
-       <table width="301" border="0" align="left">
+       <table width="301" border="3" align="center">
          <tr>
            <td><div align="left" class="style7">Expediente </div></td>
            <td><input required="" type="text" name="lid" id="lid" value="<?php echo $mostrar['ID']?>"></td>
@@ -220,15 +231,52 @@ if(!isset($_SESSION[alogin]))
            <td><input required="" name="name" type="text" id="name" value="<?php echo $mostrar['Nombre']?> "></td>
             <div id="checkusername" class=""></div>
          </tr>
-         
+         <tr>
            <td valign="top" class="style7">Email</td>
            <td><input required="" name="email" type="email" id="email" value = "<?php echo $mostrar['Correo']?>"></td>
            <div id="checkemailresponse"></div>
          </tr>
+          
          <tr>
            <td>&nbsp;</td>
            
            <td><input type="submit" name="Submit" value="Registrar" id="thesubmitBoton">
+           </td>
+         </tr>
+       </table>
+     </form></td>
+   </tr>
+ </table>
+ 
+ 
+ 
+ <table width="100%" border="0">
+   <tr>
+     
+     <td width="468" height="57"><h1 align="center"><span class="style8">Nueva contraseña</span></h1></td>
+   </tr>
+   <tr>
+     <td><form name="form1" method="post" action="modificarpass.php?id=<?php echo $mostrar['ID'] ?>" onSubmit="return check2();">
+	 
+       <table width="301" border="3" align="center">
+         <tr>
+           <td><div align="left" class="style7">Contraseña </div></td>
+           <td><input required="" type="password" name="pass" id="pass" value=""></td>
+           
+         </tr>
+         
+         
+         <tr>
+           <td class="style7">Confirmar contraseña</td>
+           <td><input required="" name="pass2" type="password" id="pass2" value=""></td>
+        
+         </tr>
+      
+          
+         <tr>
+           <td>&nbsp;</td>
+           
+           <td><input type="submit" name="Submit2" value="Nueva contraseña" id="thesubmitBoton2">
            </td>
          </tr>
        </table>

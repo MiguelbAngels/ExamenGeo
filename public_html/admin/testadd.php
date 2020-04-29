@@ -4,7 +4,7 @@ error_reporting(1);
 if (!isset($_SESSION['alogin']))
 {
 	echo "<br><h2>No has iniciado sesión. Ingresa para acceder a esta página.</h2>";
-	echo "<a href=index.php><h3 align=center>Haga clic aquí para iniciar sesión</h3></a>";
+	echo "<a href=../index.php><h3 align=center>Haga clic aquí para iniciar sesión</h3></a>";
 	exit();
 }
 ?>
@@ -95,12 +95,12 @@ return true;
     <tr>
       <td height="26"><div align="left"><strong>Ingrese la hora de inicio </strong></div></td>
       <td>&nbsp;</td>
-      <td><input name="hinicio" type="text" id="hinicio"></td>
+      <td><input name="hinicio" type="time" id="hinicio"></td>
     </tr>
     <tr>
       <td height="26"><div align="left"><strong>Ingrese la hora final del examen </strong></div></td>
       <td>&nbsp;</td>
-      <td><input name="hfin" type="text" id="hfin"></td>
+      <td><input name="hfin" type="time" id="hfin"></td>
     </tr>
     <tr>
       <td height="26"><div align="left"><strong>Ingrese una contraseña para el examen </strong></div></td>

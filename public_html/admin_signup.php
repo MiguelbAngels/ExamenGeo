@@ -1,3 +1,8 @@
+<?php
+session_start();
+error_reporting(1);
+?>
+
 <!DOCTYPE html>
 
 
@@ -20,8 +25,7 @@
     <link rel="stylesheet" href="css/style-form.css">
     <link rel="stylesheet" href="css/fondo.css">
       <?php
-  session_start();
-error_reporting(1);
+
 if(!isset($_SESSION[alogin]))
 {
 	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Ingrese</a><div>";

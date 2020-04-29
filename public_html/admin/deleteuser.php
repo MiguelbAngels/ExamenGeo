@@ -18,11 +18,11 @@ include("../database.php");
   
    
  
-$query="DELETE FROM usuarios WHERE ID = '$id'";
+$query="UPDATE usuarios SET Estado = '2' WHERE ID = '$id' ";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario borrado correctamente.</div>";
 
-echo "<br><div class=head1><a href=alumnos_gestion.php>Regresar</a></div>";
+echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
 
 
 ?>

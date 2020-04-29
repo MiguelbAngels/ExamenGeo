@@ -13,7 +13,7 @@ session_start();
     <link href="http://localhost/exam/exam/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
    <script src="http://localhost/exam/exam/datespicker/css/datepicker.css"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->      
-<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 <script type="text/javascript"></script>
@@ -29,6 +29,8 @@ include("database.php");
   $row = mysqli_fetch_array($rs,MYSQL_ASSOC);
   $row=mysqli_fetch_row($rs);
   $sql2 = "SELECT * FROM examen where IDExamen=$subid";
+  $_SESSION["correctas"]=0;
+  $_SESSION["terminado"]=0;
 if(isset($submit))
   {
 $sql3 = "SELECT * From inscripcion WHERE IDAlumno=$_SESSION[login] and IDExamen = '$subid'";
@@ -78,7 +80,8 @@ $permiso=0;
     }
     if($permiso<1)
     {
-      header("Location:quiz2.php?subid=$subid");
+         $_SESSION["correctas"]=0;
+      header("Location:quiz2.php?subid=$subid&n=0");
     }
   }
   $rs=mysqli_query($con,$sql2);

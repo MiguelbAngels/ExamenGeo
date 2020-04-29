@@ -12,6 +12,7 @@
 extract($_POST);
 include("../database.php");
 	$id = $_REQUEST['id'];
+	$idex = $_REQUEST['idex'];
     
 	
 
@@ -21,10 +22,11 @@ include("../database.php");
 $query="UPDATE usuarios SET IDExamen = '0' WHERE ID = '$id'";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
-echo "<script>location.href='alumnos_inscritos.php';</script>";
-echo "<br><div class=head1><a href=alumnos_gestion.php>Regresar</a></div>";
 
 
+?>
+<?php
+header("location: ../nvo/alumnos_inscritos.php?id=".$idex); 
 ?>
 </body>
 </html>

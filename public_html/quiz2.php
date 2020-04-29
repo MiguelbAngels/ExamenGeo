@@ -59,10 +59,15 @@ body {
   </tr>
 <?php
 	extract($_GET);
+	$n = $_REQUEST['n'];
 	
 include("database.php");
 $user = $_SESSION[login];
+if ($n==0){
+    $_SESSION["correctas"]=0;
+}
 $contador = 0;
+
 $query0 = "SELECT * FROM reactivosExamen WHERE IDExamen = $subid";
 
 $query2 = "SELECT * FROM examen WHERE IDExamen = $subid";
@@ -73,6 +78,7 @@ $result2 = mysqli_query($con,$query2);
 $contador2 = 0;
 mysqli_data_seek($result2,0);
 $Fecha_limite = mysqli_fetch_row($result2);
+$npreg = $Fecha_limite[2];
 ?>
 <span style="font-size:36px">Tiempo restante:</span>
  <span  id="demo" style="font-size:36px"></span>
@@ -131,28 +137,28 @@ var x = setInterval(function() {
 	
 	while($mostrar=(mysqli_fetch_array($result))){
 	
-	
-	
-		
+
     $contador2 = $contador2 + 1;
 	
 	
 	}
-	
+	/*
 	if ($contador2 >= 1 && $contestado != 1 ){
 	    echo "ya realizo este examen, solo se puede realizar una vez.....";
 	    echo "<br><div class=head1><a href=result.php?id=$user&idex=$subid>Ver resultados</a></div>";
 	    exit;
 	}
+	*/
 	
 	date_default_timezone_set('America/Hermosillo');
-	$nameex;
+	
 	while($mostrar2=(mysqli_fetch_array($result2))){
 		$date = date("H:i:s");
 		$dateEx = $mostrar2['HInicio'];
 		$nameex = $mostrar2['NombreExamen'];
 		$nameex = $mostrar2['Lugar'];
 		$dateEx2 = $mostrar2['HFinal'];
+
 		if ($dateEx > $date || $dateEx2 < $date ){
 		    echo "aun no inicia este examen.... </br>";
 		    echo "Son las: $date </br>";
@@ -165,58 +171,62 @@ var x = setInterval(function() {
 	
 	
 ?>	
-  <form method="post" action="">
+ 
       <?php	
 	$contador = 0;
 	
 	while( $mostrar1=(mysqli_fetch_array($result0))){
 	   
-	    $idex = $mostrar1['IDReactivo'];
-	$query = "SELECT * FROM reactivos WHERE IDReactivo = $idex";
-$preguntas=mysqli_query($con,$query) or die(mysqli_error());
-	mysqli_data_seek($preguntas,$contador);
-$Q_1= mysqli_fetch_row($preguntas);
-$arraypreg[1][0]=$Q_1[1];
-$rc[$contador] = $Q_1[2];
+		$idex = $mostrar1['IDReactivo'];
+		$query = "SELECT * FROM reactivos WHERE IDReactivo = $idex";
+		$preguntas=mysqli_query($con,$query) or die(mysqli_error());
+			mysqli_data_seek($preguntas,$contador);
+		$Q_1= mysqli_fetch_row($preguntas);
+		$arraypreg[1][$contador]=$Q_1[1];
+		$rc[$contador] = $Q_1[2];
 
-$query = "SELECT * FROM incisos WHERE IDReactivo = $Q_1[0] ";
-$resp1=mysqli_query($con,$query) or die(mysqli_error());
-	mysqli_data_seek($resp1,0);
-$R1_1= mysqli_fetch_row($resp1);
-$resp[0][$contador]=$R1_1[1];
-$resp11[0][$contador]=$R1_1[0];
-	mysqli_data_seek($resp1,1);
-$R1_2= mysqli_fetch_row($resp1);
-$resp[1][$contador]=$R1_2[1];
+		$query = "SELECT * FROM incisos WHERE IDReactivo = $Q_1[0] ";
+		$resp1=mysqli_query($con,$query) or die(mysqli_error());
+			mysqli_data_seek($resp1,0);
+		$R1_1= mysqli_fetch_row($resp1);
+		$resp[0][$contador]=$R1_1[1];
+		$resp11[0][$contador]=$R1_1[0];
+			mysqli_data_seek($resp1,1);
+		$R1_2= mysqli_fetch_row($resp1);
+		$resp[1][$contador]=$R1_2[1];
 
-$resp11[1][$contador]=$R1_2[0];
-
-
-$ans[0][0] = 1;
+		$resp11[1][$contador]=$R1_2[0];
 
 
+		$ans[0][0] = 1;
+		$contador++;
+}
+
+if ($n<$npreg){
 ?>
 
+
+ <form method="post" action="">
 </table>
 <table width="304"  border="0" align="center">
   <tr>
-    <td width="298"><div align="left"><strong> <?php echo $contador+1 ?>.- 
+    <td width="298"><div align="left"><strong> <?php echo $n+1 ?>.- 
+
 		<?php 
-		echo $arraypreg[1][0];
+		echo $arraypreg[1][$n];
 		?></strong> </div></td>
   </tr>
   <tr>
     <td>
       <div align="left">
-		
-		      
-        
-			  <?php echo "a)".$resp[0][$contador]?>
-			  </br>
-	<?php echo "b)".$resp[1][$contador] ?>
+
+	  	<?php echo "a)".$resp[0][$n]?>
+		<input type=radio name='ans1' value="1">
+			  
 	</br>
-	<input type=text name='ans1[]' value="">
-    
+		<?php echo "b)".$resp[1][$n] ?>
+		<input type=radio name='ans1' value="2">
+   
 		
   </tr>
 
@@ -224,63 +234,49 @@ $ans[0][0] = 1;
 
 
 
-
-
-
-
-<?php
-$contador++;
-
-}
-?>
-
 <td><div align="center">
 	
-  		<input type=submit id=submit name=submit value='Terminar' onclick="">
+  		<input type=submit id=submit name=submit value='Siguiente' onclick="">
 		<input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
 	</form>
 </div></td>
 
 <?php
+}
+    
+
+
 $contador = 0;
 $correctas = 0;
 $resp = $_POST['ans1'];
 $cresp=0;
-if (isset($_POST['submit']) || isset($_POST['submit2'])) {
-    
- 
 
-        foreach ($_POST['ans1'] as $value){
-          
-        }
-        for ( $i=0;$i<5;$i++){
-           
-        }
-}
-while($contador < 5){
-   
+
      
-    echo "</br>";
+   
 if (isset($_POST['submit']) || isset($_POST['submit2'])) {
      
+    ;
      
-    
-    	if($resp[$contador]==2){
+    	if($resp==2){
     	    
-		    if ($resp11[1][$contador] == $rc[$contador] ){
-		      
-		        $correctas++;
+		    if ($resp11[1][$n] == $rc[$n] ){
+		    
+		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+		        
+		        
 		    }
 		    
     	}
 		
 	
 
-    	if($resp[$contador]==1){
-    	  
-		    if ($resp11[0][$contador] == $rc[$contador] ){
+    	if($resp==1){
+    	
+		    if ($resp11[0][$n] == $rc[$n] ){
 		        
-		        $correctas++;
+		          $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+		       
 		    }
 		   
     	}
@@ -290,19 +286,34 @@ if (isset($_POST['submit']) || isset($_POST['submit2'])) {
 	else{
 	    
 	}
-    
+if ($n<$npreg){
+$n++;
 }
 
-$contador++;
+
+
+echo "<script language=Javascript> location.href=\"quiz2.php?subid=$subid&n=$n\"; </script>"; 
+
+
+    
 }
-if (isset($_POST['submit']) || isset($_POST['submit2'])) {
+if ($n==$npreg)
+{
+     $_SESSION["terminado"]= $_SESSION["terminado"]+1;
+         
+}
+
+if ($n==$npreg &&  $_SESSION["terminado"]==2) {
+    
+    
     $contestado=1;
+    $correctas = $_SESSION["correctas"];
 $query="insert into inscripcion(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','12','$Fecha_limite[5]','12','$correctas')";
 
 $rs=mysqli_query($con,$query) or die(mysqli_error());
-header("Location: result.php?id=$user&idex=$subid&idr=$idrespuestas");
-exit;
-echo "<br><div class=head1><a href=result.php?id=$user&idex=$subid>Ver resultados</a></div>";
+
+echo "<script language=Javascript> location.href=\"result.php?id=$user&idex=$subid\"; </script>";
+
 exit;
 }
 

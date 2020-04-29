@@ -22,7 +22,7 @@ error_reporting(1);
 
 	
 <?php
-$con = mysqli_connect("localhost","u442507923_udaq","1q2w3e","u442507923_udaq") or die(mysql_error());
+$con = mysqli_connect("127.0.0.1:3306","admin_dorito","dG5CmnDifX","admin_examendb") or die(mysql_error());
 
 include("header.php");
 extract($_POST);
@@ -75,8 +75,10 @@ $result = mysqli_query($con,$sql);
 		<td><?php echo $mostrar['ID']?></td>
 		<td><?php echo $mostrar['Nombre']?></td>
 		<td><?php echo $mostrar['Correo']?></td>
-		<td><a href= "modificar.php?id=<?php echo $mostrar['ID']?>"> Modificar</a></td>
-		<td><a onclick= "confirmar_eliminar(location='borrar_inscripcion.php?id=<?php echo $mostrar['ID'];?>')"> Borrar</a></td>
+		<?php $tipo = 2 ?>
+		
+		<td><a href= "modificar.php?id=<?php echo $mostrar['ID']?>&tipo=<?php echo $tipo?>&idex=<?php echo $id?>"> Modificar</a></td>
+		<td><a onclick= "confirmar_eliminar(location='borrar_inscripcion.php?id=<?php echo $mostrar['ID'];?>&idex=<?php echo $id ?>')"> Borrar</a></td>
 		
 		
 	</tr>
