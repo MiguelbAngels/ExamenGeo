@@ -3,20 +3,60 @@
   <head>
     <link rel="shortcut icon" href="logo.ico">
     <meta charset="UTF-8">
-<title>Registro</title>
+    <title>Registro</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo//font-awesome.min.css">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/owl.carousel.css">
+    <link rel="stylesheet" href="nvo/css/owl.theme.css">
+    <link rel="stylesheet" href="nvo/css/owl.transitions.css">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/animate.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/normalize.css">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/main.css">
+    <!-- morrisjs CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/morrisjs/morris.css">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- metisMenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="nvo/css/metisMenu/metisMenu-vertical.css">
+    <!-- calendar CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="nvo/css/calendar/fullcalendar.print.min.css">
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/form/all-type-forms.css">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/style.css">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="nvo/css/responsive.css">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="nvo/js/vendor/modernizr-2.8.3.min.js"></script>
 
-
-<link href='//fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-<link rel='stylesheet prefetch' href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="css/style-form.css">
-    <link rel="stylesheet" href="css/fondo.css">
+ 
   </head>
 
   <body >
@@ -29,33 +69,68 @@
 
 <!-- Form Module-->
 
-<center>
-    <a href="index.php"><img src="unison.png" width="170px"/></a>
-</center>
+<div class="error-pagewrap">
+		<div class="error-page-int">
+			<div class="text-center custom-login">
+      <a href="index.php"><img src="unison.png" width="170px"/></a>
+				<h3>Registro</h3>
+				<p>Registrar un nuevo usuario</p>
+			</div>
+			<div class="content-error">
+				<div class="hpanel">
+                    <div class="panel-body">
+                        <form id="loginForm" method="POST" action="signupuser.php">
+                            <div class="row">
+                            <div class="form-group col-lg-12">
+                                    <label>Nombre</label>
+                                    <input class="form-control" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label>Expediente de usuario</label>
+                                    <input class="form-control" minlength="9" pattern="[0-9]+" placeholder="Expediente" name="username" id="username">
+                                </div>
+                                <div id="checkusername" class=""></div>
+                                <div class="form-group col-lg-6">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control" name="pass" id="password"  placeholder="Contraseña">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Repita su contraseña</label>
+                                    <input type="password" class="form-control" id='rpassword' name='rpassword' >
+                                </div>
+                                <div class="" id="divchearsisoniguales"></div>
+                                <div class="form-group col-lg-6">
+                                    <label>Correo electronico</label>
+                                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                    <div id="checkemailresponse"></div>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success loginbtn" type="submit" id="thesubmitBoton">Registrar</button>
+                                
+                            </div>
+                            </form>
+                            <button class="btn btn-default" onclick="location='index.php'">Cancelar</button>
+                           
+                                
+                            </div>
+                            
+                           
+                        
+                        
+                    </div>
+                </div>
+			</div>
+			<div class="text-center login-footer">
+				<p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+			</div>
+		</div>   
+    </div>
 
-  <div  class="module form-module">
-
-      <center><div class=" "><i class="fa fa-times fa-pencil"></i>  Registrarme
-
-          </div></center>
 
 
-  <div class="form">
-    <h2>Crear una cuenta</h2>
-    <form method="POST" action="signupuser.php">
-      <input required="" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre"/>
-        <input minlength="9" pattern="[0-9]+" required="" type="text" placeholder="Expediente" name="username" id="username"/>
-   <div id="checkusername" class=""></div>
-   <input required="" name="pass" id="password" type="password" placeholder="Contraseña"/>
-   <input required placeholder="Repetir Contraseña" required="" id='rpassword' name='rpassword' type='password' >
-   <div class="" id="divchearsisoniguales"></div>
-   <input required="" name="email" id="email" type="email" placeholder="Email"/>
-      <div id="checkemailresponse"></div>
-      <button type="submit" id="thesubmitBoton">Registrarme</button>
-    </form>
-  </div>
-  <div class="cta"></div>
-</div>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   <script>
@@ -214,7 +289,53 @@ xhttp.send("email="+email+"");
 }
 
 </script>
-
+ <!-- jquery
+		============================================ -->
+    <script src="nvo/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap JS
+		============================================ -->
+    <script src="nvo/js/bootstrap.min.js"></script>
+    <!-- wow JS
+		============================================ -->
+    <script src="nvo/js/wow.min.js"></script>
+    <!-- price-slider JS
+		============================================ -->
+    <script src="nvo/js/jquery-price-slider.js"></script>
+    <!-- meanmenu JS
+		============================================ -->
+    <script src="nvo/js/jquery.meanmenu.js"></script>
+    <!-- owl.carousel JS
+		============================================ -->
+    <script src="nvo/js/owl.carousel.min.js"></script>
+    <!-- sticky JS
+		============================================ -->
+    <script src="nvo/js/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+		============================================ -->
+    <script src="nvo/js/jquery.scrollUp.min.js"></script>
+    <!-- mCustomScrollbar JS
+		============================================ -->
+    <script src="nvo/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="nvo/js/scrollbar/mCustomScrollbar-active.js"></script>
+    <!-- metisMenu JS
+		============================================ -->
+    <script src="nvo/js/metisMenu/metisMenu.min.js"></script>
+    <script src="nvo/js/metisMenu/metisMenu-active.js"></script>
+    <!-- tab JS
+		============================================ -->
+    <script src="nvo/js/tab.js"></script>
+    <!-- icheck JS
+		============================================ -->
+    <script src="nvo/js/icheck/icheck.min.js"></script>
+    <script src="nvo/js/icheck/icheck-active.js"></script>
+    <!-- plugins JS
+		============================================ -->
+    <script src="nvo/js/plugins.js"></script>
+    <!-- main JS
+		============================================ -->
+    <script src="nvo/js/main.js"></script>
+    <!-- tawk chat JS
+	
 
   </body>
 </html>
