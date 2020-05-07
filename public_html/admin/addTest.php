@@ -8,13 +8,13 @@
 
 <body>
 <?php
-include("header.php");
+
 extract($_POST);
 require("../database.php");
 
-
-$query2="SELECT * FROM `reactivos` WHERE 1";
-$rs2=mysqli_query($con,$query2)or die("error al conectarse a bae de datos...");
+//Consulta para obtener la cantidad de preguntas activas 
+$query2="SELECT * FROM reactivos WHERE estado = '1'";
+$rs2=mysqli_query($con,$query2)or die("error al conectarse a base de datos...");
 $reactivosTotales = mysqli_num_rows($rs2) ;
 
 
@@ -34,7 +34,7 @@ $mostrar2=mysqli_fetch_array($result);
 $idex = $mostrar2['IDExamen'];
 unset($_POST);
 
-$sql = "SELECT * FROM reactivos ORDER BY RAND() LIMIT $nre";
+$sql = "SELECT * FROM reactivos WHERE estado = '1' ORDER BY RAND() LIMIT $nre";
 $result = mysqli_query($con,$sql);
 
 
@@ -44,7 +44,7 @@ if ($nre <= $reactivosTotales){
 		$idr = $mostrar['IDReactivo'];
 		$query3="insert into reactivosExamen(IDReactivo,IDExamen)values ('$idr','$idex')";
 		$rs3=mysqli_query($con,$query3)or die("no se registro error error");
-		echo "<p align=center>Preguntas <b>\</b> agregadadas correctamente.</p>";
+		
 
 		
 		
@@ -52,11 +52,11 @@ if ($nre <= $reactivosTotales){
 	
 	
 	}
-			echo "<br><div class=head1><a href=../nvo/add-department.php>Regresar</a></div>";
+			
 }
 else{
 	echo "<p align=center>No hay suficientes reactivos.</p>";
-	echo "<br><div class=head1><a href=../nvo/add-department.php>Regresar</a></div>";
+	
 	
 }
 	
@@ -64,7 +64,7 @@ else{
 
 
 
-echo "<br><div class=head1><a href=../nvo/add-department.php>Regresar</a></div>";
+echo "<br><div class=head1><a href=../nvo/add-department.php>Clic aquí para regresar regresar</a></div>";
 
 ?>
 </body>

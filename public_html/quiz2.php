@@ -8,60 +8,100 @@ session_start();
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     	
 
- <a href="https://time.is/Hermosillo" id="time_is_link" rel="nofollow" style="font-size:36px">Hora local en Hermosillo:</a>
-<span id="Hermosillo_z13d" style="font-size:36px"></span>
-<script src="//widget.time.is/t.js"></script>
-<script>
-time_is_widget.init({Hermosillo_z13d:{}});
-</script>
+
 
 
 <link href="quiz.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-.style9 {
-	color: #000099;
-	font-weight: bold;
+.* {
+box-sizing: border-box;
 }
-.style10 {
-	color: #330066;
-	font-weight: bold;
+
+*:focus {
+	outline: none;
 }
--->
-</style>
-</head>
-<body>
-<style type="text/css">
-<!--
 body {
-	margin-left: 0px;
-	margin-top: 0px;
+font-family: Arial;
+background-color: #3498DB;
+padding: 50px;
+}
+.login {
+margin: 20px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #777;
+}
+
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 10px;
+}
+
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+input:focus {
+border: 2px solid #3498DB;
+box-shadow: none;
+}
+
+.btn {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #2980B9;
+}
+
+.login-link {
+  font-size: 12px;
+  color: #444;
+  display: block;
+	margin-top: 12px;
 }
 -->
 </style>
-<table border="0" width="100%" cellspacing="0" cellpadding="0" background="image/topbkg.jpg">
-  <tr>
-    <td width="90%" valign="top">
-<!--You can modify the text, color, size, number of loops and more on the flash header by editing the text file (fence.txt) included in the zip file.-->
-<div align="left"></div></td>
-    <td width="10%">&nbsp;</td>
-  </tr>
-</table>
-<table border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#000000" background="img/blackbar.jpg">
-  <tr>
-    <td width="100%"><img border="0" src="image/blackbar.jpg" width="89" height="15"></td>
-  </tr>
-</table>
-<table width="100%"  border="0">
-  <tr>
-    <td width="89%"><span class="style9">Examen en linea</span></td>
-    <td width="11%">&nbsp;</td>
-  </tr>
+
+
 <?php
 	extract($_GET);
 	$n = $_REQUEST['n'];
 	
 include("database.php");
+
 $user = $_SESSION[login];
 if ($n==0){
     $_SESSION["correctas"]=0;
@@ -80,8 +120,8 @@ mysqli_data_seek($result2,0);
 $Fecha_limite = mysqli_fetch_row($result2);
 $npreg = $Fecha_limite[2];
 ?>
-<span style="font-size:36px">Tiempo restante:</span>
- <span  id="demo" style="font-size:36px"></span>
+<span style="font-size:20px">Tiempo restante:</span>
+ <span  id="demo" style="font-size:20px"></span>
 <script language="JavaScript">
 // function to calculate local time
 // in a different city
@@ -204,40 +244,46 @@ var x = setInterval(function() {
 
 if ($n<$npreg){
 ?>
+	<div class="login">
+		<div class="login-screen">
+			<div >
+				<strong> <?php echo $n+1 ?>.- 
+				
+				<?php
+				//Imprime la pregunta 
+				echo $arraypreg[1][$n];
+				?></strong> 
+			</div>
+	
+			</br>
+			<span class="radio">
+			<div align="center">
+				<?php
+					//imprime el primer inciso del reactivo 
+					echo "a)".$resp[0][$n] 
+				?>
+				<input  type=radio name='ans1' value="1">
+					
+			</br>
+			</br>
+				<?php 
+					echo "b)".$resp[1][$n] 
+				?>
+				<input type=radio name='ans1' value="2">
 
+			</div>
+			</span>
+	</div>
 
  <form method="post" action="">
-</table>
-<table width="304"  border="0" align="center">
-  <tr>
-    <td width="298"><div align="left"><strong> <?php echo $n+1 ?>.- 
-
-		<?php 
-		echo $arraypreg[1][$n];
-		?></strong> </div></td>
-  </tr>
-  <tr>
-    <td>
-      <div align="left">
-
-	  	<?php echo "a)".$resp[0][$n]?>
-		<input type=radio name='ans1' value="1">
-			  
-	</br>
-		<?php echo "b)".$resp[1][$n] ?>
-		<input type=radio name='ans1' value="2">
-   
-		
-  </tr>
-
-</table>
 
 
+ </br>
 
-<td><div align="center">
-	
-  		<input type=submit id=submit name=submit value='Siguiente' onclick="">
-		<input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
+
+<td><div align="center">	
+	<input type=submit id=submit name=submit value='Siguiente' onclick="">
+	<input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
 	</form>
 </div></td>
 
@@ -308,7 +354,7 @@ if ($n==$npreg &&  $_SESSION["terminado"]==2) {
     
     $contestado=1;
     $correctas = $_SESSION["correctas"];
-$query="insert into inscripcion(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','12','$Fecha_limite[5]','12','$correctas')";
+$query="insert into resultados(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','12','$Fecha_limite[5]','12','$correctas')";
 
 $rs=mysqli_query($con,$query) or die(mysqli_error());
 

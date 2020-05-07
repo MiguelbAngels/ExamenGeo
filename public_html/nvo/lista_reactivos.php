@@ -349,7 +349,7 @@ error_reporting(1);
                                     <tr>
                                         <th>ID Reactivo</th>
                                         <th>Pregunta</th>
-                                        <th>ID correcta</th>
+                                        
                                         <th>Acción</th>
                                     </tr>
 
@@ -370,7 +370,7 @@ error_reporting(1);
                                            <tr>
                                         <td><?php echo $mostrar4['IDReactivo']?></td>
                                         <td><?php echo $mostrar4['Pregunta']?></td>
-                                        <td><?php echo $mostrar4['IDCorrecta']?></td>
+                                        
                                         <td><a onclick= "confirmar_eliminar(location='../admin/borrar_reactivo_general.php?idr=<?php echo $mostrar4['IDReactivo']?>')"> Borrar</a></td>
 
 
@@ -445,7 +445,7 @@ error_reporting(1);
                                     <tr>
                                         <td><?php echo $mostrar['IDReactivo']?></td>
                                         <td><?php echo $mostrar['Pregunta']?></td>
-                                        <td><?php echo $mostrar['IDCorrecta']?></td>
+                                      
                                         <td><a onclick= "confirmar_eliminar(location='../admin/borrar_reactivo_general.php?idr=<?php echo $mostrar['IDReactivo'];?>')"> Borrar</a></td>
 
 

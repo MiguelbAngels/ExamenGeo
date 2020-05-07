@@ -12,17 +12,7 @@
 extract($_POST);
 include("../database.php");
 	$id = $_REQUEST['id'];
-      $sql = "SELECT * FROM usuarios where ID='$lid'";
-	$rs=mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($rs);
-	
-if($count>0 && $lid != $id)
-	{
-	
-	echo "<br><br><br><div class=head1>El expediente ingresado ya pertenece a otro alumno</div>";
-	exit;
-	}
+     
  
   
    

@@ -289,9 +289,9 @@ error_reporting(1);
             <!-- Mobile Menu end -->
     <script type="text/javascript">
    
-   function confirmar_eliminar(){ 
+   function confirmar_eliminar(idex){ 
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
-           
+      location='../admin/borrar_examen.php?id="+idex"'
    }else{
     window.location.href='gestion_examen.php';
    }
@@ -348,7 +348,7 @@ error_reporting(1);
                                     <tr>
                                         <th>Id</th>
                                        
-                                        <th>Status</th>
+                                        <th>Estado</th>
                                         <th>Nombre</th>
                                         <th>Fecha</th>
                                         <th>Lugar</th>
@@ -372,7 +372,7 @@ error_reporting(1);
                                                     <tr>
                                                     <td><?php echo $mostrar4['IDExamen']?></td>
                                          <td>
-                                            <button class="pd-setting">Examen</button>
+                                            <button class="pd-setting">Activp</button>
                                         </td>
                                                     
                                                     <td><?php echo $mostrar4['TestName']?></td>
@@ -384,7 +384,7 @@ error_reporting(1);
                                           
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar4['IDExamen']?>">Editar</a>
                             
-                                            <a onclick= "confirmar_eliminar(location='../admin/borrar_examen.php?id=<?php echo $mostrar4['IDExamen'];?>')"> Borrar</a>
+                                            <a onclick= "confirmar_eliminar(location='<?php $mostrar4['IDExamen'];?>')"> Borrar</a>
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar4['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar4['IDExamen']?>">Reactivos</a>
                                         </td>
@@ -512,7 +512,7 @@ error_reporting(1);
                                           
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar['IDExamen']?>">Editar</a>
                             
-                                            <a onclick= "confirmar_eliminar(location='../admin/borrar_examen.php?id=<?php echo $mostrar['IDExamen'];?>')"> Borrar</a>
+                                            <a onclick= "confirmar_eliminar('<?php $mostrar['IDExamen'];?>')"> Borrar</a>
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar['IDExamen']?>">Reactivos</a>
                                         </td>

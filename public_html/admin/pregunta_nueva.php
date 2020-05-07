@@ -8,7 +8,7 @@
 
 <body>
 <?php
-include("header.php");
+
 extract($_POST);
 $idex = $_REQUEST['idex'];
 require("../database.php");
@@ -27,8 +27,8 @@ $ida = mysqli_num_rows($rs2) + 1;
 $idb = mysqli_num_rows($rs2) + 2;
 $idc = mysqli_num_rows($rs2) +$n ;
 
-echo $idc;
-$query="insert into reactivos(Pregunta,IDCorrecta)values ('$preg','$idc')";
+
+$query="insert into reactivos(Pregunta,IDCorrecta,estado)values ('$preg','$idc','1')";
 
 $rs=mysqli_query($con,$query)or die("no se registro error error");
 
@@ -48,7 +48,7 @@ $rs4=mysqli_query($con,$query4)or die("no se registro error error4");
 
 echo "<p align=center>Reactivo <b>\"$testname\"</b> Agregado correctamente.</p>";
 
-echo "<br><div class=head1><a href=../nvo/gestion_reactivos.php?id=$idex>Regresar</a></div>";
+echo "<br><div align=center class=head1><a href=../nvo/lista_reactivos.php>Regresar</a></div>";
 
 unset($_POST);
 ?>

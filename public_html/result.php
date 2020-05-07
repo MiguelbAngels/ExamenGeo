@@ -35,7 +35,7 @@ if(!isset($_SESSION[login]))
 $id = $_SESSION[login];
 $idex = $_REQUEST['idex'];
 
-$sql = "SELECT * From inscripcion WHERE IDAlumno='$id' and IDExamen = '$idex'";
+$sql = "SELECT * From resultados WHERE IDAlumno='$id' and IDExamen = '$idex'";
 $result = mysqli_query($con,$sql);
 $sql2 = "SELECT * From examen WHERE IDExamen='$idex'";
 $result2 = mysqli_query($con,$sql2);
@@ -45,22 +45,22 @@ $sql4 = "SELECT * From usuarios WHERE ID ='$id'";
 $result5 = mysqli_query($con,$sql4);
 
 		?>
-	
-
-	
+	 
 
 <p class="head1">Resultados de la prueba: </p>
 <div style="margin:auto;width:90%;height:500px;box-shadow:2px 1px 2px 2px #CCCCCC;text-align:left">
 <div style="margin-left:20%;padding-top:5%">
-<br><td><a href= "index.php?id=<?php echo $id?>"> Regresar</a></td>
-<table border = "1">
+<?php
+	 echo "<br><div class=head1><a href=index.php>Regresar al inicio</a></div>";i  
+?>
+<table border = "1" >
 <tr>
 		
 		<br><br>
-		<td>Nombre</td>
+		<td>Examen</td>
 		<td> Preguntas</td>
 		<td> Fecha</td>
-		
+		 
 		<td> Correctas</td>
 		
 		<br>
@@ -70,38 +70,34 @@ $result5 = mysqli_query($con,$sql4);
 	while($mostrar5=(mysqli_fetch_array($result5))){
 		?>
 		
-	 <?php $email = $mostrar5['Correo']  ?>
-    <?php $mensaje = "Aspirante: ".  $mostrar5['Nombre'] . "\n"  ?>
-
-   
+	 	<?php $email = $mostrar5['Correo']  ?>
+    	<?php $mensaje = "Aspirante: ".  $mostrar5['Nombre'] . "\n"  ?>
 	
 	<?php
-	
-	}
-	
+		}
 	?>
 	
 	<?php
-	while($mostrar2=(mysqli_fetch_array($result2))){
-		?>
+		while($mostrar2=(mysqli_fetch_array($result2))){
+	?>
 		
 	<tr>
 		
-		<td><?php echo $mostrar2['TestName']?></td>
-		<?php $mensaje .= "Nombre del examen: ".  $mostrar2['TestName'] . "\n"  ?>
-		<?php $asunto = "Resultados de examen: ".  $mostrar2['TestName']  ?>
-		<td><?php echo $mostrar2['nReactivos']?></td>
-        <?php $mensaje .= "Preguntas: ".  $mostrar2['nReactivos'] . "\n" ?>
-		</br>
+			<td><?php echo $mostrar2['TestName']?></td>
+			<?php $mensaje .= "Nombre del examen: ".  $mostrar2['TestName'] . "\n"  ?>
+			<?php $asunto = "Resultados de examen: ".  $mostrar2['TestName']  ?>
+			<td><?php echo $mostrar2['nReactivos']?></td>
+			<?php $mensaje .= "Preguntas: ".  $mostrar2['nReactivos'] . "\n" ?>
+			</br>
 	
 
 	
 	<?php
-	}
+		}
 	?>
 <?php
 	while($mostrar=(mysqli_fetch_array($result))){
-		?>
+?>
 		
 
 		<td><?php echo $mostrar['Fecha']?></td>
@@ -117,19 +113,12 @@ $result5 = mysqli_query($con,$sql4);
 	<?php
 	while($mostrar4=(mysqli_fetch_array($result4))){
 		?>
-		
-
 		<td><?php echo $mostrar4['RespCorrectas']?></td>
 		
 	 <?php $mensaje .= "Correctas: ".  $mostrar4['RespCorrectas'] . "\n" ?>
-		
-	
-		
-		
 
-	
 	<?php
-	    echo "<br><div class=head1><a href=index.php>Regresar a inicio</a></div>";
+	   
 	}
 	
 	?>
@@ -139,19 +128,9 @@ $result5 = mysqli_query($con,$sql4);
 	
 		</tr>
 </table>
-<?php
-header('Content-Type: text/html; charset=utf-8');
-		$header = 'From: ' . "soporte@doriclub.ml" . " \r\n";
-		$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-		$header .= "Mime-Version: 1.0 \r\n";
-		$header .= "Content-Type: text/plain";
-		$mensaje .= "Dudas o sugerencias: 634 108 6118 \n";
-	    
-		mail("live.alvarez69@gmail.com", $asunto, utf8_decode($mensaje), $header);
-		mail($email, $asunto, utf8_decode($mensaje), $header);
+<div align ="left">
 
-		
-?>
+</div>
 
 <p align="center" class="head1">&nbsp;</p>
 </div>

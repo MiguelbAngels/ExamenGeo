@@ -382,17 +382,17 @@ error_reporting(1);
                                         <?php if($total_pages >= 1) { ?>
                                         <!-- Link of the previous page -->
                                         <li class='page-item <?php ($page <= 1 ? print 'disabled' : '')?>'>
-                                          <a class='page-link' href='data-table.php?page=<?php ($page>1 ? print($page-1) : print 1)?>'>Anterior</a>
+                                          <a class='page-link' href='gestion_reactivos.php?id=<?php echo $idex; ?>?page=<?php ($page>1 ? print($page-1) : print 1)?>'>Anterior</a>
                                         </li>
                                         <!-- Links of the pages with page number -->
                                         <?php for($i=$start; $i<=$end; $i++) { ?>
                                         <li class='page-item <?php ($i == $page ? print 'active' : '')?>'>
-                                          <a class='page-link' href='data-table.php?page=<?php echo $i;?>'><?php echo $i;?></a>
+                                          <a class='page-link' href='gestion_reactivos.php?id=<?php echo $idex; ?>?page=<?php echo $i;?>'><?php echo $i;?></a>
                                         </li>
                                         <?php } ?>
                                         <!-- Link of the next page -->
                                         <li class='page-item <?php ($page >= $total_pages ? print 'disabled' : '')?>'>
-                                          <a class='page-link' href='data-table.php.php?page=<?php ($page < $total_pages ? print($page+1) : print $total_pages)?>'>Siguiente</a>
+                                          <a class='page-link' href='gestion_reactivos.php?id=<?php echo $idex; ?>?page=<?php ($page < $total_pages ? print($page+1) : print $total_pages)?>'>Siguiente</a>
                                         </li>
                                     </ul>
                                     <?php } ?>

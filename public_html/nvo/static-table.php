@@ -91,7 +91,7 @@ error_reporting(1);
     include("../database.php");
 
     //consulta para buscar todos lo resultados de todos los alumnos que han hecho algun examen
-    $sql2 = "SELECT * From inscripcion where IDExamen ";
+    $sql2 = "SELECT * From resultados where IDExamen ";
     $result2 = mysqli_query($con,$sql2);
 
     ?>
@@ -348,12 +348,15 @@ error_reporting(1);
                                     
                                             //Buscamos los resultados e informacion de cada alumno que realizó un examen
                                             $idresp = $mostrar2['IDRespuestas'];
-                                            $sql4 = "SELECT * From inscripcion where  IDAlumno = '$idalumno'";
+                                            $idex = $mostrar2['IDExamen'];
+                                        
+                                            $sql4 = "SELECT * From resultados where  IDAlumno = '$idalumno' AND IDExamen = '$idex'";
                                             $result4 = mysqli_query($con,$sql4);
                                             $mostrar4=(mysqli_fetch_array($result4));
                                             
+                                            
                                             //Buscamos el examen correspondiente para obtener su número de preguntas
-                                            $idex = $mostrar4['IDExamen'];
+                                            
                                             $sql = "SELECT * From examen where  IDExamen = '$idex'";
                                             $result = mysqli_query($con,$sql);
                                             $mostrar=(mysqli_fetch_array($result));

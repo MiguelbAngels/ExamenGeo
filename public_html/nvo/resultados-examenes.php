@@ -83,7 +83,7 @@ error_reporting(1);
     $id =$_SESSION[login];
 
 
-    $sql2 = "SELECT * From inscripcion where IDAlumno = '$id' ";
+    $sql2 = "SELECT * From resultados where IDAlumno = '$id' ";
     $result2 = mysqli_query($con,$sql2);
     ?>
 
