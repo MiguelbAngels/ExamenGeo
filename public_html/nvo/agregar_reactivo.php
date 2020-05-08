@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Agregar reactivo</title>
+    <title>Agregar Reactivo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -104,14 +104,14 @@ $idex = $_REQUEST['idex'];
                 if(b.length<1) {
                 alert("Por favor ingrese inciso b");
                 document.form1.b.value;
-                
+
                 return false;
                 }
                 n=document.form1.n.value;
                 if(n.length<1) {
                 alert("Por favor ingrese la fecha1");
                 document.form1.n.value;
-                
+
                 return false;
                 }
                 preg=document.form1.preg2.value;
@@ -131,7 +131,7 @@ $idex = $_REQUEST['idex'];
                 if(b.length<1) {
                 alert("Por favor ingrese inciso b");
                 document.form1.b.value;
-                
+
                 return false;
                 }
                 n=document.form1.n2.value;
@@ -156,14 +156,14 @@ $idex = $_REQUEST['idex'];
                 if(b.length<1) {
                 alert("Por favor ingrese inciso b");
                 document.form1.b.value;
-                
+
                 return false;
                 }
                 n=document.form1.n3.value;
                 if(n.length<1) {
                 alert("Por favor ingrese la fecha3");
                 document.form1.n.value;
-                
+
                 return false;
 }
 
@@ -199,8 +199,8 @@ return true;
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -208,7 +208,7 @@ return true;
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
@@ -220,7 +220,7 @@ return true;
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -228,7 +228,7 @@ return true;
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -303,7 +303,7 @@ return true;
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -367,9 +367,9 @@ return true;
             </div>
         </div>
         <!-- Single pro tab review Start-->
-        
-    
-        
+
+
+
         <div class="single-pro-review-area mt-t-30 mg-b-15">
             <div class="container-fluid">
                 <div class="row">
@@ -377,7 +377,7 @@ return true;
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#description">Agregar reactivo</a></li>
-                                
+
                             </ul>
                             </script>
                             <form name="form1" method="post" action="../admin/pregunta_nueva.php?idex=<?php echo $idex ?>"  onSubmit="return check();">
@@ -409,16 +409,16 @@ return true;
                                                             <div class="form-group">
                                                                 <input name="n" type="text" class="form-control" placeholder="Respuesta correcta" id = "n">
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
-                                                    
-                                                  
-                                              
-                                                           
+
+
+
+
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="payment-adress">
@@ -431,10 +431,10 @@ return true;
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
-                              
-                                
+
+
+
+
                                 </scritp>
                                 </form>
                             </div>

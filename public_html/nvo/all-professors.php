@@ -8,7 +8,7 @@ error_reporting(1);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admins</title>
+    <title>Administradores Registrados</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -80,7 +80,7 @@ error_reporting(1);
         include("../database.php");
         $sql = "SELECT * From usuarios WHERE Clase='1' and Estado = '1'";
         $result = mysqli_query($con,$sql);
-        
+
     /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
     $adjacents = 2;
@@ -155,8 +155,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -164,7 +164,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -176,7 +176,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -184,7 +184,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -259,7 +259,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -311,12 +311,12 @@ error_reporting(1);
                                                 <input type="text" placeholder="Buscar nombre..." class="search-int form-control" name="buscar" id="buscar">
                                                <br><button type="submit" value="" name="busca" class="btn btn-default">Buscar</button>
                                             </form>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <ul class="breadcome-menu">
-                                            <li>Estudiantes <span class="bread-slash">/</span>
+                                            <li>Administradores <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">Registrados</span>
                                             </li>
@@ -330,26 +330,26 @@ error_reporting(1);
             </div>
         </div>
                                                 <?php
-                                                
+
                                                  if($_POST){
-                                                if (!isset($buscar)){ 
-                                                      echo "Debe especificar una cadena a bucar"; 
-                                                      echo "</html></body> \n"; 
-                                                      exit; 
-                                                } 
-                                               
-                                                
-                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '1' and Clase = '1' "; 
+                                                if (!isset($buscar)){
+                                                      echo "Debe especificar una cadena a bucar";
+                                                      echo "</html></body> \n";
+                                                      exit;
+                                                }
+
+
+                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '1' and Clase = '1' ";
                                                 $result4 = mysqli_query($con,$sql4);
                                                 ?>
                                                 <div class="contacts-area mg-b-15">
                                                 <div class="container-fluid">
                                                     <?php
-                                            
+
                                                 while($mostrar4=(mysqli_fetch_array($result4))){
                                                        if($cont == 0){?>
-                                                    
-                                                 
+
+
                                                 <div class="contacts-area mg-b-15">
                                                 <div class="row">
                                             <?php
@@ -371,14 +371,14 @@ error_reporting(1);
                                             if($cont == 4){ ?>
                                                 </div>
                                                 </div>
-                                                    
-                                                    
+
+
                                                  <?php $cont=0;
                                                 }
-                                                 
+
                                                 }
-                                                
-                                            
+
+
                                             ?>
                                             </table>
                                              </div>
@@ -434,14 +434,14 @@ error_reporting(1);
 </body>
 
 </html>
-                                               
+
                                             <?php
                                               exit;
                                             }
-                                          
+
                                             ?>
-        
-        
+
+
         <div class="contacts-area mg-b-15">
             <div class="container-fluid">
                 <?php
@@ -469,7 +469,7 @@ error_reporting(1);
                     if($cont == 4){ ?>
                         </div>
                         </div>
-                    <?php $cont = 0; 
+                    <?php $cont = 0;
                     }
                 }
                 ?>

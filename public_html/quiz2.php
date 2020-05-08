@@ -6,7 +6,7 @@ session_start();
 <head>
 <title>Online Quiz</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    	
+
 
 
 
@@ -99,7 +99,7 @@ box-shadow: none;
 <?php
 	extract($_GET);
 	$n = $_REQUEST['n'];
-	
+
 include("database.php");
 
 $user = $_SESSION[login];
@@ -129,16 +129,16 @@ $npreg = $Fecha_limite[2];
 function calcTime(city, offset) {
     // create Date object for current location
     d = new Date();
-    
+
     // convert to msec
-    // add local time zone offset 
+    // add local time zone offset
     // get UTC time in msec
     utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-    
+
     // create new Date object for different city
     // using supplied offset
     nd = new Date(utc + (3600000*offset));
-    
+
     // return time as a string
     return nd;
 }
@@ -166,7 +166,7 @@ var x = setInterval(function() {
   // Display the result in the element with id="demo"
   document.getElementById("demo").innerHTML = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
-  // If the count down is finished, write some text 
+  // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
     document.getElementById('daletiempo').click();
@@ -174,13 +174,13 @@ var x = setInterval(function() {
 }, 1000);
 </script>
 <?php
-	
+
 	while($mostrar=(mysqli_fetch_array($result))){
-	
+
 
     $contador2 = $contador2 + 1;
-	
-	
+
+
 	}
 	/*
 	if ($contador2 >= 1 && $contestado != 1 ){
@@ -189,9 +189,9 @@ var x = setInterval(function() {
 	    exit;
 	}
 	*/
-	
+
 	date_default_timezone_set('America/Hermosillo');
-	
+
 	while($mostrar2=(mysqli_fetch_array($result2))){
 		$date = date("H:i:s");
 		$dateEx = $mostrar2['HInicio'];
@@ -205,18 +205,18 @@ var x = setInterval(function() {
 		    echo "El examen inicia a las: $dateEx </br>";
 		    exit;
 		}
-	
+
 	}
 	echo "</br></br>";
-	
-	
-?>	
- 
-      <?php	
+
+
+?>
+
+      <?php
 	$contador = 0;
-	
+
 	while( $mostrar1=(mysqli_fetch_array($result0))){
-	   
+
 		$idex = $mostrar1['IDReactivo'];
 		$query = "SELECT * FROM reactivos WHERE IDReactivo = $idex";
 		$preguntas=mysqli_query($con,$query) or die(mysqli_error());
@@ -230,7 +230,7 @@ var x = setInterval(function() {
 			mysqli_data_seek($resp1,0);
 		$R1_1= mysqli_fetch_row($resp1);
 		$resp[0][$contador]=$R1_1[1];
-		
+
 		$resp11[0][$contador]=$R1_1[0];
 			mysqli_data_seek($resp1,1);
 		$R1_2= mysqli_fetch_row($resp1);
@@ -241,11 +241,11 @@ var x = setInterval(function() {
 		$R1_3= mysqli_fetch_row($resp1);
 		$resp[2][$contador]=$R1_3[1];
 		$resp11[2][$contador]=$R1_3[0];
-	
+
 		$R1_4= mysqli_fetch_row($resp1);
 		$resp[3][$contador]=$R1_4[1];
 		$resp11[3][$contador]=$R1_4[0];
-	
+
 		$ans[0][0] = 1;
 		$contador++;
 }
@@ -254,46 +254,46 @@ if ($n<$npreg){
 ?>
 	<div class="login">
 		<div class="login-screen">
-		<form method="post" action="">
+			<form method="post" action="">
 			<div >
-				<strong> <?php echo $n+1 ?>.- 
-				
+				<strong> <?php echo $n+1 ?>.-
+
 				<?php
-				//Imprime la pregunta 
+				//Imprime la pregunta
 				echo $arraypreg[1][$n];
-				?></strong> 
+				?></strong>
 			</div>
-	
+
 			</br>
-		
+
 			<div align="center">
 				<?php
-					//imprime el primer inciso del reactivo 
-					echo "a)".$resp[0][$n] 
+					//imprime el primer inciso del reactivo
+					echo "a)".$resp[0][$n]
 				?>
 				<input  type=radio name='ans1' value="1">
-					
+
 			</br>
 			</br>
-				<?php 
-					echo "b)".$resp[1][$n] 
+				<?php
+					echo "b)".$resp[1][$n]
 				?>
 				<input type=radio name='ans1' value="2">
 				</br>
 			</br>
-				<?php 
-					echo "c)".$resp[2][$n] 
+				<?php
+					echo "c)".$resp[2][$n]
 				?>
 				<input type=radio name='ans1' value="3">
 				</br>
 			</br>
-				<?php 
-					echo "d)".$resp[3][$n] 
+				<?php
+					echo "d)".$resp[3][$n]
 				?>
 				<input type=radio name='ans1' value="4">
 
 			</div>
-		
+
 	</div>
 
  <form method="post" action="">
@@ -302,7 +302,7 @@ if ($n<$npreg){
  </br>
 
 
-<td><div align="center">	
+<td><div align="center">
 	<input type=submit id=submit name=submit value='Siguiente' onclick="">
 	<input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
 	</form>
@@ -310,7 +310,7 @@ if ($n<$npreg){
 
 <?php
 }
-    
+
 
 
 $contador = 0;
@@ -319,56 +319,56 @@ $resp = $_POST['ans1'];
 
 
 $cont =1;
-   
+
 if (isset($_POST['submit']) || isset($_POST['submit2'])) {
-     $cont = 0;
+		$cont = 0;
     	if($resp==2){
-    	    
+
 		    if ($resp11[1][$n] == $rc[$n] ){
-		    
+
 		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
-		        
-		        
+
+
 		    }
-		    
-		}
+
+    	}
 
     	if($resp==1){
-    	
+
 		    if ($resp11[0][$n] == $rc[$n] ){
-		        
+
 		          $_SESSION["correctas"]= $_SESSION["correctas"]+1;
-		       
+
 		    }
-		   
+
 		}
-	
+
 		if($resp==3){
-    	   
+
 		    if ($resp11[2][$n] == $rc[$n] ){
-		    
+
 		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
-		        
-		        
+
+
 		    }
-		    
+
 		}
-		
+
 		if($resp==4){
-    	    
+
 		    if ($resp11[3][$n] == $rc[$n] ){
-		    
+
 		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
-		        
-		        
+
+
 		    }
-		    
+
     	}
-		
-	
+
+
 
 	else{
-	    
+
 	}
 if ($n<$npreg){
 $n++;
@@ -376,20 +376,20 @@ $n++;
 
 
 
-echo "<script language=Javascript> location.href=\"quiz2.php?subid=$subid&n=$n\"; </script>"; 
+echo "<script language=Javascript> location.href=\"quiz2.php?subid=$subid&n=$n\"; </script>";
 
 
-    
+
 }
 if ($n==$npreg)
 {
      $_SESSION["terminado"]= $_SESSION["terminado"]+1;
-         
+
 }
 
 if ($n==$npreg &&  $_SESSION["terminado"]==2) {
     $resp1 = $_POST['ans1'];
-    
+
     $contestado=1;
     $correctas = $_SESSION["correctas"];
 $query="insert into resultados(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','$cont','$Fecha_limite[5]','$resp','$correctas')";

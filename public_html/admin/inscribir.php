@@ -13,9 +13,8 @@ extract($_POST);
 include("../database.php");
 	$id = $_REQUEST['id'];
 	$ida = $_REQUEST['id1'];
-    
 
- 
+
 
 //Consulta para encontrar nombre del alumno correspondiente
 $query= "SELECT * from usuarios WHERE ID = '$id'";
@@ -35,15 +34,11 @@ $rs2=mysqli_query($con,$query)or die("Could Not Perform the Query");
 $mostrar=(mysqli_fetch_array($rs2));
 $nom_ex = $mostrar['TestName'];
 
-
-
-
-
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 
 echo "<br><div class=head1><a href=alumnos_gestion.php>Regresar</a></div>";
 
-header("location: ../nvo/inscribir_examen.php?idex=".$ida); 
+header("location: ../nvo/inscribir_examen.php?idex=".$ida);
 
 ?>
 </body>

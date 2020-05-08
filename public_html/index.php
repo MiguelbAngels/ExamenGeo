@@ -9,7 +9,7 @@ session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	
+
 
 
 
@@ -85,7 +85,7 @@ session_start();
 
 	      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
 		  $sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
-	
+
 
 
 		$rs=mysqli_query($con,$sql);
@@ -96,7 +96,7 @@ session_start();
 		$row2 = mysqli_fetch_array($rs2,MYSQLI_ASSOC);
 	    $count = mysqli_num_rows($rs);
 		$count2 = mysqli_num_rows($rs2);
-	
+
 		if($count<1 && $count2 < 1 )
 		{
 			$found="N";
@@ -126,16 +126,16 @@ session_start();
 		}
 	}
 	if (isset($_SESSION[login]) )
-	
+
 	{
 	    echo "<script>location.href='nvo/alumno.php';</script>";
 	    die();
 	    $sql5 = "SELECT * FROM usuarios WHERE ID=' $_SESSION[login]'";
 	   $result5 = mysqli_query($con,$sql5);
 	   	$mostrar5=(mysqli_fetch_array($result5));
-		
 
-		 
+
+
 		header("Cache-Control: no-cache, must-revalidate");
 		if(isset($_SESSION['login']))
 		{
@@ -159,13 +159,13 @@ session_start();
         </br>
         </br>
         <?php
-        
+
 	echo "<h1 class='style8' align=center>Bienvenido $nombre</h1>";
-	        
+
 			echo '<table width="28%"  border="0" align="center">
 			</br>
 			</br>
-        
+
 	  <tr>
 	    <td  width="7%" height="65" valign="bottom"><img src="image/HLPBUTT2.JPG" width="45" height="40" align="middle"></td>
 	    <td width="93%" valign="bottom" bordercolor="#0000FF"> <a href="sublist.php" class="alert alert-danger">Ingresar a un examen </a></td>
@@ -190,10 +190,10 @@ session_start();
 	}
 	?>
 
-	
-				
 
-				
+
+
+
 
 
 
@@ -212,7 +212,7 @@ session_start();
 			<div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
-                        <form action="#" id="loginForm" name="form1" method="post">
+                        <form action="" id="loginForm" name="form1" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
                                 <input type="text" placeholder="Expediente" title="Please enter you username" required=""  name="loginid" id="loginid2" class="form-control">
@@ -243,9 +243,9 @@ session_start();
                 </div>
 			</div>
 			<div class="text-center login-footer">
-				<p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+				<p>Copyright © 2020. Todos los derechos reservados</p>
 			</div>
-		</div>   
+		</div>
     </div>
 
 
