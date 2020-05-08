@@ -79,8 +79,10 @@ error_reporting(1);
             exit;
     }
 
-    $sql = "SELECT * From usuarios WHERE Clase='0' and IDExamen != '$idex' and Estado = '1'";
+    $sql = "SELECT * From usuarios WHERE Clase='0' and Estado = '1'";
     $result = mysqli_query($con,$sql);
+    
+
     
     /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
@@ -97,7 +99,7 @@ error_reporting(1);
         $page = 1;
         $offset = 0;
       }
-      $query  = "SELECT * From usuarios WHERE Clase='0' and IDExamen != '$idex' and Estado = '1' limit $offset, $limit";
+      $query  = "SELECT * From usuarios WHERE Clase='0'  and Estado = '1' limit $offset, $limit";
       $result = mysqli_query($con, $query);
 
     if($total_pages <= (1+($adjacents * 2))) {
@@ -354,9 +356,23 @@ error_reporting(1);
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
+                                        $bool = 0;
+                                        //Consulta para ver los alumnos ya inscritos y compararlos despues
+                                        $sql2 = "SELECT * FROM inscripciones WHERE IDExamen = '$idex'";
+                                        $result2 = mysqli_query($con,$sql2);
+                                        //Ciclo para comparar si los alumnos ya estan inscritos o no al examen
+                                        while($mostrar2=(mysqli_fetch_array($result2))){
+                                         
+                                            if($mostrar2['expediente_alumno'] == $mostrar['ID']){
+                                                $bool=1;
+                                            }
+
+                                         }
+                                         
+                                         if($bool==0){
                                          $idl = $mostrar['ID'];
                                          ?>
-                                    <tr>
+                                        <tr>
                                         <td><?php echo $mostrar['ID']?></td>
                                       
                                         <td>
@@ -367,8 +383,9 @@ error_reporting(1);
                                         <td><a href= "../admin/inscribir.php?id1=<?php echo $idex ?> &id=<?php echo $idl?> "> <i class="fa fa-check" aria-hidden="true"></i></a></td>
                                         
                                     </tr>
-                                <?php
-                                     }
+                                     <?php
+                                            }
+                                        }
                                      ?>
                                     
                                 </table>
@@ -379,17 +396,17 @@ error_reporting(1);
                                         <?php if($total_pages >= 1) { ?>
                                         <!-- Link of the previous page -->
                                         <li class='page-item <?php ($page <= 1 ? print 'disabled' : '')?>'>
-                                          <a class='page-link' href='data-table.php?page=<?php ($page>1 ? print($page-1) : print 1)?>'>Anterior</a>
+                                          <a class='page-link' href='inscribir_examen.php?page=<?php ($page>1 ? print($page-1) : print 1)?>'>Anterior</a>
                                         </li>
                                         <!-- Links of the pages with page number -->
                                         <?php for($i=$start; $i<=$end; $i++) { ?>
                                         <li class='page-item <?php ($i == $page ? print 'active' : '')?>'>
-                                          <a class='page-link' href='data-table.php?page=<?php echo $i;?>'><?php echo $i;?></a>
+                                          <a class='page-link' href='inscribir_examen.php?page=<?php echo $i;?>'><?php echo $i;?></a>
                                         </li>
                                         <?php } ?>
                                         <!-- Link of the next page -->
                                         <li class='page-item <?php ($page >= $total_pages ? print 'disabled' : '')?>'>
-                                          <a class='page-link' href='data-table.php.php?page=<?php ($page < $total_pages ? print($page+1) : print $total_pages)?>'>Siguiente</a>
+                                          <a class='page-link' href='inscribir_examen.php?page=<?php ($page < $total_pages ? print($page+1) : print $total_pages)?>'>Siguiente</a>
                                         </li>
                                     </ul>
                                     <?php } ?>

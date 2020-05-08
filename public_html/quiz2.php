@@ -230,6 +230,7 @@ var x = setInterval(function() {
 			mysqli_data_seek($resp1,0);
 		$R1_1= mysqli_fetch_row($resp1);
 		$resp[0][$contador]=$R1_1[1];
+		
 		$resp11[0][$contador]=$R1_1[0];
 			mysqli_data_seek($resp1,1);
 		$R1_2= mysqli_fetch_row($resp1);
@@ -237,7 +238,14 @@ var x = setInterval(function() {
 
 		$resp11[1][$contador]=$R1_2[0];
 
-
+		$R1_3= mysqli_fetch_row($resp1);
+		$resp[2][$contador]=$R1_3[1];
+		$resp11[2][$contador]=$R1_3[0];
+	
+		$R1_4= mysqli_fetch_row($resp1);
+		$resp[3][$contador]=$R1_4[1];
+		$resp11[3][$contador]=$R1_4[0];
+	
 		$ans[0][0] = 1;
 		$contador++;
 }
@@ -246,6 +254,7 @@ if ($n<$npreg){
 ?>
 	<div class="login">
 		<div class="login-screen">
+		<form method="post" action="">
 			<div >
 				<strong> <?php echo $n+1 ?>.- 
 				
@@ -256,7 +265,7 @@ if ($n<$npreg){
 			</div>
 	
 			</br>
-			<span class="radio">
+		
 			<div align="center">
 				<?php
 					//imprime el primer inciso del reactivo 
@@ -270,9 +279,21 @@ if ($n<$npreg){
 					echo "b)".$resp[1][$n] 
 				?>
 				<input type=radio name='ans1' value="2">
+				</br>
+			</br>
+				<?php 
+					echo "c)".$resp[2][$n] 
+				?>
+				<input type=radio name='ans1' value="3">
+				</br>
+			</br>
+				<?php 
+					echo "d)".$resp[3][$n] 
+				?>
+				<input type=radio name='ans1' value="4">
 
 			</div>
-			</span>
+		
 	</div>
 
  <form method="post" action="">
@@ -295,15 +316,12 @@ if ($n<$npreg){
 $contador = 0;
 $correctas = 0;
 $resp = $_POST['ans1'];
-$cresp=0;
 
 
-     
+$cont =1;
    
 if (isset($_POST['submit']) || isset($_POST['submit2'])) {
-     
-    ;
-     
+     $cont = 0;
     	if($resp==2){
     	    
 		    if ($resp11[1][$n] == $rc[$n] ){
@@ -313,9 +331,7 @@ if (isset($_POST['submit']) || isset($_POST['submit2'])) {
 		        
 		    }
 		    
-    	}
-		
-	
+		}
 
     	if($resp==1){
     	
@@ -325,6 +341,28 @@ if (isset($_POST['submit']) || isset($_POST['submit2'])) {
 		       
 		    }
 		   
+		}
+	
+		if($resp==3){
+    	   
+		    if ($resp11[2][$n] == $rc[$n] ){
+		    
+		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+		        
+		        
+		    }
+		    
+		}
+		
+		if($resp==4){
+    	    
+		    if ($resp11[3][$n] == $rc[$n] ){
+		    
+		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+		        
+		        
+		    }
+		    
     	}
 		
 	
@@ -350,11 +388,11 @@ if ($n==$npreg)
 }
 
 if ($n==$npreg &&  $_SESSION["terminado"]==2) {
-    
+    $resp1 = $_POST['ans1'];
     
     $contestado=1;
     $correctas = $_SESSION["correctas"];
-$query="insert into resultados(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','12','$Fecha_limite[5]','12','$correctas')";
+$query="insert into resultados(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fecha,IDRespuestas,RespCorrectas)values ('$user','$subid','$Fecha_limite[1]','$Fecha_limite[4]','$cont','$Fecha_limite[5]','$resp','$correctas')";
 
 $rs=mysqli_query($con,$query) or die(mysqli_error());
 

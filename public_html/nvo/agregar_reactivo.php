@@ -396,7 +396,13 @@ return true;
                                                                 <input name="a" type="text" class="form-control" placeholder="inciso a" id = "a">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input name="b" type="text" class="form-control" placeholder="inciso b" id "b">
+                                                                <input name="b" type="text" class="form-control" placeholder="inciso b" id ="b">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="c" type="text" class="form-control" placeholder="inciso c" id = "c">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input name="d" type="text" class="form-control" placeholder="inciso d" id = "d">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

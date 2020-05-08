@@ -42,6 +42,35 @@ include("database.php");
   	$row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
 	$count = mysqli_num_rows($rs);
 	//verifica si ya se registro el expediente
+	if($name == NULL)
+	{
+	echo "<br><br><br><div class=head1>No ingresó ningún nombre....</div>";
+   
+    echo "<br><div class=head1><a href=signup.php>Regresar</a></div>";
+	exit;
+	}
+	if($username == NULL)
+	{
+	echo "<br><br><br><div class=head1>No ingresó ningún expediente....</div>";
+   
+    echo "<br><div class=head1><a href=signup.php>Regresar</a></div>";
+	exit;
+	}
+	if($pass == NULL)
+	{
+	echo "<br><br><br><div class=head1>No ingresó una contraseña....</div>";
+   
+    echo "<br><div class=head1><a href=signup.php>Regresar</a></div>";
+	exit;
+	}
+	if($email == NULL)
+	{
+	echo "<br><br><br><div class=head1>No ingresó ningún correo electronico....</div>";
+   
+    echo "<br><div class=head1><a href=signup.php>Regresar</a></div>";
+	exit;
+	}
+
     if($count>0)
 	{
 	echo "<br><br><br><div class=head1>Expediente ya registrado, intente con otro....</div>";
@@ -49,6 +78,7 @@ include("database.php");
     echo "<br><div class=head1><a href=signup.php>Regresar</a></div>";
 	exit;
 	}
+	
 
 
 

@@ -291,7 +291,7 @@ error_reporting(1);
    
    function confirmar_eliminar(idex){ 
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
-      location='../admin/borrar_examen.php?id="+idex"'
+   
    }else{
     window.location.href='gestion_examen.php';
    }

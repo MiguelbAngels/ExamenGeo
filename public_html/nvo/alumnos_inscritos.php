@@ -81,8 +81,7 @@ error_reporting(1);
 
        
     $id = $_REQUEST['id'];
-    $sql = "SELECT * From usuarios WHERE Clase='0' and IDExamen = '$id' and Estado = '1'";
-    $result = mysqli_query($con,$sql);
+  
     
         /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
@@ -99,7 +98,7 @@ error_reporting(1);
         $page = 1;
         $offset = 0;
       }
-      $query  = "SELECT * From usuarios WHERE Clase='0' and IDExamen = '$id' and Estado = '1' limit $offset, $limit";
+      $query  = "SELECT * From inscripciones WHERE IDExamen = '$id' limit $offset, $limit";
       $result = mysqli_query($con, $query);
 
     if($total_pages <= (1+($adjacents * 2))) {
@@ -354,14 +353,20 @@ error_reporting(1);
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
+                                         $exp = $mostrar['expediente_alumno'];
+                                         
+                                         $sql = "SELECT * from usuarios WHERE ID = '$exp' ";
+                                         $rs = mysqli_query($con,$sql);
+                                         $mostrar2= (mysqli_fetch_array($rs));
                                          ?>
                                     <tr>
-                                        <td><?php echo $mostrar['ID']?></td>
+                                        <td><?php echo $mostrar['expediente_alumno']?></td>
                                        
                                       
                                       
-                                        <td><?php echo $mostrar['Nombre']?></td>
-                                        <td><?php echo $mostrar['Correo']?></td>
+                                        <td><?php echo $mostrar['nombre_alumno']?></td>
+
+                                        <td><?php echo $mostrar2['Correo']?></td>
                                        
                                         <td>
                                           

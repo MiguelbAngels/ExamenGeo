@@ -78,12 +78,10 @@ error_reporting(1);
         }
 
         include("../database.php");
-        $sql = "SELECT * From examen WHERE  Estado = '1'";
-        $sql1 = "SELECT IDExamen from usuarios where ID=$_SESSION[login]";
+       
+        $sql1 = "SELECT IDExamen from inscripciones where expediente_alumno=$_SESSION[login]";
          $rs = mysqli_query($con,$sql1);
-         $idex = mysqli_fetch_row($rs);
-       $sql = "SELECT * FROM examen where IDExamen=$idex[0] and Estado = '1' ";
-	    $rs=mysqli_query($con,$sql);
+        
         
 
     ?>
@@ -278,6 +276,11 @@ error_reporting(1);
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($rs))){
+                                        $idex = $mostrar['IDExamen'];
+                                        
+                                        $sql = "SELECT * FROM examen where IDExamen= '$idex' and Estado = '1' ";
+                                        $rs2=mysqli_query($con,$sql);
+                                        $mostrar2=(mysqli_fetch_array($rs2))
                                          ?>
                                     <tr >
                                         
@@ -285,7 +288,7 @@ error_reporting(1);
                                         <td >
                                             <?php
                                             echo "<table>";
-                                            $nombrex = $mostrar['TestName'];
+                                            $nombrex = $mostrar2['TestName'];
                                             echo "<tr class='success' ><td align=center class='text-danger'><a  href=../prequiz.php?subid=$idex[0]><font  size=4 >$nombrex</font></a>";
                                             echo "</table>";
                                             ?>
