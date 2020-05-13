@@ -80,12 +80,23 @@ session_start();
 	extract($_POST);
 
 	if(isset($submit))
+<<<<<<< HEAD
+	{	
+		//Consultas para verificar los datos ingresados en el login con los de la base de datos.
+		//Se busca clase 1 para admin y clase 0 para alumnos.
+		//Se busca estado = 1 lo cual significa que el usuario se encuentra activo y aceptado por un admin.
+		$sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
+		
+		$sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
+	
+=======
 	{
 
 
 	      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
 		  $sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
 
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 
 		$rs=mysqli_query($con,$sql);
@@ -94,28 +105,34 @@ session_start();
 
 		$row3 = mysqli_fetch_array($rs3,MYSQLI_ASSOC);
 		$row2 = mysqli_fetch_array($rs2,MYSQLI_ASSOC);
-	    $count = mysqli_num_rows($rs);
+		//Contadores que verificarán si los datos ingresados existen de la base de datos.
+	    $count = mysqli_num_rows($rs); //
 		$count2 = mysqli_num_rows($rs2);
+<<<<<<< HEAD
+	
+		//Caso donde los dos contadores son 0 y por lo tanto los datos ingresados en el login son incorrectos.
+=======
 
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 		if($count<1 && $count2 < 1 )
 		{
 			$found="N";
 		}
 		else
-		{
+		{	
+			//En caso de que el login sea de un alumno
 			if ($count < 1 &&  $count2 >= 1){
 				$_SESSION[login]=$loginid;
-				$query0="UPDATE usuarios SET Conectado = '1' WHERE ID = '$loginid'";
-                $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
+				
 			}
 			else{
+				//En caso de que el login sea de un administrador
 				if ($count >=1){
 				    $_SESSION['alogin']="true";
 				$_SESSION[alogin]=$loginid;
 				}
 				else{
-				    $query0="UPDATE usuarios SET Conectado = '0' WHERE ID = '$loginid'";
-                $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
+				    
 				    $found="N";
 				}
 
@@ -125,7 +142,17 @@ session_start();
 
 		}
 	}
+
 	if (isset($_SESSION[login]) )
+<<<<<<< HEAD
+	{	
+		//Se redirecciona al alumno logeado a su respectiva dirección
+	    echo "<script>location.href='nvo/alumno.php';</script>";
+	    die();
+	    
+		 
+		
+=======
 
 	{
 	    echo "<script>location.href='nvo/alumno.php';</script>";
@@ -181,15 +208,26 @@ session_start();
 
 			exit;
 
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 	}
 	if (isset($_SESSION[alogin]) ){
 		if(isset($_SESSION['alogin']))
+		//Se redirecciona al admin logeado a su respectiva dirección
 		echo "<script>location.href='nvo/index.php';</script>";
 	    die();
 	}
 	?>
 
+<<<<<<< HEAD
+	
+				
+	
+	
+	<?php
+		//Sección correspondiente al formulario del login
+	?>
+=======
 
 
 
@@ -200,6 +238,7 @@ session_start();
 
 
 
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="login100-pic js-tilt"  data-tilt>

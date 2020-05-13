@@ -306,23 +306,29 @@ if(!isset($_SESSION[alogin]))
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
+                                                                Nombre:
                                                                 <input name="name" type="text" class="form-control" value = "<?php echo $mostrar['TestName']?>" id ="name">
                                                             </div>
                                                             <div class="form-group">
+                                                                Lugar:
                                                                 <input name="lugar" type="text" class="form-control" value = "<?php echo $mostrar['Lugar']?>" id = "lugar">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input name="fecha" type="date" class="form-control" value = "<?php echo $mostrar['Fecha']?>" id "fecha">
+                                                                Fecha:
+                                                                <input name="fecha" type="date" class="form-control" value = "<?php echo $mostrar['Fecha']?>" id ="fecha">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
+                                                                Hora de inicio del examen:
                                                                 <input name="h_inicio" type="time" class="form-control" value = "<?php echo $mostrar['HInicio']?>" id = "h_inicio">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input name="h_fin" type="time" class="form-control" placeholder="Hora de fin" id = "h_fin">
+                                                                Hora de fin del examen:
+                                                                <input name="h_fin" type="time" class="form-control" value = "<?php echo $mostrar['HFinal']?>" id = "h_fin">
                                                             </div>
                                                             <div class="form-group">
+                                                                Contraseña:
                                                                 <input name="passex" type="text" class="form-control" value = "<?php echo $mostrar['PassExamen']?>" id = "passex">
                                                             </div>
                                                         </div>

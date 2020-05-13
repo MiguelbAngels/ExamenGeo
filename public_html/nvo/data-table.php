@@ -359,6 +359,16 @@ error_reporting(1);
 
                                     <?php
                                             if($_POST){
+<<<<<<< HEAD
+                                                if (!isset($buscar)){ 
+                                                      echo "Debe especificar una cadena a bucar"; 
+                                                      echo "</html></body> \n"; 
+                                                      exit; 
+                                                } 
+                                               
+                                                
+                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0' and clase ='0' "; 
+=======
                                                 if (!isset($buscar)){
                                                       echo "Debe especificar una cadena a bucar";
                                                       echo "</html></body> \n";
@@ -367,6 +377,7 @@ error_reporting(1);
 
 
                                                 $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0'";
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                                 $result4 = mysqli_query($con,$sql4);
 
                                                 while($mostrar4=(mysqli_fetch_array($result4))){

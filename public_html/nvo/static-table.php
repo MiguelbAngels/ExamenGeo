@@ -367,7 +367,7 @@ error_reporting(1);
                                                 <td><?php echo $mostrar4['Fecha']?></td>
                                                 <td><?php echo $mostrar4['Lugar']?></td>
                                                 <td><?php echo $mostrar4['RespCorrectas']?></td>
-                                                <td><?php echo $mostrar['nReactivos']?></td>
+                                                <td><?php echo $mostrar4['nReactivos']?></td>
                                             </tr>
                                         <?php
                                         }

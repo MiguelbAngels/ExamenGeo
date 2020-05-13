@@ -462,14 +462,17 @@ error_reporting(1);
                                                         <div class="devit-card-custom">
                                                             <form name="form1" method="post" action="../admin/modificaruser.php?id=<?php echo $mostrar['ID']?>&tipo=<?php echo $tipo?>&idex=<?php echo $idex?>" onSubmit="return check();">
                                                             <div class="form-group">
+                                                                Nombre:
                                                                 <input required="" name="name" type="text" id="name" class="form-control" placeholder="Nombre" value="<?php echo $mostrar['Nombre']?>">
                                                                 <div id="checkusername" class=""></div>
                                                             </div>
                                                             <div class="form-group">
+                                                                Email:
                                                                 <input required="" name="email" type="email" id="email" class="form-control" placeholder="Email" value = "<?php echo $mostrar['Correo']?>">
                                                                 <div id="checkemailresponse"></div>
                                                             </div>
                                                             <div class="form-group">
+                                                                Expediente:
                                                                 <input required="" type="text" name="lid" id="lid" class="form-control" placeholder="Expediente" value="<?php echo $mostrar['ID']?>">
                                                                 <div id="checkexp" class=""></div>
                                                             </div>

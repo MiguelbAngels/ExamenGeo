@@ -288,12 +288,22 @@ error_reporting(1);
             </div>
             <!-- Mobile Menu end -->
     <script type="text/javascript">
+<<<<<<< HEAD
+   
+   function confirmar_eliminar(idex){ 
+   if(confirm("¿Seguro que desea eliminar el examen?")){
+      
+    document.location.replace('../admin/borrar_examen.php?id='+idex);
+      
+      
+=======
 
    function confirmar_eliminar(idex){
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
 
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
    }else{
-    window.location.href='gestion_examen.php';
+    window.location.href='departments.php';
    }
   }
   </script>
@@ -383,8 +393,13 @@ error_reporting(1);
                                                           <td>
 
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar4['IDExamen']?>">Editar</a>
+<<<<<<< HEAD
+                            
+                                            <a onclick= "confirmar_eliminar(location='../admin/borrar_examen.php?id=<?php echo $mostrar['IDExamen'];?>')"> Borrar</a>
+=======
 
                                              <a onclick= "confirmar_eliminar(location='<?php $mostrar4['IDExamen'];?>')"> Borrar</a>
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar4['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar4['IDExamen']?>">Reactivos</a>
                                         </td>
@@ -511,8 +526,19 @@ error_reporting(1);
                                         <td>
 
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar['IDExamen']?>">Editar</a>
+<<<<<<< HEAD
+                                            <?php $idex = $mostrar['IDExamen'] ;
+                                             
+                                            
+                                            
+                                            ?>
+                                            
+                                            
+                                            <a onclick= "confirmar_eliminar(<?php echo $idex; ?>)"> Borrar</a>
+=======
 
                                             <a onclick= "confirmar_eliminar('<?php $mostrar['IDExamen'];?>')"> Borrar</a>
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar['IDExamen']?>">Reactivos</a>
                                         </td>

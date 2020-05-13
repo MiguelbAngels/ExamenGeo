@@ -84,7 +84,7 @@ include("database.php");
 
 
 
-$query="insert into usuarios(ID,Nombre,Correo,Password,Clase,IDExamen,Estado) values('$username','$name','$email','$pass','0','12','0')";
+$query="insert into usuarios(ID,Nombre,Correo,Password,Clase,Estado) values('$username','$name','$email','$pass','0','0')";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Cuenta ha sido creada exitosamente. :D </div>";
 

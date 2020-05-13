@@ -16,17 +16,16 @@ include("../database.php");
     
 	
 
-  
-   
- 
-$query="UPDATE usuarios SET IDExamen = '0' WHERE ID = '$id'";
+echo $idex;
+//Borramos las inscripciones correspondientes. 
+$query="DELETE from inscripciones WHERE IDExamen = '$idex' and expediente_alumno = '$id'";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
-
+header("location: ../nvo/alumnos_inscritos.php?id=".$idex); 
 
 ?>
 <?php
-header("location: ../nvo/alumnos_inscritos.php?id=".$idex); 
+
 ?>
 </body>
 </html>
