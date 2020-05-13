@@ -9,7 +9,7 @@ error_reporting(1);
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Reactivos</title>
+    <title>Lista de Reactivos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -145,7 +145,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
 
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
@@ -249,7 +249,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -321,7 +321,7 @@ error_reporting(1);
                                         <ul class="breadcome-menu">
                                             <li>Examenes <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Reactivos</span>
+                                            <li><span class="bread-blod">Lista Reactivos</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -352,8 +352,12 @@ error_reporting(1);
                                     <tr>
                                         <th>ID Reactivo</th>
                                         <th>Pregunta</th>
+<<<<<<< HEAD
                                         
                                         <th>Acciones</th>
+=======
+                                        <th>Acción</th>
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                     </tr>
 
                                     <?php
@@ -372,11 +376,18 @@ error_reporting(1);
                                                     $idr = $mostrar['IDReactivo'];
                                                     ?>
                                            <tr>
+<<<<<<< HEAD
                                               <td><?php echo $mostrar4['IDReactivo']?></td>
                                               <td><?php echo $mostrar4['Pregunta']?></td>
                                               <td><a onclick= "confirmar_eliminar(<?php echo $idr; ?>)"> Borrar</a></td>
                                               
                                                <td><a href= "editar_reactivo.php?id=<?php echo $mostrar4['IDReactivo']?>"> Modificar</a></td>
+=======
+                                        <td><?php echo $mostrar4['IDReactivo']?></td>
+                                        <td><?php echo $mostrar4['Pregunta']?></td>
+                                        <td><a onclick= "confirmar_eliminar(location='../admin/borrar_reactivo_general.php?idr=<?php echo $mostrar4['IDReactivo']?>')"> Borrar</a></td>
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
                                               </td>
                                            </tr>
@@ -450,6 +461,7 @@ error_reporting(1);
                                     <tr>
                                         <td><?php echo $mostrar['IDReactivo']?></td>
                                         <td><?php echo $mostrar['Pregunta']?></td>
+<<<<<<< HEAD
                                       
                                         <td>
                                       
@@ -457,6 +469,10 @@ error_reporting(1);
                                           <a href= "editar_reactivo.php?id=<?php echo $mostrar['IDReactivo']?>"> Modificar</a>
                                         </td>
                                        
+=======
+                                        <td><a onclick= "confirmar_eliminar(location='../admin/borrar_reactivo_general.php?idr=<?php echo $mostrar['IDReactivo'];?>')"> Borrar</a></td>
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
                                         </td>
                                     </tr>

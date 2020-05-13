@@ -8,7 +8,7 @@ error_reporting(1);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Solicitudes de registro</title>
+    <title>Solicitudes de Registro</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -88,7 +88,7 @@ error_reporting(1);
     $res = mysqli_fetch_object(mysqli_query($con, $sql2));
     $total_rows = $res->total_rows;
     $total_pages = ceil($total_rows / $limit);
-    
+
     if(isset($_GET['page']) && $_GET['page'] != "") {
         $page = $_GET['page'];
         $offset = $limit * ($page-1);
@@ -98,25 +98,25 @@ error_reporting(1);
       }
       $query  = "SELECT * From usuarios WHERE Clase='0' and Estado = '0' limit $offset, $limit";
       $result = mysqli_query($con, $query);
-    
+
     if($total_pages <= (1+($adjacents * 2))) {
         $start = 1;
         $end   = $total_pages;
     } else {
-    if(($page - $adjacents) > 1) { 
-      if(($page + $adjacents) < $total_pages) { 
-        $start = ($page - $adjacents);            
-        $end   = ($page + $adjacents);         
-      } else {             
-        $start = ($total_pages - (1+($adjacents*2)));  
-        $end   = $total_pages;               
+    if(($page - $adjacents) > 1) {
+      if(($page + $adjacents) < $total_pages) {
+        $start = ($page - $adjacents);
+        $end   = ($page + $adjacents);
+      } else {
+        $start = ($total_pages - (1+($adjacents*2)));
+        $end   = $total_pages;
       }
-    } else {               
-      $start = 1;                                
-      $end   = (1+($adjacents * 2));             
+    } else {
+      $start = 1;
+      $end   = (1+($adjacents * 2));
     }
     }
-    
+
     ?>
 
       <script type="text/javascript">
@@ -154,8 +154,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -163,7 +163,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -175,7 +175,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li class="active">
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -183,7 +183,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -258,7 +258,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -299,10 +299,10 @@ error_reporting(1);
             </div>
             <!-- Mobile Menu end -->
              <script type="text/javascript">
-   
-   function confirmar_eliminar(){ 
+
+   function confirmar_eliminar(){
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
-           
+
    }else{
     window.location.href='gestion_examen.php';
    }
@@ -316,13 +316,13 @@ error_reporting(1);
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-                                            
+
                                            <form method="POST" role="search" class="sr-input-func"  >
                                                 <input type="text" placeholder="Buscar examen..." class="search-int form-control" name="buscar" id="buscar">
                                                <br> <button type="submit" value="" name="busca" class="btn btn-default">Buscar</button>
                                             </form>
-                                            
-                                            
+
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -356,9 +356,10 @@ error_reporting(1);
                                         <th data-field="accept">Aceptar</th>
                                         <th data-field="refuse">Rechazar</th>
                                     </tr>
-                                    
+
                                     <?php
                                             if($_POST){
+<<<<<<< HEAD
                                                 if (!isset($buscar)){ 
                                                       echo "Debe especificar una cadena a bucar"; 
                                                       echo "</html></body> \n"; 
@@ -367,8 +368,18 @@ error_reporting(1);
                                                
                                                 
                                                 $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0' and clase ='0' "; 
+=======
+                                                if (!isset($buscar)){
+                                                      echo "Debe especificar una cadena a bucar";
+                                                      echo "</html></body> \n";
+                                                      exit;
+                                                }
+
+
+                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0'";
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                                 $result4 = mysqli_query($con,$sql4);
-                                            
+
                                                 while($mostrar4=(mysqli_fetch_array($result4))){
                                                     ?>
                                          <tr>
@@ -381,9 +392,9 @@ error_reporting(1);
                                         <td><a href= "../admin/aceptar_soli.php?id=<?php echo $mostrar4['ID']?>"> <i class="fa fa-check" aria-hidden="true"></i></a></td>
                                         <td><a onclick= "confirmar_eliminar(location='../admin/deleteuser.php?id=<?php echo $mostrar4['ID'];?>')"> <i class="fa fa-times" aria-hidden="true"></i></a></td>
                                     </tr>
-                                                    
-                                                 <?php 
-                                                 
+
+                                                 <?php
+
                                                 }
                                                ?>
                                                    <!-- jquery
@@ -438,12 +449,12 @@ error_reporting(1);
 
 </html>
                                               <?php
-                                              
+
                                               exit;
                                             }
                                             ?>
-                                    
-                                    
+
+
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
                                          ?>
@@ -460,7 +471,7 @@ error_reporting(1);
                                 <?php
                                      }
                                      ?>
-                                    
+
                                 </table>
                             </div>
                             <div class="custom-pagination">

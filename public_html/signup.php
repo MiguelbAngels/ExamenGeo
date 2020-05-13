@@ -56,7 +56,7 @@
 		============================================ -->
     <script src="nvo/js/vendor/modernizr-2.8.3.min.js"></script>
 
- 
+
   </head>
 
   <body >
@@ -83,50 +83,50 @@
                             <div class="row">
                             <div class="form-group col-lg-12">
                                     <label>Nombre</label>
-                                    <input class="form-control" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre">
+                                    <input required="" class="form-control" pattern="[A-Z a-z ]+" name="name" id="name" type="text" placeholder="Nombre">
                                 </div>
                                 <div class="form-group col-lg-12">
                                     <label>Expediente de usuario</label>
-                                    <input class="form-control" minlength="9" pattern="[0-9]+" placeholder="Expediente" name="username" id="username">
+                                    <input required="" class="form-control" minlength="9" pattern="[0-9]+" placeholder="Expediente" name="username" id="username">
                                 </div>
                                 <div id="checkusername" class=""></div>
                                 <div class="form-group col-lg-6">
                                     <label>Contraseña</label>
-                                    <input type="password" class="form-control" name="pass" id="password"  placeholder="Contraseña">
+                                    <input required="" type="password" class="form-control" name="pass" id="password"  placeholder="Contraseña">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Repita su contraseña</label>
-                                    <input type="password" class="form-control" id='rpassword' name='rpassword' >
+                                    <input required="" type="password" class="form-control" id='rpassword' name='rpassword' >
                                 </div>
                                 <div class="" id="divchearsisoniguales"></div>
                                 <div class="form-group col-lg-6">
                                     <label>Correo electronico</label>
-                                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                    <input required class="form-control" name="email" id="email" type="email" placeholder="Email">
                                     <div id="checkemailresponse"></div>
                                 </div>
-                                
-                                
+
+
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-success loginbtn" type="submit" id="thesubmitBoton">Registrar</button>
-                                
+
                             </div>
                             </form>
                             <button class="btn btn-default" onclick="location='index.php'">Cancelar</button>
-                           
-                                
+
+
                             </div>
-                            
-                           
-                        
-                        
+
+
+
+
                     </div>
                 </div>
 			</div>
 			<div class="text-center login-footer">
-				<p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+				<p>Copyright © 2020. Todos los derechos reservados</p>
 			</div>
-		</div>   
+		</div>
     </div>
 
 
@@ -335,7 +335,7 @@ xhttp.send("email="+email+"");
 		============================================ -->
     <script src="nvo/js/main.js"></script>
     <!-- tawk chat JS
-	
+
 
   </body>
 </html>

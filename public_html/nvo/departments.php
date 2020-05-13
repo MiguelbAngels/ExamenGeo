@@ -8,7 +8,7 @@ error_reporting(1);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Examenes</title>
+    <title>Lista de Examenes</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -87,7 +87,7 @@ error_reporting(1);
         $res = mysqli_fetch_object(mysqli_query($con, $sql2));
         $total_rows = $res->total_rows;
         $total_pages = ceil($total_rows / $limit);
-        
+
         if(isset($_GET['page']) && $_GET['page'] != "") {
             $page = $_GET['page'];
             $offset = $limit * ($page-1);
@@ -97,22 +97,22 @@ error_reporting(1);
           }
           $query  = "SELECT * From examen WHERE  Estado = '1' limit $offset, $limit";
           $result = mysqli_query($con, $query);
-        
+
         if($total_pages <= (1+($adjacents * 2))) {
             $start = 1;
             $end   = $total_pages;
         } else {
-        if(($page - $adjacents) > 1) { 
-          if(($page + $adjacents) < $total_pages) { 
-            $start = ($page - $adjacents);            
-            $end   = ($page + $adjacents);         
-          } else {             
-            $start = ($total_pages - (1+($adjacents*2)));  
-            $end   = $total_pages;               
+        if(($page - $adjacents) > 1) {
+          if(($page + $adjacents) < $total_pages) {
+            $start = ($page - $adjacents);
+            $end   = ($page + $adjacents);
+          } else {
+            $start = ($total_pages - (1+($adjacents*2)));
+            $end   = $total_pages;
           }
-        } else {               
-          $start = 1;                                
-          $end   = (1+($adjacents * 2));             
+        } else {
+          $start = 1;
+          $end   = (1+($adjacents * 2));
         }
       }
 
@@ -143,8 +143,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -152,7 +152,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
@@ -164,7 +164,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -172,7 +172,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -247,7 +247,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -288,6 +288,7 @@ error_reporting(1);
             </div>
             <!-- Mobile Menu end -->
     <script type="text/javascript">
+<<<<<<< HEAD
    
    function confirmar_eliminar(idex){ 
    if(confirm("¿Seguro que desea eliminar el examen?")){
@@ -295,6 +296,12 @@ error_reporting(1);
     document.location.replace('../admin/borrar_examen.php?id='+idex);
       
       
+=======
+
+   function confirmar_eliminar(idex){
+   if(confirm("¿Esta seguro que desea eliminar el examen?")){
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
    }else{
     window.location.href='departments.php';
    }
@@ -308,15 +315,15 @@ error_reporting(1);
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-                                            
-                                            
+
+
                                             <form method="POST" role="search" class="sr-input-func"  >
                                                 <input type="text" placeholder="Buscar examen..." class="search-int form-control" name="buscar" id="buscar">
                                                <br> <button type="submit" value="" name="busca" class="btn btn-default">Buscar</button>
                                             </form>
-                                            
-                                            
-                                            
+
+
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -346,11 +353,11 @@ error_reporting(1);
                             <div class="product-status-wrap drp-lst">
                             </div>
                             <div class="asset-inner">
-                                
+
                                 <table>
                                     <tr>
                                         <th>Id</th>
-                                       
+
                                         <th>Estado</th>
                                         <th>Nombre</th>
                                         <th>Fecha</th>
@@ -360,44 +367,49 @@ error_reporting(1);
                                     </tr>
                                     <?php
                                             if($_POST){
-                                                if (!isset($buscar)){ 
-                                                      echo "Debe especificar una cadena a bucar"; 
-                                                      echo "</html></body> \n"; 
-                                                      exit; 
-                                                } 
-                                               
-                                                
-                                                $sql4 = "SELECT * FROM examen WHERE TestName LIKE '%$buscar%' and Estado = '1' "; 
+                                                if (!isset($buscar)){
+                                                      echo "Debe especificar una cadena a bucar";
+                                                      echo "</html></body> \n";
+                                                      exit;
+                                                }
+
+
+                                                $sql4 = "SELECT * FROM examen WHERE TestName LIKE '%$buscar%' and Estado = '1' ";
                                                 $result4 = mysqli_query($con,$sql4);
-                                            
+
                                                 while($mostrar4=(mysqli_fetch_array($result4))){
                                                     ?>
                                                     <tr>
                                                     <td><?php echo $mostrar4['IDExamen']?></td>
                                          <td>
-                                            <button class="pd-setting">Activp</button>
+                                            <button class="pd-setting">Activo</button>
                                         </td>
-                                                    
+
                                                     <td><?php echo $mostrar4['TestName']?></td>
                                                     <td><?php echo $mostrar4['Fecha']?></td>
                                                     <td><?php echo $mostrar4['Lugar']?></td>
                                                     <td><?php echo $mostrar4['HInicio']?></td>
-                                                    
+
                                                           <td>
-                                          
+
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar4['IDExamen']?>">Editar</a>
+<<<<<<< HEAD
                             
                                             <a onclick= "confirmar_eliminar(location='../admin/borrar_examen.php?id=<?php echo $mostrar['IDExamen'];?>')"> Borrar</a>
+=======
+
+                                             <a onclick= "confirmar_eliminar(location='<?php $mostrar4['IDExamen'];?>')"> Borrar</a>
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar4['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar4['IDExamen']?>">Reactivos</a>
                                         </td>
                                             </tr>
-                                                    
-                                                 <?php 
-                                                 
+
+                                                 <?php
+
                                                 }
-                                                
-                                            
+
+
                                             ?>
                                             </table>
                             </div>
@@ -495,25 +507,26 @@ error_reporting(1);
                                             <?php
                                              exit;
                                             }
-                                           
+
                                             ?>
-                                           
+
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
                                          ?>
                                     <tr>
                                         <td><?php echo $mostrar['IDExamen']?></td>
-                                       
+
                                         <td>
-                                            <button class="pd-setting">Examen</button>
+                                            <button class="pd-setting">Activo</button>
                                         </td>
                                         <td><?php echo $mostrar['TestName']?></td>
                                         <td><?php echo $mostrar['Fecha']?></td>
                                         <td><?php echo $mostrar['Lugar']?></td>
                                         <td><?php echo $mostrar['HInicio']?></td>
                                         <td>
-                                          
+
                                             <a class = "add-product" href="edit-department.php?id=<?php echo $mostrar['IDExamen']?>">Editar</a>
+<<<<<<< HEAD
                                             <?php $idex = $mostrar['IDExamen'] ;
                                              
                                             
@@ -522,6 +535,10 @@ error_reporting(1);
                                             
                                             
                                             <a onclick= "confirmar_eliminar(<?php echo $idex; ?>)"> Borrar</a>
+=======
+
+                                            <a onclick= "confirmar_eliminar('<?php $mostrar['IDExamen'];?>')"> Borrar</a>
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
                                              <a class = "add-product" href="alumnos_inscritos.php?id=<?php echo $mostrar['IDExamen']?>">Alumnos</a>
                                              <a class = "add-product" href="gestion_reactivos.php?id=<?php echo $mostrar['IDExamen']?>">Reactivos</a>
                                         </td>
@@ -529,7 +546,7 @@ error_reporting(1);
                                 <?php
                                      }
                                      ?>
-                                    
+
                                 </table>
                             </div>
                             <div class="custom-pagination">

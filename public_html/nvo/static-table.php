@@ -130,8 +130,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="add-professor.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -139,7 +139,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -151,7 +151,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li class="active">
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -159,7 +159,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -282,7 +282,7 @@ error_reporting(1);
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -336,8 +336,8 @@ error_reporting(1);
                                         </thead>
                                         <tbody>
                                         <?php
-                                       
-                                    
+
+
                                         while($mostrar2=(mysqli_fetch_array($result2))){
 
                                             //Buscamos el nombre de los alumnos
@@ -345,23 +345,20 @@ error_reporting(1);
                                             $sql3 = "SELECT * From usuarios where  ID = '$idalumno'";
                                             $result3 = mysqli_query($con,$sql3);
                                             $mostrar3=(mysqli_fetch_array($result3));
-                                    
+
                                             //Buscamos los resultados e informacion de cada alumno que realizó un examen
                                             $idresp = $mostrar2['IDRespuestas'];
                                             $idex = $mostrar2['IDExamen'];
-                                        
                                             $sql4 = "SELECT * From resultados where  IDAlumno = '$idalumno' AND IDExamen = '$idex'";
                                             $result4 = mysqli_query($con,$sql4);
                                             $mostrar4=(mysqli_fetch_array($result4));
-                                            
-                                            
+
                                             //Buscamos el examen correspondiente para obtener su número de preguntas
-                                            
                                             $sql = "SELECT * From examen where  IDExamen = '$idex'";
                                             $result = mysqli_query($con,$sql);
                                             $mostrar=(mysqli_fetch_array($result));
                                             ?>
-                                    
+
                                             <tr>
                                                 <td></td>
                                                 <td><?php echo $mostrar2['IDAlumno']?></td>

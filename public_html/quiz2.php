@@ -240,8 +240,13 @@ if ($n<$npreg){
 	                        </div>
                     	</div>
 	                    <div class="panel-footer">
+<<<<<<< HEAD
 							
 							<input type="submit" class="btn btn-success btn-sm" id="submit" name="submit" value="Siguiente" onclick="">
+=======
+	                        <input type="button" class="btn btn-primary btn-sm" value="Anterior" disabled="disabled" onclick="">
+	                        <input type="submit" class="btn btn-success btn-sm" id="submit" name="submit" value="Siguiente" onclick="">
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 	                        <input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
 	                    </div>
 	                </form>
@@ -261,6 +266,22 @@ $resp = $_POST['ans1'];
 
 
 $cont =1;
+<<<<<<< HEAD
+=======
+
+if (isset($_POST['submit']) || isset($_POST['submit2'])) {
+		$cont = 0;
+    	if($resp==2){
+
+		    if ($resp11[1][$n] == $rc[$n] ){
+
+		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+
+
+		    }
+
+    	}
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 //Comprobamos que si la respuesta fue correcta cada vez que  el alumno conteste una pregunta.
 if (isset($_POST['submit']) || isset($_POST['submit2'])) {
@@ -268,6 +289,7 @@ if (isset($_POST['submit']) || isset($_POST['submit2'])) {
 		
     	//Si la respuesta fue a
     	if($resp==1){
+<<<<<<< HEAD
 			//Se verifica si el inciso elegido es el correcto.
 		    if ($resp11[0][$n] == $rc[$n] ){
 
@@ -289,23 +311,46 @@ if (isset($_POST['submit']) || isset($_POST['submit2'])) {
     	}
 
 		//Si la respuesta fue c
+=======
+
+		    if ($resp11[0][$n] == $rc[$n] ){
+
+		          $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+
+		    }
+
+		}
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 		if($resp==3){
 
 		    if ($resp11[2][$n] == $rc[$n] ){
 
 		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+<<<<<<< HEAD
 				$bool[$n] = 1;
+=======
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 		    }
 
 		}
+<<<<<<< HEAD
 		//Si la respuesta fue d
+=======
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 		if($resp==4){
 
 		    if ($resp11[3][$n] == $rc[$n] ){
 
 		        $_SESSION["correctas"]= $_SESSION["correctas"]+1;
+<<<<<<< HEAD
 				$bool[$n] = 1;
+=======
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 		    }
 
@@ -324,6 +369,11 @@ if ($n<$npreg){
 
 echo "<script language=Javascript> location.href=\"quiz2.php?subid=$subid&n=$n\"; </script>";
 
+<<<<<<< HEAD
+=======
+echo "<script language=Javascript> location.href=\"quiz2.php?subid=$subid&n=$n\"; </script>";
+
+>>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 
 }
