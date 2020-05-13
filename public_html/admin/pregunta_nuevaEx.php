@@ -5,8 +5,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="quiz.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <?php
+include("header.php");
 extract($_POST);
 $idex = $_REQUEST['idex'];
 require("../database.php");

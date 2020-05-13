@@ -118,30 +118,30 @@ error_reporting(1);
                                 <li><a title="Inicio" href="alumno.php"><span class="mini-sub-pro">Inicio</span></a></li>
                             </ul>
                         </li>
-
+                       
                         <li>
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Alumno</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Perfil" href="perfil-alumno.php"><span class="mini-sub-pro">Perfil</span></a></li>
-
+                                
                             </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Examenes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Lista de Examenes" href="examenes-disponibles.php"><span class="mini-sub-pro">Lista</span></a></li>
-
+                             
                             </ul>
                         </li>
-
+                       
                         <li class="active">
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Resultados de Examenes" href="resultados-examenes.php"><span class="mini-sub-pro">Resultados</span></a></li>
-
+                                
                             </ul>
                         </li>
-
+                        
                     </ul>
                 </nav>
             </div>
@@ -239,10 +239,10 @@ error_reporting(1);
             </div>
             <!-- Mobile Menu end -->
              <script type="text/javascript">
-
-   function confirmar_eliminar(){
+   
+   function confirmar_eliminar(){ 
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
-
+           
    }else{
     window.location.href='gestion_examen.php';
    }
@@ -256,7 +256,7 @@ error_reporting(1);
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-
+                                           
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -306,12 +306,12 @@ error_reporting(1);
                                         $mostrar4=(mysqli_fetch_array($result4));
                                         $mostrar5=(mysqli_fetch_array($result5))
                                         ?>
-
+                                        
                                         <tr>
                                             <td><?php echo $mostrar2['IDAlumno']?></td>
                                             <td><?php echo $mostrar3['Nombre']?></td>
                                             <td><?php echo $mostrar2['NombreExamen']?></td>
-
+                                            
                                             <td><?php echo $mostrar2['Fecha']?></td>
                                             <td><?php echo $mostrar2['Lugar']?></td>
                                             <td><?php echo $mostrar2['RespCorrectas']?></td>
@@ -322,7 +322,7 @@ error_reporting(1);
                                     ?>
                                 </table>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>

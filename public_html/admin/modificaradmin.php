@@ -10,6 +10,7 @@
 <?php
 
 extract($_POST);
+<<<<<<< HEAD
 include("../database.php");
 
 //Guardamos los datos obtenidos del formulario.
@@ -22,6 +23,18 @@ $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
 $count = mysqli_num_rows($rs);
 
 //Verificamos si el expediente ya esta registrado.
+=======
+
+include("../database.php");
+	$id = $_REQUEST['id'];
+	$tipo = $_REQUEST['tipo'];
+	$idex = $_REQUEST['idex'];
+      $sql = "SELECT * FROM usuarios where ID='$lid'";
+	$rs=mysqli_query($con,$sql);
+  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+    $count = mysqli_num_rows($rs);
+	
+>>>>>>> parent of 7e9336b... Ultima version
 if($count>0 && $lid != $id)
 	{
 	

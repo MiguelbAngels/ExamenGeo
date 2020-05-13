@@ -5,16 +5,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="quiz.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <?php
-extract($_POST);
-	include("../database.php");
-	$id = $_REQUEST['id'];
-	$query="UPDATE usuarios SET Estado = '1' WHERE ID = '$id'";
-	$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 
-	echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
-	echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
+extract($_POST);
+include("../database.php");
+	$id = $_REQUEST['id'];
+     
+ 
+  
+   
+ 
+$query="UPDATE usuarios SET Estado = '1' WHERE ID = '$id'";
+$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
+echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
+
+echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
+
+
 ?>
 </body>
 </html>

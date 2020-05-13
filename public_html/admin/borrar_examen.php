@@ -5,20 +5,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="quiz.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <?php
-	extract($_POST);
 
-	include("../database.php");
-
+extract($_POST);
+include("../database.php");
 	$id = $_REQUEST['id'];
+      
+echo $id;
+$query="UPDATE examen SET Estado = '0' WHERE IDExamen = '$id' ";
+$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
+echo "<br><br><br><div class=head1>Examen borrado correctamente.</div>";
 
-	echo $id;
 
-	$query="UPDATE examen SET Estado = '0' WHERE IDExamen = '$id' ";
-	$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 
-	echo "<br><br><br><div class=head1>Examen borrado correctamente.</div>";
+
 ?>
 </body>
 </html>

@@ -69,7 +69,7 @@ error_reporting(1);
 </head>
 
 <body>
-
+    
     <?php
         include("../database.php");
         extract($_POST);
@@ -79,10 +79,10 @@ error_reporting(1);
                 exit;
         }
 
-
+       
     $id = $_REQUEST['id'];
-
-
+  
+    
         /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
     $adjacents = 2;
@@ -147,7 +147,7 @@ error_reporting(1);
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
                                 <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-
+                            
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -155,7 +155,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-
+                                
                             </ul>
                         </li>
                         <li class="active">
@@ -167,7 +167,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-
+                       
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -175,7 +175,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-
+                        
                     </ul>
                 </nav>
             </div>
@@ -320,15 +320,15 @@ error_reporting(1);
             </div>
         </div>
                      <script type="text/javascript">
-
-               function confirmar_eliminar(){
+               
+               function confirmar_eliminar(){ 
                if(confirm("¿Esta seguro que desea rechazar esta solicitud?")){
-
+                       
                }else{
                 window.location.href='alumnos_inscritos.php';
                }
               }
-              </script>
+              </script> 
         <div class="product-status mg-b-15">
             <div class="container-fluid">
                 <div class="row">
@@ -344,42 +344,42 @@ error_reporting(1);
                                 <table>
                                     <tr>
                                         <th>Id</th>
-
+                                       
                                         <th>Nombre</th>
-
+                                       
                                         <th>Correo</th>
-
+                                       
                                         <th>Setting</th>
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
                                          $exp = $mostrar['expediente_alumno'];
-
+                                         
                                          $sql = "SELECT * from usuarios WHERE ID = '$exp' ";
                                          $rs = mysqli_query($con,$sql);
                                          $mostrar2= (mysqli_fetch_array($rs));
                                          ?>
                                     <tr>
                                         <td><?php echo $mostrar['expediente_alumno']?></td>
-
-
-
+                                       
+                                      
+                                      
                                         <td><?php echo $mostrar['nombre_alumno']?></td>
 
                                         <td><?php echo $mostrar2['Correo']?></td>
-
+                                       
                                         <td>
-
+                                          
                                             <a class = "add-product" href="edit-student.php?id=<?php echo $mostrar['ID']?>">Editar</a>
-
+                            
                                             	<a onclick= "confirmar_eliminar(location='../admin/borrar_inscripcion.php?id=<?php echo $mostrar['ID'];?>&idex=<?php echo $id ?>')"> Borrar</a>
-
+                                             
                                         </td>
                                     </tr>
                                 <?php
                                      }
                                      ?>
-
+                                    
                                 </table>
                             </div>
                             <div class="custom-pagination">

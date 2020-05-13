@@ -8,7 +8,7 @@ error_reporting(1);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Inicio</title>
+    <title>Index</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -100,30 +100,30 @@ error_reporting(1);
                                 <li><a title="Inicio" href="alumno.php"><span class="mini-sub-pro">Inicio</span></a></li>
                             </ul>
                         </li>
-
+                       
                         <li>
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Alumno</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Perfil" href="perfil-alumno.php"><span class="mini-sub-pro">Perfil</span></a></li>
-
+                                
                             </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Examenes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Lista de Examenes" href="examenes-disponibles.php"><span class="mini-sub-pro">Lista</span></a></li>
-
+                             
                             </ul>
                         </li>
-
+                       
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Resultados de Examenes" href="resultados-examenes.php"><span class="mini-sub-pro">Resultados</span></a></li>
-
+                                
                             </ul>
                         </li>
-
+                        
                     </ul>
                 </nav>
             </div>
@@ -246,9 +246,9 @@ error_reporting(1);
             </div>
         </div>
         <div >
-
+        
                  <?php
-
+        
 	    $sql5 = "SELECT * FROM usuarios WHERE ID=' $_SESSION[login]'";
 	    $result5 = mysqli_query($con,$sql5);
 	   	$mostrar5=(mysqli_fetch_array($result5));
@@ -257,12 +257,12 @@ error_reporting(1);
 	    echo "</br></br>";
 	    echo "<h1 class='style8' align=center>Mucha suerte!!</h1>";
 	    ?>
-
+	    
 	   </br></br>
 	   <center><img src="img/index1.jpg" ></center>
 	    </br></br>
 	   <center><img src="img/unison.png" ></center>
-
+     
 	</div>
 	</br></br></br></br></br>
         <div class="footer-copyright-area">
