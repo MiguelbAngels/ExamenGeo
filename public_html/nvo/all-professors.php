@@ -120,16 +120,13 @@ error_reporting(1);
 
     <script type="text/javascript">
 
-    function confirmar_eliminar(idex){ 
-      if(confirm("¿Seguro que desea eliminar el usuario?")){
-          
-        document.location.replace('../admin/deleteuser.php?id='+idex);
-          
-          
-      }else{
-        window.location.href='all-professors.php';
-      }
-   }
+    function confirmar_eliminar(){
+    if(confirm("¿Esta seguro que desea eliminar el registro?")){
+
+    }else{
+    window.location.href='alumnos_gestion.php';
+    }
+    }
     </script>
 
     <!--[if lt IE 8]>
@@ -365,7 +362,7 @@ error_reporting(1);
                                                         <p class="dp-ag"><b>ID: </b><?php echo $mostrar4['ID']?></p>
                                                         <p class="dp"><?php echo $mostrar4['Correo']?></p>
                                                         <a href= "edit-student.php?id=<?php echo $mostrar4['ID']?>"> Modificar</a>
-                                                        <a onclick= "confirmar_eliminar(<?php echo $mostrar['ID']; ?>)"> Borrar</a>
+                                                        <a onclick= "confirmar_eliminar(location='../admin/deleteuser.php?id=<?php echo $mostrar4['ID'];?>')"> Borrar</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -463,8 +460,7 @@ error_reporting(1);
                                 <p class="dp-ag"><b>ID: </b><?php echo $mostrar['ID']?></p>
                                 <p class="dp"><?php echo $mostrar['Correo']?></p>
                                 <a href= "edit-professor.php?id=<?php echo $mostrar['ID']?>"> Modificar</a>
-                                <a onclick= "confirmar_eliminar(<?php echo $mostrar['ID']; ?>)"> Borrar</a>
-                                
+                                <a onclick= "confirmar_eliminar(location='../admin/deleteuser.php?id=<?php echo $mostrar['ID'];?>')"> Borrar</a>
                             </div>
                         </div>
                     </div>
