@@ -1,14 +1,14 @@
+<!doctype html>
 <?php
 session_start();
 error_reporting(1);
 ?>
-<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Editar aspirante</title>
+    <title>Editar examen</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -43,9 +43,6 @@ error_reporting(1);
     <!-- educate icon CSS
 		============================================ -->
     <link rel="stylesheet" href="css/educate-custon-icon.css">
-    <!-- educate icon CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/educate-custon-icon.css">
     <!-- morrisjs CSS
 		============================================ -->
     <link rel="stylesheet" href="css/morrisjs/morris.css">
@@ -72,183 +69,37 @@ error_reporting(1);
     <!-- modernizr JS
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <!-- Funciones JS
-    ============================================ -->
-    <script language="javascript">
-        function check()
-        {
-            if(document.form1.lid.value=="")
-            {
-                alert("Ingrese un expediente");
-                document.form1.lid.focus();
-                return false;
-            }
-
-            if(document.form1.name.value=="")
-            {
-                alert("Por favor, escriba su nombre");
-                document.form1.name.focus();
-                return false;
-            }
-
-            if(document.form1.email.value=="")
-            {
-                alert("Por favor, introduzca su dirección de correo electrónico");
-                document.form1.email.focus();
-                return false;
-            }
-
-            e = document.form1.email.value;
-            f1 = e.indexOf('@');
-            f2 = e.indexOf('@',f1+1);
-            e1 = e.indexOf('.');
-            e2 = e.indexOf('.',e1+1);
-            n = e.length;
-
-            if(!(f1 > 0 && f2 == -1 && e1 > 0 && e2 == -1 && f1 != e1 + 1 && e1 != f1 + 1 && f1 != n - 1 && e1 != n - 1))
-            {
-                alert("Por favor introduzca un correo electrónico válido");
-                document.form1.email.focus();
-                return false;
-            }
-           <?php>
-           $pass = password_hash($_POST[´pass´],PASSWORD_BCRYPT);
-           ?>
-          return true;
-      }
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $("#lid").keyup(checarExpediente);
-        });
-
-        $(document).ready(function () {
-            $("#lid").change(checarExpediente);
-        });
-
-        $(document).ready(function () {
-            $("#name").keyup(checarUsuarios);
-        });
-
-        $(document).ready(function () {
-            $("#name").change(checarUsuarios);
-        });
-
-        $(document).ready(function () {
-            $("#email").keyup(checarEmails);
-        });
-
-        $(document).ready(function () {
-            $("#email").change(checarEmails);
-        });
-
-        function checarExpediente() {
-            var lid = document.getElementById('lid').value;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("checkexp").innerHTML = xhttp.responseText;
-                    expresponsed = document.getElementById('expchecker').value;
-                    if (expresponsed == "1"){
-                        if (emailresponsed){
-                            emailresponsed=document.getElementById('emailchecker').value;
-                            if (emailresponsed == "1"){
-                                if (usernameresponsed){
-                                    usernameresponsed=document.getElementById('usernamechecker').value;
-                                    if (usernameresponsed == "1"){
-                                    document.getElementById("thesubmitBoton").disabled = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (expresponsed == "0")
-                    {
-                        document.getElementById("thesubmitBoton").disabled = true;
-                    }
-                }
-            };
-        }
-        function checarUsuarios() {
-            var name= document.getElementById('name').value;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("checkusername").innerHTML = xhttp.responseText;
-                    usernameresponsed = document.getElementById('usernamechecker').value;
-                    if (usernameresponsed=="1"){
-                       if (emailresponsed){
-                            emailresponsed=document.getElementById('emailchecker').value;
-                            if (emailresponsed=="1"){
-                                if (expresponsed)
-                                {
-                                    expresponsed=document.getElementById('expchecker').value;
-                                    if (expchecker=="1"){
-                                        document.getElementById("thesubmitBoton").disabled = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (usernameresponsed=="0"){
-                        document.getElementById("thesubmitBoton").disabled = true;
-                    }
-                }
-            };
-        }
-
-        function checarEmails() {
-            var email = document.getElementById('email').value;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                document.getElementById("checkemailresponse").innerHTML = xhttp.responseText;
-                emailresponsed = document.getElementById('emailchecker').value;
-                if (emailresponsed=="1")
-                {
-                    if (usernameresponsed)
-                    {
-                        emailresponsed=document.getElementById('usernamechecker').value;
-                        if (usernameresponsed=="1"){
-                            if (expresponsed)
-                            {
-                                expresponsed=document.getElementById('expchecker').value;
-                                if (expchecker=="1"){
-                                    document.getElementById("thesubmitBoton").disabled = false;
-                                }
-                            }
-                        }
-                    }
-                }
-                else if (emailresponsed=="0")
-                {
-                    document.getElementById("thesubmitBoton").disabled = true;
-                }
-                }
-            };
-        }
-    </script>
 </head>
 
 <body>
-    <?php
-    if(!isset($_SESSION[alogin]))
-    {
-        echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
-        exit;
-    }
-        include("../database.php");
-        $tipo = $_REQUEST['tipo'];
-        $id = $_REQUEST['id'];
-        $idex = $_REQUEST['idex'];
-        $sql = "SELECT * From usuarios WHERE ID='$id'";
-        $result = mysqli_query($con,$sql);
-        $mostrar=(mysqli_fetch_array($result))
-      ?>
+      <?php
+
+
+if(!isset($_SESSION[alogin]))
+{
+	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=../index.php>Login</a><div>";
+		exit;
+}
+
+?>
+
+<?php
+		include("../database.php");
+
+		$idr = $_REQUEST['id'];
+		$sql = "SELECT * From reactivos WHERE IDReactivo='$idr'";
+		$result = mysqli_query($con,$sql);
+        $mostrar=(mysqli_fetch_array($result));
+        
+        $sql2 = "SELECT* From incisos WHERE IDReactivo = '$idr'";
+        $result2 = mysqli_query($con,$sql2);
+        $mostrar2=(mysqli_fetch_array($result));
+		
+  ?>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
+
     <!-- Start Left menu area -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -277,14 +128,14 @@ error_reporting(1);
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
                                 
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Examenes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Lista de Examenes" href="departments.php"><span class="mini-sub-pro">Lista</span></a></li>
@@ -420,19 +271,13 @@ error_reporting(1);
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="breadcome-list single-page-breadcome">
+                            <div class="breadcome-list">
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Search..." class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <ul class="breadcome-menu">
-                                            <li>Estudiantes <span class="bread-slash">/</span>
+                                            <li>Examenes <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">Editar</span>
                                             </li>
@@ -444,7 +289,6 @@ error_reporting(1);
                     </div>
                 </div>
             </div>
-        </div>
         <!-- Single pro tab review Start-->
         <div class="single-pro-review-area mt-t-30 mg-b-15">
             <div class="container-fluid">
@@ -452,61 +296,75 @@ error_reporting(1);
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#reviews"> Editar Información de la cuenta</a></li>
+                                <li class="active"><a href="#description">Editar reactivo</a></li>
+                                
                             </ul>
+                            </script>
+                            <form name="form1" method="post" action= "../admin/modificarReactivos.php?id=<?php echo $mostrar['IDReactivo']?>"  onSubmit="return check();">
                             <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="reviews">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                        <div class="devit-card-custom">
-                                                            <form name="form1" method="post" action="../admin/modificaruser.php?id=<?php echo $mostrar['ID']?>&tipo=<?php echo $tipo?>&idex=<?php echo $idex?>" onSubmit="return check();">
+                                                <form id="add-department" action="#" class="add-department">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
-                                                                Nombre:
-                                                                <input required="" name="name" type="text" id="name" class="form-control" placeholder="Nombre" value="<?php echo $mostrar['Nombre']?>">
-                                                                <div id="checkusername" class=""></div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                Email:
-                                                                <input required="" name="email" type="email" id="email" class="form-control" placeholder="Email" value = "<?php echo $mostrar['Correo']?>">
-                                                                <div id="checkemailresponse"></div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                Expediente:
-                                                                <input required="" type="text" name="lid" id="lid" class="form-control" placeholder="Expediente" value="<?php echo $mostrar['ID']?>">
-                                                                <div id="checkexp" class=""></div>
+                                                                Pregunta:
+                                                                <input name="preg" type="text" class="form-control" value = "<?php echo $mostrar['Pregunta']?>" id ="preg">
                                                             </div>
                                                            
-                                                            <center>
-                                                                <button type="submit" name="Submit" id="thesubmitBoton" class="btn btn-primary waves-effect waves-light" value="Registrar">Actualizar</button>
-                                                            </center>
-                                                            </form>
-                                                            </br></br></br>
-                                                            <form name="form1" method="post" action="../admin/modificarpass.php?id=<?php echo $mostrar['ID'] ?>" onSubmit="return check();">
-                                                         <h1 align="center"><span class="style8">Nueva contraseña</span></h1>
-  
+                                                            <?php
+                                                               
+                                                                mysqli_data_seek($result2,0);
+                                                                $reactivos = mysqli_fetch_array($result2);
+                                                                $inciso_a = $reactivos[1];
+                                                                mysqli_data_seek($result2,1);
+                                                                $reactivos = mysqli_fetch_array($result2);
+                                                                $inciso_b = $reactivos[1];
+                                                                mysqli_data_seek($result2,2);
+                                                                $reactivos = mysqli_fetch_array($result2);
+                                                                $inciso_c = $reactivos[1];
+                                                                mysqli_data_seek($result2,3);
+                                                                $reactivos = mysqli_fetch_array($result2);
+                                                                $inciso_d = $reactivos[1];
+                                                            ?>
                                                             <div class="form-group">
-                                                                <input required type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass" value="">
+                                                                Inciso a:
+                                                                <input name="a" type="text" class="form-control" value = "<?php echo $inciso_a?>" id="a">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input required type="password" class="form-control" placeholder="Confirmar Contraseña" name="pass2" id="pass2" value="">
+                                                                Inciso b:
+                                                                <input name="b" type="text" class="form-control" value = "<?php echo $inciso_b ?>" id = "b">
                                                             </div>
-                                                            <center>
-                                                                <button type="submit" name="Submit" id="thesubmitBoton" class="btn btn-primary waves-effect waves-light" value="Registrar">Actualizar</button>
-                                                            </center>
-                                                            </form>
-                                                            
-                                                            
                                                             
                                                         </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                                Inciso c:
+                                                                <input name="c" type="text" class="form-control" value = "<?php echo $inciso_c?>" id = "c">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                Inciso d:
+                                                                <input name="d" type="text" class="form-control"  value = "<?php echo $inciso_d?>" id = "d">
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
-                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="payment-adress">
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Actualizar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                </scritp>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -518,7 +376,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                              <p> 2019. Examen en linea :)</p>
+                             <p> 2019. Examen en linea :)</p>
                         </div>
                     </div>
                 </div>
@@ -567,6 +425,11 @@ error_reporting(1);
     <script src="js/calendar/moment.min.js"></script>
     <script src="js/calendar/fullcalendar.min.js"></script>
     <script src="js/calendar/fullcalendar-active.js"></script>
+    <!-- form validate JS
+		============================================ -->
+    <script src="js/form-validation/jquery.form.min.js"></script>
+    <script src="js/form-validation/jquery.validate.min.js"></script>
+    <script src="js/form-validation/form-active.js"></script>
     <!-- tab JS
 		============================================ -->
     <script src="js/tab.js"></script>

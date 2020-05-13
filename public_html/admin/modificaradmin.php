@@ -10,16 +10,18 @@
 <?php
 
 extract($_POST);
-
 include("../database.php");
-	$id = $_REQUEST['id'];
-	$tipo = $_REQUEST['tipo'];
-	$idex = $_REQUEST['idex'];
-      $sql = "SELECT * FROM usuarios where ID='$lid'";
-	$rs=mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($rs);
-	
+
+//Guardamos los datos obtenidos del formulario.
+$id = $_REQUEST['id'];
+$tipo = $_REQUEST['tipo'];
+$idex = $_REQUEST['idex'];
+$sql = "SELECT * FROM usuarios where ID='$lid'";
+$rs=mysqli_query($con,$sql);
+$row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
+$count = mysqli_num_rows($rs);
+
+//Verificamos si el expediente ya esta registrado.
 if($count>0 && $lid != $id)
 	{
 	

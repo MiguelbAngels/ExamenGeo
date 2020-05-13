@@ -17,13 +17,13 @@ include("../database.php");
  
   
    
- 
+//Marcamos como inactivo al usuario cambiando su estado a 2.
 $query="UPDATE usuarios SET Estado = '2' WHERE ID = '$id' ";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario borrado correctamente.</div>";
 
-echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
-
+echo "<br><div class=head1><a href=../nvo/all-students.php>Regresar</a></div>";
+header("location: ../nvo/all-students.php"); 
 
 ?>
 </body>
