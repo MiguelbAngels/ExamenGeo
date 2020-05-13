@@ -17,11 +17,11 @@ include("../database.php");
 
  
   
-//Eliminamos la relación entre el reactivo y el examen.
+   
+ 
 $query="DELETE FROM reactivosExamen WHERE IDReactivo = '$idr' and IDExamen = '$idex'";
 $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 
-//Proceso para disminuir la cantidad de reactivos del examen debido al reactivo quitado.
 $query2 = "SELECT * FROM examen WHERE IDExamen ='$idex'";
 $result2 = mysqli_query($con,$query2);
 mysqli_data_seek($result2,0);

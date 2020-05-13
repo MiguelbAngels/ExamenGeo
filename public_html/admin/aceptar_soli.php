@@ -10,20 +10,8 @@
 extract($_POST);
 	include("../database.php");
 	$id = $_REQUEST['id'];
-<<<<<<< HEAD
-     
-
-//Se actualiza el estado del usuario correspondiente de 0 a 1, lo cual siginica que su registro fue aceptado por un admin.
-$query="UPDATE usuarios SET Estado = '1' WHERE ID = '$id'";
-$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
-echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
-
-echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";
-header("location: ../nvo/data-table.php"); 
-=======
 	$query="UPDATE usuarios SET Estado = '1' WHERE ID = '$id'";
 	$rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
->>>>>>> 74572d60cc6530ca0c8491b82295127f1a679063
 
 	echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 	echo "<br><div class=head1><a href=../nvo/data-table.php>Regresar</a></div>";

@@ -406,41 +406,8 @@ return true;
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                            
                                                             <div class="form-group">
-                                                                <?php
-                                                                    //imprime el primer inciso del reactivo 
-                                                                    echo "Seleccione el inciso correspondiente a la respuestas correcta:";
-                                                                
-                                                                ?>
-                                                                </br>
-                                                                <input  type=radio name='n' value="1" id = "n">
-                                                                <?php
-                                                                //imprime el primer inciso del reactivo 
-                                                                echo "a)";
-                                                              
-                                                            ?>
-                                                            </br>
-                                                            <input  type=radio name='n' value="2" id = "n">
-                                                                <?php
-                                                                //imprime el primer inciso del reactivo 
-                                                                echo "b)";
-                                                                
-                                                            ?>
-                                                             </br>
-                                                            <input  type=radio name='n' value="3" id = "n">
-                                                                <?php
-                                                                //imprime el primer inciso del reactivo 
-                                                                echo "c)";
-                                                               
-                                                            ?>
-                                                             </br>
-                                                            <input  type=radio name='n' value="4" id = "n">
-                                                                <?php
-                                                                //imprime el primer inciso del reactivo 
-                                                                echo "d)";
-                                                                
-                                                            ?>
+                                                                <input name="n" type="text" class="form-control" placeholder="Respuesta correcta" id = "n">
                                                             </div>
 
                                                         </div>
