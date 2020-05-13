@@ -80,11 +80,13 @@ session_start();
 	extract($_POST);
 
 	if(isset($submit))
-	{
-
-
-	      $sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
-		  $sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
+	{	
+		//Consultas para verificar los datos ingresados en el login con los de la base de datos.
+		//Se busca clase 1 para admin y clase 0 para alumnos.
+		//Se busca estado = 1 lo cual significa que el usuario se encuentra activo y aceptado por un admin.
+		$sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
+		
+		$sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
 	
 
 
@@ -94,28 +96,30 @@ session_start();
 
 		$row3 = mysqli_fetch_array($rs3,MYSQLI_ASSOC);
 		$row2 = mysqli_fetch_array($rs2,MYSQLI_ASSOC);
-	    $count = mysqli_num_rows($rs);
+		//Contadores que verificarán si los datos ingresados existen de la base de datos.
+	    $count = mysqli_num_rows($rs); //
 		$count2 = mysqli_num_rows($rs2);
 	
+		//Caso donde los dos contadores son 0 y por lo tanto los datos ingresados en el login son incorrectos.
 		if($count<1 && $count2 < 1 )
 		{
 			$found="N";
 		}
 		else
-		{
+		{	
+			//En caso de que el login sea de un alumno
 			if ($count < 1 &&  $count2 >= 1){
 				$_SESSION[login]=$loginid;
-				$query0="UPDATE usuarios SET Conectado = '1' WHERE ID = '$loginid'";
-                $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
+				
 			}
 			else{
+				//En caso de que el login sea de un administrador
 				if ($count >=1){
 				    $_SESSION['alogin']="true";
 				$_SESSION[alogin]=$loginid;
 				}
 				else{
-				    $query0="UPDATE usuarios SET Conectado = '0' WHERE ID = '$loginid'";
-                $rs0=mysqli_query($con,$query0)or die("Could Not Perform the Query");
+				    
 				    $found="N";
 				}
 
@@ -125,66 +129,20 @@ session_start();
 
 		}
 	}
+
 	if (isset($_SESSION[login]) )
-	
-	{
+	{	
+		//Se redirecciona al alumno logeado a su respectiva dirección
 	    echo "<script>location.href='nvo/alumno.php';</script>";
 	    die();
-	    $sql5 = "SELECT * FROM usuarios WHERE ID=' $_SESSION[login]'";
-	   $result5 = mysqli_query($con,$sql5);
-	   	$mostrar5=(mysqli_fetch_array($result5));
-		
-
+	    
 		 
-		header("Cache-Control: no-cache, must-revalidate");
-		if(isset($_SESSION['login']))
-		{
-		 echo "<div align=\"right\"><strong><a href=\"perfil.php\"> Perfil </a>|<a href=\"index.php\"> Inicio </a>|<a href=\"signout.php\">Desconectar</a></strong></div>";
-		 }
-		 else
-		 {
-		 	echo "&nbsp;";
-		 }
-    $nombre = $mostrar5['Nombre'];
-    ?>
-    <iframe src="reloj.php"></iframe>
-    <a href="https://time.is/Hermosillo" id="time_is_link" rel="nofollow" style="font-size:36px">Hora local en Hermosillo:</a>
-    <span id="Hermosillo_z13d" style="font-size:36px"></span>
-    <script src="//widget.time.is/t.js"></script>
-    <script>
-        time_is_widget.init({Hermosillo_z13d:{}});
-    </script>
-
-    <center>
-        </br>
-        </br>
-        <?php
-        
-	echo "<h1 class='style8' align=center>Bienvenido $nombre</h1>";
-	        
-			echo '<table width="28%"  border="0" align="center">
-			</br>
-			</br>
-        
-	  <tr>
-	    <td  width="7%" height="65" valign="bottom"><img src="image/HLPBUTT2.JPG" width="45" height="40" align="middle"></td>
-	    <td width="93%" valign="bottom" bordercolor="#0000FF"> <a href="sublist.php" class="alert alert-danger">Ingresar a un examen </a></td>
-	  </tr>
-	  <tr>
-	    <td height="58" valign="bottom"><img src="image/DEGREE.JPG" width="40" height="40" align="absmiddle"></td>
-	    <td valign="bottom"> <a href="resultados.php" class="alert alert-danger">Resultados </a></td>
-	  </tr>
-	</table>';
-	?>
-	</center>
-    <?php
-
-			exit;
-
+		
 
 	}
 	if (isset($_SESSION[alogin]) ){
 		if(isset($_SESSION['alogin']))
+		//Se redirecciona al admin logeado a su respectiva dirección
 		echo "<script>location.href='nvo/index.php';</script>";
 	    die();
 	}
@@ -192,14 +150,11 @@ session_start();
 
 	
 				
-
-				
-
-
-
-
-
-
+	
+	
+	<?php
+		//Sección correspondiente al formulario del login
+	?>
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="login100-pic js-tilt"  data-tilt>

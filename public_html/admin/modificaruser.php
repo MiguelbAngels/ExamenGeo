@@ -12,20 +12,33 @@
 extract($_POST);
 
 include("../database.php");
-	$id = $_REQUEST['id'];
-	$tipo = $_REQUEST['tipo'];
-	$idex = $_REQUEST['idex'];
-      $sql = "SELECT * FROM usuarios where ID='$lid'";
-	$rs=mysqli_query($con,$sql);
-  $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($rs);
-	
+
+//Guardamos los datos obtenidos del formulario.
+$id = $_REQUEST['id'];
+$sql = "SELECT * FROM usuarios where ID='$lid'";
+$sql2 = "SELECT * FROM usuarios where ID='$id'";
+$rs=mysqli_query($con,$sql);
+$rs2=mysqli_query($con,$sql2);
+mysqli_data_seek($rs2,0);
+$datos= mysqli_fetch_row($rs2);
+$clase = $datos[4];
+//Contador para revisar si el expediente ya esta registrado.
+$count = mysqli_num_rows($rs);
+
+//Verificamos si otro usuario ya tiene el expediente
 if($count>0 && $lid != $id)
-	{
+{	
 	
 	echo "<br><br><br><div class=head1>El expediente ingresado ya pertenece a otro alumno</div>";
-	exit;
+	
+	if($clase == 1){
+		echo "<br><div class=head1><a href=../nvo/edit-professor.php?id=$id>Regresar</a></div>";
 	}
+	if($clase == 0){
+		echo "<br><div class=head1><a href=../nvo/edit-student.php?id=$id>Regresar</a></div>";
+	}
+	exit;
+}
  
   
    
@@ -35,9 +48,13 @@ $rs=mysqli_query($con,$query)or die("Could Not Perform the Query");
 echo "<br><br><br><div class=head1>Usuario guardado correctamente.</div>";
 
 echo "<br><div class=head1><a href=../nvo/index.php>Regresar</a></div>";
-if($tipo == 2){
-    header("location: ../nvo/index.php?id=".$idex); 
+if($clase == 1){
+	header("location: ../nvo/all-professors.php"); 
 }
+if($clase == 0){
+	header("location: ../nvo/all-students.php"); 
+}
+
 ?>
 
 </body>

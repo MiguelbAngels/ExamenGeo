@@ -28,7 +28,7 @@ echo "<br><div class=head1><a href=../nvo/departments.php>Regresar</a></div>";
 if($tipo == 2){
     header("location: ../nvo/departments.php"); 
 }
-
+header("location: ../nvo/departments.php"); 
 ?>
 
 </body>

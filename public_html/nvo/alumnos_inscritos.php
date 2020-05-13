@@ -320,14 +320,17 @@ error_reporting(1);
             </div>
         </div>
                      <script type="text/javascript">
-               
-               function confirmar_eliminar(){ 
-               if(confirm("¿Esta seguro que desea rechazar esta solicitud?")){
-                       
-               }else{
-                window.location.href='alumnos_inscritos.php';
-               }
-              }
+               //Función para confirmar si se desea eliminar.
+            function confirmar_eliminar(id,idex){ 
+                if(confirm("¿Está seguro que desea borrar la inscripción?")){
+                    
+                    document.location.replace('../admin/borrar_inscripcion.php?id='+id+'&idex='+idex);
+                    
+                    
+                }else{
+                    window.location.href='alumnos_inscritos.php?id='+idex;
+                }
+                }
               </script> 
         <div class="product-status mg-b-15">
             <div class="container-fluid">
@@ -370,9 +373,9 @@ error_reporting(1);
                                        
                                         <td>
                                           
-                                            <a class = "add-product" href="edit-student.php?id=<?php echo $mostrar['ID']?>">Editar</a>
-                            
-                                            	<a onclick= "confirmar_eliminar(location='../admin/borrar_inscripcion.php?id=<?php echo $mostrar['ID'];?>&idex=<?php echo $id ?>')"> Borrar</a>
+                                            <a class = "add-product" href="edit-student.php?id=<?php echo $mostrar['expediente_alumno']?>">Editar</a>
+                                            <a onclick= "confirmar_eliminar(<?php echo $mostrar['expediente_alumno']; ?>,<?php echo $id; ?>)"> Borrar</a>
+                                            	
                                              
                                         </td>
                                     </tr>

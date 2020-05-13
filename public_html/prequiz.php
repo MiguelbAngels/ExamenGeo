@@ -33,16 +33,15 @@ include("database.php");
   $_SESSION["terminado"]=0;
 if(isset($submit))
   {
-$sql3 = "SELECT * From inscripcion WHERE IDAlumno=$_SESSION[login] and IDExamen = '$subid'";
+//se consulta si el usuario ya ha realizado este examen antes.
+$sql3 = "SELECT * From resultados WHERE IDAlumno=$_SESSION[login] and IDExamen = '$subid'";
 $result = mysqli_query($con,$sql3);
 $result2 = mysqli_query($con,$sql2);
 $contador2 = 0;
 $permiso=0;
+
   while($mostrar=(mysqli_fetch_array($result))){
   
-  
-  
-    
     $contador2 = $contador2 + 1;
   
   
@@ -53,6 +52,8 @@ $permiso=0;
       $permiso = $permiso +1;
   }
   date_default_timezone_set('America/Hermosillo');
+
+  //Comparamos la fecha y horas del examen con las locales(Hermosillo)
   while($mostrar2=(mysqli_fetch_array($result2))){
     $date = date("H:i:s");
     $date2 = date("Y-m-d");
@@ -65,7 +66,8 @@ $permiso=0;
     }
   
   }
-      $sql = "SELECT * FROM examen WHERE IDExamen=$subid and PassExamen='$pass'";
+    //Buscamos el examen
+    $sql = "SELECT * FROM examen WHERE IDExamen=$subid and PassExamen='$pass'";
       
     $rs=mysqli_query($con,$sql);
     $row = mysqli_fetch_array($rs,MYSQLI_ASSOC);

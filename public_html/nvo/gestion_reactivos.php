@@ -293,13 +293,16 @@ error_reporting(1);
             
              <script type="text/javascript">
    
-           function confirmar_eliminar(){ 
-           if(confirm("¿Esta seguro que desea eliminar el reactivo?")){
-                   
-           }else{
-            window.location.href='gestion_reactivos.php?id=<?php echo $idex ?>';
-           }
-          }
+        function confirmar_eliminar(idex,idr){ 
+            if(confirm("document.write(idex);")){
+                
+                document.location.replace('../admin/borrar_reactivo.php?idex='+idex+"&idr="+idr);
+                
+                
+            }else{
+                window.location.href='gestion_reactivos.php?id='+idex;
+            }
+        }
           </script>
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -364,7 +367,8 @@ error_reporting(1);
                                         <td><?php echo $mostrar2['IDReactivo']?></td>
                                         <td><?php echo $mostrar2['Pregunta']?></td>
                                         <td><?php echo $mostrar2['IDCorrecta']?></td>
-                                        <td><a onclick= "confirmar_eliminar(location='../admin/borrar_reactivo.php?idex=<?php echo $mostrar['IDExamen'];?>&idr=<?php echo $mostrar2['IDReactivo'];?>')"> Borrar</a></td>
+                                        
+                                        <td><a onclick= "confirmar_eliminar(<?php echo $mostrar['IDExamen']; ?>,<?php echo $mostrar2['IDReactivo']; ?>)"> Borrar</a></td>
                                           
                                           
                                         </td>

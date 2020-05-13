@@ -66,14 +66,9 @@ if(!isset($_SESSION[alogin]))
    <div class="" id="divchearsisoniguales"></div>
    <input required="" name="email" id="email" type="email" placeholder="Email"/>
       <div id="checkemailresponse"></div>
-<<<<<<< HEAD
       <button type="submit" id="thesubmitBoton">Registrar</button>
     </form>
     <button class="btn btn-default" onclick="location='index.php'">Cancelar</button>
-=======
-      <button type="submit" id="thesubmitBoton">Registrarme</button>
-    </form>
->>>>>>> parent of 7e9336b... Ultima version
   </div>
   <div class="cta"></div>
 </div>

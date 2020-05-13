@@ -366,7 +366,7 @@ error_reporting(1);
                                                 } 
                                                
                                                 
-                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0'"; 
+                                                $sql4 = "SELECT * FROM usuarios WHERE Nombre LIKE '%$buscar%' and Estado = '0' and clase ='0' "; 
                                                 $result4 = mysqli_query($con,$sql4);
                                             
                                                 while($mostrar4=(mysqli_fetch_array($result4))){
