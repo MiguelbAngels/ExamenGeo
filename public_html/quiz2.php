@@ -4,97 +4,11 @@ session_start();
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Online Quiz</title>
+<link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<title>Examen Ceneval</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
-
-
-
-
-<link href="quiz.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-.* {
-box-sizing: border-box;
-}
-
-*:focus {
-	outline: none;
-}
-body {
-font-family: Arial;
-background-color: #3498DB;
-padding: 50px;
-}
-.login {
-margin: 20px auto;
-width: 300px;
-}
-.login-screen {
-background-color: #FFF;
-padding: 20px;
-border-radius: 5px
-}
-
-.app-title {
-text-align: center;
-color: #777;
-}
-
-.login-form {
-text-align: center;
-}
-.control-group {
-margin-bottom: 10px;
-}
-
-input {
-text-align: center;
-background-color: #ECF0F1;
-border: 2px solid transparent;
-border-radius: 3px;
-font-size: 16px;
-font-weight: 200;
-padding: 10px 0;
-width: 250px;
-transition: border .5s;
-}
-
-input:focus {
-border: 2px solid #3498DB;
-box-shadow: none;
-}
-
-.btn {
-  border: 2px solid transparent;
-  background: #3498DB;
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 25px;
-  padding: 10px 0;
-  text-decoration: none;
-  text-shadow: none;
-  border-radius: 3px;
-  box-shadow: none;
-  transition: 0.25s;
-  display: block;
-  width: 250px;
-  margin: 0 auto;
-}
-
-.btn:hover {
-  background-color: #2980B9;
-}
-
-.login-link {
-  font-size: 12px;
-  color: #444;
-  display: block;
-	margin-top: 12px;
-}
--->
-</style>
-
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <?php
 	extract($_GET);
@@ -252,61 +166,87 @@ var x = setInterval(function() {
 
 if ($n<$npreg){
 ?>
-	<div class="login">
-		<div class="login-screen">
-			<form method="post" action="">
-			<div >
-				<strong> <?php echo $n+1 ?>.-
-
-				<?php
-				//Imprime la pregunta
-				echo $arraypreg[1][$n];
-				?></strong>
-			</div>
-
-			</br>
-
-			<div align="center">
-				<?php
-					//imprime el primer inciso del reactivo
-					echo "a)".$resp[0][$n]
-				?>
-				<input  type=radio name='ans1' value="1">
-
-			</br>
-			</br>
-				<?php
-					echo "b)".$resp[1][$n]
-				?>
-				<input type=radio name='ans1' value="2">
-				</br>
-			</br>
-				<?php
-					echo "c)".$resp[2][$n]
-				?>
-				<input type=radio name='ans1' value="3">
-				</br>
-			</br>
-				<?php
-					echo "d)".$resp[3][$n]
-				?>
-				<input type=radio name='ans1' value="4">
-
-			</div>
-
-	</div>
-
- <form method="post" action="">
-
-
- </br>
-
-
-<td><div align="center">
-	<input type=submit id=submit name=submit value='Siguiente' onclick="">
-	<input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
-	</form>
-</div></td>
+	<div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <strong>
+                            <h3 class="panel-title">
+                            <?php echo $n+1 ?>.-
+                            <?php
+                                //Imprime la pregunta
+                                echo $arraypreg[1][$n];
+                            ?>
+                            </h3>
+                        </strong>
+                    </div>
+                    <form method="post" action="">
+	                    <div class="panel-body two-col">
+	                        <div class="row">
+	                            <div class="col-md-6">
+	                                <div class="well well-sm">
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input  type="radio" name="ans1" value="1">
+	                                            <?php
+	                                                //imprime el primer inciso del reactivo
+	                                                echo $resp[0][$n]
+	                                            ?>
+	                                        </label>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="well well-sm">
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input  type="radio" name="ans1" value="2">
+	                                            <?php
+	                                                echo $resp[1][$n]
+	                                            ?>
+	                                        </label>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="row">
+	                            <div class="col-md-6">
+	                                <div class="well well-sm margin-bottom-none">
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" name="ans1" value="3">
+	                                            <?php
+	                                                echo $resp[2][$n]
+	                                            ?>
+	                                        </label>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="well well-sm margin-bottom-none">
+	                                    <div class="checkbox">
+	                                        <label>
+	                                            <input type="radio" name="ans1" value="4">
+	                                            <?php
+	                                                echo $resp[3][$n]
+	                                            ?>
+	                                        </label>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+                    	</div>
+	                    <div class="panel-footer">
+	                        <input type="button" class="btn btn-primary btn-sm" value="Anterior" disabled="disabled" onclick="">
+	                        <input type="submit" class="btn btn-success btn-sm" id="submit" name="submit" value="Siguiente" onclick="">
+	                        <input type=submit id=daletiempo name=submit2 style="display: none;" onclick="alert('Se termino el tiempo.')">
+	                    </div>
+	                </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php
 }
@@ -396,7 +336,7 @@ $query="insert into resultados(IDAlumno,IDExamen,NombreExamen,Lugar,AdminID,Fech
 
 $rs=mysqli_query($con,$query) or die(mysqli_error());
 
-echo "<script language=Javascript> location.href=\"result.php?id=$user&idex=$subid\"; </script>";
+echo "<script language=Javascript> location.href=\"nvo/resultados-examenes.php?id=$user&idex=$subid\"; </script>";
 
 exit;
 }
