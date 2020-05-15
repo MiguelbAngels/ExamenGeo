@@ -9,7 +9,7 @@ error_reporting(1);
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Reactivos</title>
+    <title>Lista de Reactivos</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -145,7 +145,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
+                                <li><a title="Agregar Administrador" href="../signup_admin.php"><span class="mini-sub-pro">Agregar</span></a></li>
 
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
@@ -249,7 +249,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup_admin.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -291,12 +291,12 @@ error_reporting(1);
             <!-- Mobile Menu end -->
             <script type="text/javascript">
 
-    function confirmar_eliminar(idr){ 
+    function confirmar_eliminar(idr){
       if(confirm("¿Seguro que desea eliminar el reactivo?")){
-        
+
         document.location.replace('../admin/borrar_reactivo_general.php?idr='+idr);
-          
-          
+
+
       }else{
         window.location.href='lista_reactivos.php';
       }
@@ -352,7 +352,7 @@ error_reporting(1);
                                     <tr>
                                         <th>ID Reactivo</th>
                                         <th>Pregunta</th>
-                                        
+
                                         <th>Acciones</th>
                                     </tr>
 
@@ -375,7 +375,7 @@ error_reporting(1);
                                               <td><?php echo $mostrar4['IDReactivo']?></td>
                                               <td><?php echo $mostrar4['Pregunta']?></td>
                                               <td><a onclick= "confirmar_eliminar(<?php echo $idr; ?>)"> Borrar</a></td>
-                                              
+
                                                <td><a href= "editar_reactivo.php?id=<?php echo $mostrar4['IDReactivo']?>"> Modificar</a></td>
 
                                               </td>
@@ -450,13 +450,13 @@ error_reporting(1);
                                     <tr>
                                         <td><?php echo $mostrar['IDReactivo']?></td>
                                         <td><?php echo $mostrar['Pregunta']?></td>
-                                      
+
                                         <td>
-                                      
+
                                         <a onclick= "confirmar_eliminar(<?php echo $idr; ?>)"> Borrar</a>
                                           <a href= "editar_reactivo.php?id=<?php echo $mostrar['IDReactivo']?>"> Modificar</a>
                                         </td>
-                                       
+
 
                                         </td>
                                     </tr>
@@ -499,7 +499,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                             <p> 2019. Examen en linea :)</p>
+                             <p> Copyright © 2020. Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>

@@ -75,21 +75,21 @@ error_reporting(1);
 <body>
     <?php
     include("../database.php");
-    
+
     extract($_POST);
-    
+
     if(!isset($_SESSION[alogin]))
     {
         echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
     		exit;
     }
-    
+
     $id = $_SESSION[alogin];
     $sql = "SELECT * From usuarios WHERE ID = '$id'";
     $result = mysqli_query($con,$sql);
-    
+
     ?>
-    	
+
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -116,8 +116,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="add-professor.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup_admin.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -125,7 +125,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -137,7 +137,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -145,7 +145,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -220,7 +220,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup_admin.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -320,12 +320,12 @@ error_reporting(1);
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
-      
+
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
                             <ul id="myTabedu1" class="tab-review-design">
@@ -352,18 +352,18 @@ error_reporting(1);
                                                             <p><b>Email</b><br />  <?php echo $mostrar['Correo']?></p>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="content-profile">
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                    <?php
 	}
-	?>           
+	?>
                             </div>
                         </div>
                     </div>
@@ -375,7 +375,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p> 2019. Examen en linea :)</p>
+                            <p> Copyright © 2020. Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>

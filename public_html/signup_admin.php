@@ -79,7 +79,7 @@
 			<div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
-                        <form id="loginForm" method="POST" action="signupuser.php">
+                        <form id="loginForm" method="POST" action="signupadmin.php">
                             <div class="row">
                             <div class="form-group col-lg-12">
                                     <label>Nombre</label>

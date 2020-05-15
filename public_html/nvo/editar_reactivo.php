@@ -90,11 +90,11 @@ if(!isset($_SESSION[alogin]))
 		$sql = "SELECT * From reactivos WHERE IDReactivo='$idr'";
 		$result = mysqli_query($con,$sql);
         $mostrar=(mysqli_fetch_array($result));
-        
+
         $sql2 = "SELECT* From incisos WHERE IDReactivo = '$idr'";
         $result2 = mysqli_query($con,$sql2);
         $mostrar2=(mysqli_fetch_array($result));
-		
+
   ?>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -124,7 +124,7 @@ if(!isset($_SESSION[alogin]))
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
                                 <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -132,7 +132,7 @@ if(!isset($_SESSION[alogin]))
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
@@ -144,7 +144,7 @@ if(!isset($_SESSION[alogin]))
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -152,7 +152,7 @@ if(!isset($_SESSION[alogin]))
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -297,7 +297,7 @@ if(!isset($_SESSION[alogin]))
                         <div class="product-payment-inner-st">
                             <ul id="myTabedu1" class="tab-review-design">
                                 <li class="active"><a href="#description">Editar reactivo</a></li>
-                                
+
                             </ul>
                             </script>
                             <form name="form1" method="post" action= "../admin/modificarReactivos.php?id=<?php echo $mostrar['IDReactivo']?>"  onSubmit="return check();">
@@ -313,9 +313,9 @@ if(!isset($_SESSION[alogin]))
                                                                 Pregunta:
                                                                 <input name="preg" type="text" class="form-control" value = "<?php echo $mostrar['Pregunta']?>" id ="preg">
                                                             </div>
-                                                           
+
                                                             <?php
-                                                               
+
                                                                 mysqli_data_seek($result2,0);
                                                                 $reactivos = mysqli_fetch_array($result2);
                                                                 $inciso_a = $reactivos[1];
@@ -337,7 +337,7 @@ if(!isset($_SESSION[alogin]))
                                                                 Inciso b:
                                                                 <input name="b" type="text" class="form-control" value = "<?php echo $inciso_b ?>" id = "b">
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <div class="form-group">
@@ -349,7 +349,7 @@ if(!isset($_SESSION[alogin]))
                                                                 <input name="d" type="text" class="form-control"  value = "<?php echo $inciso_d?>" id = "d">
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-12">
@@ -376,7 +376,7 @@ if(!isset($_SESSION[alogin]))
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                             <p> 2019. Examen en linea :)</p>
+                             <p> Copyright © 2020. Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>

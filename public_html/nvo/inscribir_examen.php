@@ -81,9 +81,9 @@ error_reporting(1);
 
     $sql = "SELECT * From usuarios WHERE Clase='0' and Estado = '1'";
     $result = mysqli_query($con,$sql);
-    
 
-    
+
+
     /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
     $adjacents = 2;
@@ -118,7 +118,7 @@ error_reporting(1);
       $start = 1;
       $end   = (1+($adjacents * 2));
     }
-    }    
+    }
     ?>
 
       <script type="text/javascript">
@@ -156,8 +156,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup_admin.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -165,7 +165,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
@@ -177,7 +177,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -185,7 +185,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -260,7 +260,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup_admin.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -301,11 +301,11 @@ error_reporting(1);
             </div>
             <!-- Mobile Menu end -->
             <script type="text/javascript">
-                function confirmar_eliminar(){ 
+                function confirmar_eliminar(){
                     if(confirm("¿Esta seguro que desea eliminar el examen?")){
                     }else{
                         window.location.href='gestion_examen.php';
-                        
+
                     }
                 }
             </script>
@@ -352,7 +352,7 @@ error_reporting(1);
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Inscribir</th>
-                                      
+
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($result))){
@@ -362,32 +362,32 @@ error_reporting(1);
                                         $result2 = mysqli_query($con,$sql2);
                                         //Ciclo para comparar si los alumnos ya estan inscritos o no al examen
                                         while($mostrar2=(mysqli_fetch_array($result2))){
-                                         
+
                                             if($mostrar2['expediente_alumno'] == $mostrar['ID']){
                                                 $bool=1;
                                             }
 
                                          }
-                                         
+
                                          if($bool==0){
                                          $idl = $mostrar['ID'];
                                          ?>
                                         <tr>
                                         <td><?php echo $mostrar['ID']?></td>
-                                      
+
                                         <td>
                                             <button class="pd-setting">Pendiente</button>
                                         </td>
                                         <td><?php echo $mostrar['Nombre']?></td>
                                         <td><?php echo $mostrar['Correo']?></td>
                                         <td><a href= "../admin/inscribir.php?id1=<?php echo $idex ?> &id=<?php echo $idl?> "> <i class="fa fa-check" aria-hidden="true"></i></a></td>
-                                        
+
                                     </tr>
                                      <?php
                                             }
                                         }
                                      ?>
-                                    
+
                                 </table>
                             </div>
                             <div class="custom-pagination">
@@ -423,7 +423,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                              <p> 2019. Examen en linea :)</p>
+                              <p> Copyright © 2020. Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>

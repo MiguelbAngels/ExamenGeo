@@ -243,7 +243,7 @@ error_reporting(1);
 	$result = mysqli_query($con,$sql);
 	$mostrar=(mysqli_fetch_array($result))
     ?>
-    
+
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -270,8 +270,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup_admin.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -279,7 +279,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -291,7 +291,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -299,7 +299,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -374,7 +374,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup_admin.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -476,7 +476,7 @@ error_reporting(1);
                                                                 <input required="" type="text" name="lid" id="lid" class="form-control" placeholder="Expediente" value="<?php echo $mostrar['ID']?>">
                                                                 <div id="checkexp" class=""></div>
                                                             </div>
-                                                           
+
                                                             <center>
                                                                 <button type="submit" name="Submit" id="thesubmitBoton" class="btn btn-primary waves-effect waves-light" value="Registrar">Actualizar</button>
                                                             </center>
@@ -484,7 +484,7 @@ error_reporting(1);
                                                             </br></br></br>
                                                             <form name="form1" method="post" action="../admin/modificarpass.php?id=<?php echo $mostrar['ID'] ?>" onSubmit="return check();">
                                                          <h1 align="center"><span class="style8">Nueva contraseña</span></h1>
-  
+
                                                             <div class="form-group">
                                                                 <input required type="password" class="form-control" placeholder="Contraseña" name="pass" id="pass" value="">
                                                             </div>
@@ -513,7 +513,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                            <p>Copyright © 2020. Todos los derechos reservados</a></p>
                         </div>
                     </div>
                 </div>

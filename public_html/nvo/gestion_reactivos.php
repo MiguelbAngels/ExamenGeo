@@ -81,7 +81,7 @@ error_reporting(1);
     $idex = $_REQUEST['id'];
     $sql = "SELECT * From reactivosExamen WHERE IDExamen='$idex'";
     $result = mysqli_query($con,$sql);
-    
+
     /*How may adjacent page links should be shown on each side of the current page link.*/
     $limit = 20;
     $adjacents = 2;
@@ -144,8 +144,8 @@ error_reporting(1);
                             <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Administradores</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Administradores Registrados" href="all-professors.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                <li><a title="Agregar Administrador" href="../admin_signup.php"><span class="mini-sub-pro">Agregar</span></a></li>
-                            
+                                <li><a title="Agregar Administrador" href="../signup_admin.php"><span class="mini-sub-pro">Agregar</span></a></li>
+
                                 <li><a title="Perfil Administrador" href="perfil-admin.php"><span class="mini-sub-pro">Perfil</span></a></li>
                             </ul>
                         </li>
@@ -153,7 +153,7 @@ error_reporting(1);
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Estudiantes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Estudiantes Registrados" href="all-students.php"><span class="mini-sub-pro">Registrados</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
@@ -165,7 +165,7 @@ error_reporting(1);
                                 <li><a title="Lista Reactivos" href="lista_reactivos.php"><span class="mini-sub-pro">Lista Reactivos</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -173,7 +173,7 @@ error_reporting(1);
                                 <li><a title="Solicitudes de Estudiantes" href="data-table.php"><span class="mini-sub-pro">Solicitudes</span></a></li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -248,7 +248,7 @@ error_reporting(1);
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li><a href="all-professors.php">Registrados</a>
                                                 </li>
-                                                <li><a href="../admin_signup.php">Agregar</a>
+                                                <li><a href="../signup_admin.php">Agregar</a>
                                                 </li>
                                                 <li><a href="perfil-admin.php">Perfil</a>
                                                 </li>
@@ -288,17 +288,17 @@ error_reporting(1);
                 </div>
             </div>
             <!-- Mobile Menu end -->
-            
-            
-            
+
+
+
              <script type="text/javascript">
-   
-        function confirmar_eliminar(idex,idr){ 
+
+        function confirmar_eliminar(idex,idr){
             if(confirm("document.write(idex);")){
-                
+
                 document.location.replace('../admin/borrar_reactivo.php?idex='+idex+"&idr="+idr);
-                
-                
+
+
             }else{
                 window.location.href='gestion_reactivos.php?id='+idex;
             }
@@ -347,11 +347,11 @@ error_reporting(1);
                             <div class="asset-inner">
                                 <table>
                                     <tr>
-                                        
+
                                         <th>ID Reactivo</th>
                                         <th>Pregunta</th>
                                         <th>ID correcta</th>
-                                        
+
                                         <th>Acción</th>
                                     </tr>
                                     <?php
@@ -361,23 +361,23 @@ error_reporting(1);
                                             $result2 = mysqli_query($con,$sql2);
                                      while($mostrar2=(mysqli_fetch_array($result2))){
                                          ?>
-                                         
+
                                     <tr>
-                                       
+
                                         <td><?php echo $mostrar2['IDReactivo']?></td>
                                         <td><?php echo $mostrar2['Pregunta']?></td>
                                         <td><?php echo $mostrar2['IDCorrecta']?></td>
-                                        
+
                                         <td><a onclick= "confirmar_eliminar(<?php echo $mostrar['IDExamen']; ?>,<?php echo $mostrar2['IDReactivo']; ?>)"> Borrar</a></td>
-                                          
-                                          
+
+
                                         </td>
                                     </tr>
                                 <?php
                                      }
                                      }
                                      ?>
-                                    
+
                                 </table>
                             </div>
                             <div class="custom-pagination">
@@ -413,7 +413,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                              <p> 2019. Examen en linea :)</p>
+                              <p> Copyright © 2020. Todos los derechos reservados</p>
                         </div>
                     </div>
                 </div>

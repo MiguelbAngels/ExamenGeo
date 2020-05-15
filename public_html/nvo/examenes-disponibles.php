@@ -8,7 +8,7 @@ error_reporting(1);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Examenes</title>
+    <title>Lista de Examenes</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -78,11 +78,11 @@ error_reporting(1);
         }
 
         include("../database.php");
-       
+
         $sql1 = "SELECT IDExamen from inscripciones where expediente_alumno=$_SESSION[login]";
          $rs = mysqli_query($con,$sql1);
-        
-        
+
+
 
     ?>
     <!--[if lt IE 8]>
@@ -107,30 +107,30 @@ error_reporting(1);
                                 <li><a title="Inicio" href="alumno.php"><span class="mini-sub-pro">Inicio</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Alumno</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Perfil" href="perfil-alumno.php"><span class="mini-sub-pro">Perfil</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="active">
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Examenes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Lista de Examenes" href="examenes-disponibles.php"><span class="mini-sub-pro">Lista</span></a></li>
-                             
+
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Resultados de Examenes" href="resultados-examenes.php"><span class="mini-sub-pro">Resultados</span></a></li>
-                                
+
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -139,10 +139,10 @@ error_reporting(1);
     <!-- End Left menu area -->
     <!-- Start Welcome area -->
     <script type="text/javascript">
-   
-   function confirmar_eliminar(){ 
+
+   function confirmar_eliminar(){
    if(confirm("¿Esta seguro que desea eliminar el examen?")){
-           
+
    }else{
     window.location.href='gestion_examen.php';
    }
@@ -272,19 +272,19 @@ error_reporting(1);
                             <div class="asset-inner">
                                 <table>
                                     <tr>
-                                       
+
                                     </tr>
                                     <?php
                                      while($mostrar=(mysqli_fetch_array($rs))){
                                         $idex = $mostrar['IDExamen'];
-                                        
+
                                         $sql = "SELECT * FROM examen where IDExamen= '$idex' and Estado = '1' ";
                                         $rs2=mysqli_query($con,$sql);
                                         $mostrar2=(mysqli_fetch_array($rs2))
                                          ?>
                                     <tr >
-                                        
-                                       
+
+
                                         <td >
                                             <?php
                                             echo "<table>";
@@ -293,20 +293,20 @@ error_reporting(1);
                                             echo "</table>";
                                             ?>
                                         </td>
-                                        
-                                       
-                                          
-                                          
+
+
+
+
                                         </td>
                                     </tr>
                                 <?php
                                      }
                                      ?>
-                                    
+
                                 </table>
                             </div>
-                         
-                         
+
+
                         </div>
                     </div>
                 </div>
@@ -317,7 +317,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="footer-copy-right">
-                             <p>2019. Examen en linea </p>
+                             <p>Copyright © 2020. Todos los derechos reservados </p>
                         </div>
                     </div>
                 </div>

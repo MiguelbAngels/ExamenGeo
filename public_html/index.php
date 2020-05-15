@@ -9,7 +9,7 @@ session_start();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	
+
 
 
 
@@ -80,14 +80,14 @@ session_start();
 	extract($_POST);
 
 	if(isset($submit))
-	{	
+	{
 		//Consultas para verificar los datos ingresados en el login con los de la base de datos.
 		//Se busca clase 1 para admin y clase 0 para alumnos.
 		//Se busca estado = 1 lo cual significa que el usuario se encuentra activo y aceptado por un admin.
 		$sql = "SELECT * FROM usuarios WHERE ID='$loginid' and Password='$pass' and Clase ='1' and Estado = '1'";
-		
+
 		$sql2 = "SELECT * FROM usuarios WHERE ID='$loginid' and  Clase ='0' and Estado = '1' and Password='$pass'" ;
-	
+
 
 
 		$rs=mysqli_query($con,$sql);
@@ -99,18 +99,18 @@ session_start();
 		//Contadores que verificarán si los datos ingresados existen de la base de datos.
 	    $count = mysqli_num_rows($rs); //
 		$count2 = mysqli_num_rows($rs2);
-	
+
 		//Caso donde los dos contadores son 0 y por lo tanto los datos ingresados en el login son incorrectos.
 		if($count<1 && $count2 < 1 )
 		{
 			$found="N";
 		}
 		else
-		{	
+		{
 			//En caso de que el login sea de un alumno
 			if ($count < 1 &&  $count2 >= 1){
 				$_SESSION[login]=$loginid;
-				
+
 			}
 			else{
 				//En caso de que el login sea de un administrador
@@ -119,7 +119,7 @@ session_start();
 				$_SESSION[alogin]=$loginid;
 				}
 				else{
-				    
+
 				    $found="N";
 				}
 
@@ -131,13 +131,13 @@ session_start();
 	}
 
 	if (isset($_SESSION[login]) )
-	{	
+	{
 		//Se redirecciona al alumno logeado a su respectiva dirección
 	    echo "<script>location.href='nvo/alumno.php';</script>";
 	    die();
-	    
-		 
-		
+
+
+
 
 	}
 	if (isset($_SESSION[alogin]) ){
@@ -148,10 +148,10 @@ session_start();
 	}
 	?>
 
-	
-				
-	
-	
+
+
+
+
 	<?php
 		//Sección correspondiente al formulario del login
 	?>
@@ -198,9 +198,9 @@ session_start();
                 </div>
 			</div>
 			<div class="text-center login-footer">
-				<p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+				<p>Copyright © 2020. Todos los derechos reservados</p>
 			</div>
-		</div>   
+		</div>
     </div>
 
 

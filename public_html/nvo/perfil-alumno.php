@@ -74,22 +74,22 @@ error_reporting(1);
 <body>
         <?php
     include("../database.php");
-    
+
     include("header.php");
     extract($_POST);
-    
+
     if(!isset($_SESSION[login]))
     {
     	echo "<BR><BR><BR><BR><div class=head1>Usted no se ha identificado<br> Por favor <a href=index.php>Login</a><div>";
     		exit;
     }
-    
+
     $id = $_SESSION[login];
     $sql = "SELECT * From usuarios WHERE ID = '$id'";
     $result = mysqli_query($con,$sql);
-    
+
     		?>
-    	
+
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -112,30 +112,30 @@ error_reporting(1);
                                 <li><a title="Inicio" href="alumno.php"><span class="mini-sub-pro">Inicio</span></a></li>
                             </ul>
                         </li>
-                       
+
                         <li class="active">
                             <a class="has-arrow" href="all-students.php" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Alumno</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Perfil" href="perfil-alumno.php"><span class="mini-sub-pro">Perfil</span></a></li>
-                                
+
                             </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Examenes</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Lista de Examenes" href="examenes-disponibles.php"><span class="mini-sub-pro">Lista</span></a></li>
-                             
+
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">Tablas</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Resultados de Examenes" href="resultados-examenes.php"><span class="mini-sub-pro">Resultados</span></a></li>
-                                
+
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -240,7 +240,7 @@ error_reporting(1);
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-                                           
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -295,12 +295,12 @@ error_reporting(1);
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
-      
+
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
                             <ul id="myTabedu1" class="tab-review-design">
@@ -327,18 +327,18 @@ error_reporting(1);
                                                             <p><b>Email</b><br />  <?php echo $mostrar['Correo']?></p>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="content-profile">
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                    <?php
 	}
-	?>           
+	?>
                             </div>
                         </div>
                     </div>
@@ -350,7 +350,7 @@ error_reporting(1);
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>2019. Examen en linea </p>
+                            <p>Copyright © 2020. Todos los derechos reservados </p>
                         </div>
                     </div>
                 </div>
